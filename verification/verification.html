@@ -44,51 +44,59 @@
         }
 
         .verification-card {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             padding: 3rem;
             border-radius: 24px;
-            border: 3px solid rgba(71, 71, 89, 0.1);
+            border: 3px solid rgba(255, 255, 255, 0.1);
             text-align: center;
             max-width: 500px;
             width: 100%;
             transition: all 0.3s ease;
         }
 
-        .verification-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(142, 190, 160, 0.3);
-            border-color: rgba(71, 71, 89, 0.5);
-        }
+      
+        
 
         h1 {
             font-size: 2.5rem;
             font-weight: 600;
-            color: #474759;
+            color: #94C4A6;
             margin-bottom: 2rem;
         }
 
         button {
-            background: linear-gradient(45deg, #8EBEA0, #9DC6AB);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
+            padding: 0.8rem 1.6rem;
+            min-width: 120px;
+            background: none;
+            color: #94C4A6;
+            border: 3px solid #94C4A6;
+            border-radius: 17px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(142, 190, 160, 0);
         }
 
         button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(142, 190, 160, 0.4);
+            background: #94C4A6;
+            color: #FFFFFF;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(142, 190, 160, 0.3);
         }
 
         button:disabled {
             background: rgba(71, 71, 89, 0.2);
+            border-color: rgba(71, 71, 89, 0.2);
+            color: rgba(255, 255, 255, 0.3);
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
@@ -112,7 +120,7 @@
             width: 40px;
             height: 40px;
             border: 4px solid rgba(142, 190, 160, 0.1);
-            border-top: 4px solid #8EBEA0;
+            border-top: 4px solid rgb(142, 122, 211);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -129,24 +137,38 @@
 
         .qr-code {
             width: 200px;
-            height: 240px;  /* increased height */
+            height: 240px;
             border-radius: 24px;
-            margin: 2rem auto 1rem;  /* reduced bottom margin */
+            margin: 2rem auto 1rem;
             object-fit: cover;
-            object-position: top;  /* align to top */
+            object-position: top;
         }
 
         .instructions {
-            color: #474759;
+            color:#FFFFFF;
             margin-bottom: 2rem;
             font-size: 1.1rem;
             line-height: 1.5;
         }
 
         #getCodeBtn {
-            display: block;  /* show by default */
-            margin: 0 auto;  /* center the button */
-            width: fit-content;  /* make button width fit its content */
+            display: block;
+            margin: 0 auto;
+            width: fit-content;
+        }
+
+        @media screen and (max-width: 768px) {
+            button {
+                min-width: auto;
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            button {
+                padding: 0.5rem 0.8rem;
+            }
         }
     </style>
 </head>
