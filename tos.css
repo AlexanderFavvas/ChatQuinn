@@ -50,7 +50,7 @@ body {
 
 /* Update .tos-title to include fade-in effect */
 .tos-title {
-    color: #8EBEA0;
+    color: #94C4A6;
     font-size: 4rem;
     font-weight: 600;
     margin-bottom: 7rem;
@@ -58,7 +58,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: center;
-    opacity: 0;
+    opacity: 1;
     transform: translateY(40px);
     animation: fadeInUp 0.5s ease-out forwards;
     animation-delay: 0.2s;

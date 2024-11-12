@@ -49,6 +49,7 @@ body {
     
 }
 
+
 .about-row:nth-child(1) {
     animation-delay: 0.4s;
 }
@@ -62,11 +63,25 @@ body {
     min-height: 300px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 16px;
-    border:3px solid rgba(255, 255, 255, 0.1);
-
+    border: 3px solid rgba(255, 255, 255, 0.1);
     padding: 2rem;
+    overflow: hidden; /* Added to ensure image stays within container */
+    position: relative; /* Added for positioning context */
 }
 
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.image-container img:hover {
+    transform: scale(1.05);
+}
+
+/* Rest of your CSS remains the same */
 .text-container {
     flex: 1;
     color: #FFFFFF

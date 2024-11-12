@@ -106,7 +106,7 @@ body {
     border-color: #94C4A6;
     color: #94C4A6;
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 8px 20px rgba(142, 190, 160, 0.3);
+   
 }
 
 .google-button:hover::before {

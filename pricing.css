@@ -108,7 +108,7 @@ body {
 /* Default hover for all pricing cards except Pro */
 .pricing-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(142, 190, 160, 0.1);
+   
     border-color: rgba(142, 190, 160, 0.5);
 }
 
@@ -205,7 +205,7 @@ body {
     align-items: center;
     gap: 0.5rem;
     transform: translateY(0);
-    box-shadow: 0 4px 12px rgba(142, 190, 160, 0);
+   
 }
 
 .get-started-btn:hover,
@@ -213,7 +213,7 @@ body {
     background: #94C4A6;;
     color: #FFFFFF;
     transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(142, 190, 160, 0.5);
+   
 }
 
 .get-started-btn::after,

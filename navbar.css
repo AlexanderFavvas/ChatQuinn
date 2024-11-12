@@ -92,8 +92,8 @@
     padding: 0.8rem 1.6rem;
     min-width: 120px;
     background: none;
-    color: #94C4A6;
-    border: 3px solid #94C4A6;
+    color: rgb(142, 122, 211);
+    border: 3px solid rgb(142, 122, 211);
     border-radius: 17px;
     transition: all 0.3s ease;
     font-size: 0.9rem;
@@ -109,10 +109,10 @@
 }
 
 .signin-btn:hover {
-    background: #94C4A6;
+    background: rgb(142, 122, 211);
     color: #FFFFFF;
     transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(142, 190, 160, 0.3);
+   
 }
 
 /* Responsive styles */

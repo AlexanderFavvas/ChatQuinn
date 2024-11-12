@@ -12,45 +12,39 @@
 <body>
     <iframe src="background.html" class="background-frame" title="background"></iframe>
     <div id="navbar-placeholder"></div>
-
-
     <main class="about-content">
         <h1 class="title">About Us</h1>
-        
         <!-- Row 1: Image left, text right -->
         <section class="about-row">
-            <div class="image-container"></div>
+            <div class="image-container">
+                <img src="Image1.JPG"Quinn AI Story" class="about-image">
+            </div>
             <div class="text-container">
                 <h2>Our Story</h2>
                 <p>Quinn was born from a high school project when two classmates, Sky Turrentine and Alexander Favvas, set out to explore the world of artificial intelligence. Initially focused on creating a movie recommendation system, we soon realized we needed to pursue a different path. Recognizing the rapid growth of AI technology, we pivoted to develop Quinn, an AI chatbot designed to streamline daily tasks like email management and calendar organization. Our vision is to create an AI assistant that stands out from traditional chatbots by offering practical, everyday functionality that makes life easier.</p>
             </div>
         </section>
-
-        <!-- Row 2: Text left, image right (Reversed) -->
+        <!-- Row 2: Text left, image right -->
         <section class="about-row reverse-row">
             <div class="text-container">
                 <h2>Our Vision</h2>
-                <p>Our vision with Quinn is to simplify daily digital tasks. As young entrepreneurs, we're driven by both innovation and practicality - creating an AI solution that makes a noticeable difference in people's everyday lives.
-                    Quinn stands out by offering unique capabilities like direct email management and calendar integration. Our technology emphasizes simplicity and security while helping you accomplish more with less effort.</p>
+                <p>Our vision with Quinn is to simplify daily digital tasks. As young entrepreneurs, we're driven by both innovation and practicality - creating an AI solution that makes a noticeable difference in people's everyday lives. Quinn stands out by offering unique capabilities like direct email management and calendar integration. Our technology emphasizes simplicity and security while helping you accomplish more with less effort.</p>
             </div>
             <div class="image-container"></div>
         </section>
     </main>
-
     <div id="footer-placeholder"></div>
-
     <script>
-         fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar-placeholder').innerHTML = data;
-        });
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+
         fetch('footer.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer-placeholder').innerHTML = data;
-
-                // Set up the IntersectionObserver for footer links
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -62,13 +56,10 @@
                 }, {
                     threshold: 0.1
                 });
-
                 document.querySelectorAll('.footer-link').forEach((link) => {
                     observer.observe(link);
                 });
             });
-        
-        
     </script>
 </body>
 </html>

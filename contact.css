@@ -119,7 +119,7 @@ body {
 
 .icon-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(142, 190, 160, 0.3);
+    
 }
 
 .icon {
@@ -307,7 +307,7 @@ textarea::-webkit-scrollbar-thumb {
     background: #94C4A6;
     color: #FFFFFF;
     transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(142, 190, 160, 0.3);
+  
 }
 
 .send-btn:disabled {
