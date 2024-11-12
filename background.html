@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #232329;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Primary noise layer */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('noise-light.png');
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 1;
+            mix-blend-mode: multiply;
+        }
+
+        /* Secondary noise layer */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('noise-light.png');
+            opacity: 0.9;
+            pointer-events: none;
+            z-index: 2;
+            mix-blend-mode: overlay;
+            filter: contrast(100%);
+        }
+
+       
+
+        @keyframes noiseAnimation {
+            0% { transform: translate(0, 0); }
+            10% { transform: translate(-1%, -1%); }
+            20% { transform: translate(1%, 1%); }
+            30% { transform: translate(-1%, 1%); }
+            40% { transform: translate(1%, -1%); }
+            50% { transform: translate(-1%, -1%); }
+            60% { transform: translate(1%, 1%); }
+            70% { transform: translate(-1%, 1%); }
+            80% { transform: translate(1%, -1%); }
+            90% { transform: translate(-1%, -1%); }
+            100% { transform: translate(0, 0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="blotch pink-1"></div>
+    <div class="blotch purple-1"></div>
+    <div class="blotch pink-2"></div>
+    <div class="blotch purple-2"></div>
+
+    <script>
+        window.onload = function() {
+            const elements = document.querySelectorAll('.blotch');
+            const storedState = sessionStorage.getItem('backgroundState');
+            
+            if (storedState) {
+                const state = JSON.parse(storedState);
+                elements.forEach((el, index) => {
+                    el.style.animationDelay = `-${state[index]}s`;
+                });
+            }
+
+            setInterval(() => {
+                const currentState = Array.from(elements).map(el => {
+                    const style = window.getComputedStyle(el);
+                    const duration = parseFloat(style.animationDuration);
+                    const delay = parseFloat(style.animationDelay);
+                    const currentTime = (performance.now() / 1000) % duration;
+                    return (currentTime - delay) % duration;
+                });
+                sessionStorage.setItem('backgroundState', JSON.stringify(currentState));
+            }, 1000);
+        };
+
+        document.addEventListener('visibilitychange', function() {
+            const elements = document.querySelectorAll('.blotch');
+            elements.forEach(el => {
+                el.style.animationPlayState = document.hidden ? 'paused' : 'running';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinn Beta Access</title>
+    <link rel="stylesheet" href="beta.css">
+    <link rel="icon" href="../QuinnWebsiteLogo.svg" type="image/x-icon">
+</head>
+<body>
+    <iframe src="../background.html" class="background-frame" title="background"></iframe>
+    <main class="main-content">
+        <div class="beta-container">
+            <h1>Quinn Beta Access</h1>
+            <div class="access-note">
+                <p>Beta access requires developer approval. Please ensure you have been granted access before continuing.</p>
+                <p class="beta-free">Free of charge during beta testing period</p>
+            </div>
+            <div class="warning-box">
+                <div class="warning-icon">!</div>
+                <div class="warning-content">
+                    <p>This is a beta version of Quinn. By proceeding, you acknowledge and accept the following risks:</p>
+                    <ul>
+                        <li>The AI may occasionally produce incorrect or misleading responses</li>
+                        <li>Calendar and email access permissions are required for core functionality</li>
+                        <li>The service may experience downtime or performance issues</li>
+                        <li>Features may be modified or removed during the beta period</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="terms-box">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="termsCheckbox">
+                    <span class="checkmark"></span>
+                    I have read and agree to the&nbsp;<a href="/quinn-tospage.html" class="terms-link" target="_blank">Terms and Conditions</a>
+                </label>
+                
+                <label class="checkbox-container">
+                    <input type="checkbox" id="betaCheckbox">
+                    <span class="checkmark"></span>
+                    I understand and accept the risks associated with using beta software
+                </label>
+            </div>
+
+            <button id="continueButton" class="continue-btn" disabled>Continue to Quinn Beta →</button>
+        </div>
+
+    </main>
+    <script src="beta.js"></script>
+</body>
+</html>

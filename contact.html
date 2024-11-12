@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quinn AI - Contact</title>
+        <link rel="stylesheet" href="navbar.css">
+        <link rel="icon" href="Quinn-Q-Trsp.png" type="image/x-icon">
+        <link rel="stylesheet" href="footer.css">
+        <link rel="stylesheet" href="contact.css">
+    </head>
+    <body>
+        <div id="navbar-placeholder"></div>
+        <iframe src="background.html" class="background-frame" title="background"></iframe>
+
+        <main class="main-content">
+            <div class="contact-container">
+                <!-- Left Section -->
+                <div class="contact-info">
+                    <div class="header-container">
+                        <h1 class="contact-title">Let's get in touch</h1>
+                    </div>
+                    <p class="contact-subtitle fade-up">Have questions? We're here to help you. Contact our support team for assistance.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-row fade-up later-delay">
+                            <div class="icon-box">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <path d="M22 6l-10 7L2 6"></path>
+                                </svg>
+                            </div>
+                            <span>support@chatquinn.com</span>
+                        </div>
+                        <div class="contact-row fade-up later-delay">
+                            <div class="icon-box">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <span>California, United States</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Section - Contact Form -->
+                <div class="contact-form-container fade-up" >
+                    <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="b922fabd-ef3d-4346-b6e1-d9d4bece5063">
+                        <input type="checkbox" name="botcheck" class="hidden">
+                    
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <input type="text" name="firstName" placeholder="First Name" required>
+                            </div>
+                            <div class="form-group half">
+                                <input type="text" name="lastName" placeholder="Last Name" required>
+                            </div>
+                        </div>
+                    
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email" required>
+                        </div>
+                    
+                        <div class="form-group subject-container">
+                            <select name="subject" id="subject-select" onchange="toggleAdditionalFields()">
+                                <option value="">Select Subject</option>
+                                <option value="bugs">Report Bugs/Issues</option>
+                                <option value="recommendations">Recommendations</option>
+                                <option value="sales">Contact Sales</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <input type="text" name="otherSubject" id="other-subject" placeholder="Please specify" class="hidden">
+                        </div>
+
+                        <!-- Sales-specific fields -->
+                        <div id="sales-fields" class="hidden">
+                            <div class="form-group">
+                                <input type="text" name="company" placeholder="Company Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="jobTitle" placeholder="Job Title" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="workEmail" placeholder="Work Email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your message" rows="6" required></textarea>
+                        </div>
+                    
+                        <button type="submit" class="send-btn">Send Message →</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <div id="footer-placeholder"></div>
+
+        <script>
+            function toggleAdditionalFields() {
+                const select = document.getElementById('subject-select');
+                const otherInput = document.getElementById('other-subject');
+                const salesFields = document.getElementById('sales-fields');
+                
+                // Reset fields
+                otherInput.classList.add('hidden');
+                otherInput.required = false;
+                salesFields.classList.add('hidden');
+                const salesInputs = salesFields.querySelectorAll('input');
+                salesInputs.forEach(input => input.required = false);
+                
+                // Show relevant fields based on selection
+                if (select.value === 'other') {
+                    otherInput.classList.remove('hidden');
+                    otherInput.required = true;
+                } else if (select.value === 'sales') {
+                    salesFields.classList.remove('hidden');
+                    salesInputs.forEach(input => input.required = true);
+                }
+            }
+
+            document.getElementById('contact-form').addEventListener('submit', async (e) => {
+                const submitButton = e.target.querySelector('.send-btn');
+                submitButton.innerHTML = 'Sending...';
+                submitButton.disabled = true;
+
+                setTimeout(() => {
+                    submitButton.innerHTML = 'Send Message →';
+                    submitButton.disabled = false;
+                }, 2000);
+            });
+
+            // Load navbar and footer
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                });
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                            } else {
+                                entry.target.classList.remove('visible');
+                            }
+                        });
+                    }, {
+                        threshold: 0.1
+                    });
+
+                    document.querySelectorAll('.footer-link').forEach((link) => {
+                        observer.observe(link);
+                    });
+                });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign In Callback</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #050505;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background-frame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 3px solid rgba(142, 190, 160, 0.3);
+            padding: 3rem;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            z-index: 1;
+        }
+
+        #status {
+            color: #474759;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-top: 1.5rem;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #8EBEA0;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Success and Error states */
+        .success {
+            color: #8EBEA0;
+        }
+
+        .error {
+            color: #EF4444;
+        }
+
+        /* Background gradient similar to homepage */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(142, 190, 160, 0.1), transparent),
+                        radial-gradient(circle at bottom left, rgba(142, 190, 160, 0.1), transparent);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <iframe src="background.html" class="background-frame" title="background"></iframe>
+    <div class="container">
+        <span class="loader"></span>
+        <div id="status">Processing sign in...</div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        if (code) {
+            window.location.href = `https://us-central1-movie-thing-439716.cloudfunctions.net/function-1?code=${encodeURIComponent(code)}`;
+        } else {
+            document.getElementById('status').textContent = 'No authorization code received';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #050505;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.background-frame {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.main-content {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.beta-container {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    border: 3px solid rgba(71, 71, 89, 0.1);
+    padding: 3rem;
+    max-width: 800px;
+    width: 100%;
+    animation: fadeInUp 0.4s ease-out forwards;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #474759;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.warning-box {
+    background: rgba(142, 190, 160, 0.1);
+    border: 3px solid rgba(142, 190, 160, 0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.warning-icon {
+    width: 24px;
+    height: 24px;
+    background: #8EBEA0;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.warning-content {
+    flex: 1;
+}
+
+.warning-box p {
+    color: #474759;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.warning-box ul {
+    color: #474759;
+    margin-left: 1.5rem;
+    line-height: 1.6;
+}
+
+.access-note {
+    background: rgba(71, 71, 89, 0.1);
+    border: 3px solid rgba(71, 71, 89, 0.2);
+    border-radius: 16px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.access-note p {
+    color: #474759;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.access-note .beta-free {
+    color: #8EBEA0;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+.terms-box {
+    margin-bottom: 2rem;
+}
+
+.checkbox-container {
+    display: block;
+    color: #474759;
+    cursor: pointer;
+    line-height: 1.5;
+    padding: 0.25rem 0;  /* Reduced from 0.5rem to 0.25rem */
+    margin-bottom: 0.5rem; /* Reduced from 1rem to 0.5rem */
+}
+
+.checkbox-container:last-child {
+    margin-bottom: 0; /* Remove bottom margin for last checkbox */
+}
+
+.checkbox-container input {
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+.checkbox-container .checkmark {
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+.terms-link {
+    color: #8EBEA0;
+    text-decoration: none;
+    display: inline;
+}
+
+.terms-link:hover {
+    text-decoration: underline;
+}
+
+.continue-btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: none;
+    color: #8EBEA0;
+    border: 3px solid #8EBEA0;
+    border-radius: 17px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.continue-btn:enabled {
+    color: #8EBEA0;
+    border-color: #8EBEA0;
+    background: none;
+}
+
+.continue-btn:enabled:hover {
+    background: #8EBEA0;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(142, 190, 160, 0.3);
+}
+
+.continue-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: #474759;
+    border-color: #474759;
+    background: none;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 24px;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.close-modal {
+    font-size: 2rem;
+    cursor: pointer;
+    color: #474759;
+}
+
+.modal-body {
+    color: #474759;
+    line-height: 1.6;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

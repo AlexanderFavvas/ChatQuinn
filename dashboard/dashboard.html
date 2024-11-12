@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <iframe src="/background.html" class="background-frame" title="background"></iframe>
+    <div class="container">
+        <div class="top-section">
+            <div></div>
+            <h1 class="welcome-title">Hello, <span class="username">John</span></h1>
+            <div class="user-dropdown">
+                <button class="user-btn">John Doe</button>
+                <div class="dropdown-content">
+                    <div class="dropdown-item">Settings</div>
+                    <div class="dropdown-item">Subscriptions</div>
+                    <div class="separator"></div>
+                    <div class="dropdown-item logout-item">Log Out</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="main-section">
+                <div class="history-container">
+                    <h2 class="section-title">Action History</h2>
+                    <ul class="chat-history">
+                        <li class="chat-item">
+                            <div class="action-content">
+                                <div class="action-header">
+                                    <span class="action-title">Data Analysis Report Generated</span>
+                                    <span class="action-timestamp">2:31 PM</span>
+                                </div>
+                                <div class="action-status"></div>
+                            </div>
+                        </li>
+                        <li class="chat-item">
+                            <div class="action-content">
+                                <div class="action-header">
+                                    <span class="action-title">Code Snippet Created</span>
+                                    <span class="action-timestamp">1:45 PM</span>
+                                </div>
+                                <div class="action-status"></div>
+                            </div>
+                        </li>
+                        <li class="chat-item">
+                            <div class="action-content">
+                                <div class="action-header">
+                                    <span class="action-title">Email Draft Generated</span>
+                                    <span class="action-timestamp">11:20 AM</span>
+                                </div>
+                                <div class="action-status"></div>
+                            </div>
+                        </li>
+                        <li class="chat-item">
+                            <div class="action-content">
+                                <div class="action-header">
+                                    <span class="action-title">Email Draft Generated</span>
+                                    <span class="action-timestamp">11:20 AM</span>
+                                </div>
+                                <div class="action-status"></div>
+                            </div>
+                        </li>
+                        <li class="chat-item">
+                            <div class="action-content">
+                                <div class="action-header">
+                                    <span class="action-title">Email Draft Generated</span>
+                                    <span class="action-timestamp">11:20 AM</span>
+                                </div>
+                                <div class="action-status"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="chat-demo-container">
+                    <h2 class="section-title">Chat Assistant Preview</h2>
+                    <div class="chat-preview-box">
+                        <div class="chat-messages">
+                            <div class="message-row">
+                                <div class="avatar bot">AI</div>
+                                <div class="message bot">Hello! How can I assist you today?</div>
+                            </div>
+
+                            <div class="message-row">
+                                <div class="message user">I need help with analyzing some data.</div>
+                                <div class="avatar user">U</div>
+                            </div>
+                            
+
+                            <div class="message-row">
+                                <div class="avatar bot">AI</div>
+                                <div class="message bot">I'd be happy to help with data analysis. What kind of data are you working with?</div>
+                            </div>
+                        </div>
+
+                        <div class="chat-input">
+                            <div class="input-wrapper">
+                                <input type="text" placeholder="Type your message..." disabled>
+                                <button disabled>Send</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="preview-overlay">
+                        <div class="coming-soon-text">Coming Soon</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-section">
+                <h2 class="section-title">Report an Issue/Bug</h2>
+                <form class="report-form">
+                    <label for="issue-type">Issue Type:</label>
+                    <select id="issue-type" name="issue-type">
+                        <option value="bug">Bug</option>
+                        <option value="feature">Feature Request</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <textarea placeholder="Describe the issue you're experiencing..."></textarea>
+                    <button type="submit" class="signin-btn">Submit Report</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop">
+        <div class="settings-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Settings</h2>
+                <button class="close-modal">×</button>
+            </div>
+            <div class="modal-content">
+                <div class="modal-sidebar">
+                    <ul class="settings-menu">
+                        <li class="settings-menu-item active">General</li>
+                        <li class="settings-menu-item">More Settings Coming Soon!</li>
+                        
+                    </ul>
+                </div>
+                <div class="settings-main">
+                    <div class="settings-section">
+                        <h3 class="section-title">AI Disclosure</h3>
+                        <p class="settings-description">Control how Quinn discloses its AI status in communications.</p>
+                        <div class="toggle-container">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span class="settings-label">Disclose AI status in email replies</span>
+                        </div>
+                        <div class="toggle-container">
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                            <span class="settings-label">Disclose AI status when initiating emails</span>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3 class="section-title">Email Handling</h3>
+                        <p class="settings-description">Specify which types of emails Quinn should ignore.</p>
+                        <textarea class="settings-textarea" placeholder="e.g., promotional emails, newsletters, automated notifications..."></textarea>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3 class="section-title">Calendar Integration</h3>
+                        <p class="settings-description">Configure how Quinn handles calendar events from emails.</p>
+                        <div class="toggle-container">
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span class="settings-label">Automatically add detected calendar events</span>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3 class="section-title">Custom Instructions</h3>
+                        <p class="settings-description">Provide specific instructions for how Quinn should handle your emails.</p>
+                        <textarea class="settings-textarea" placeholder="e.g., tone of voice, response style, specific handling instructions..."></textarea>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3 class="section-title">Personal Preferences</h3>
+                        <p class="settings-description">Set your personal preferences for how Quinn addresses you.</p>
+                        <input type="text" class="settings-input" placeholder="e.g., First name, Full name, Title + Last name...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        // Toggle dropdown
+        const userBtn = document.querySelector('.user-btn');
+        const dropdownContent = document.querySelector('.dropdown-content');
+
+        userBtn.addEventListener('click', () => {
+            dropdownContent.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.user-dropdown')) {
+                dropdownContent.classList.remove('active');
+            }
+        });
+
+        // Form submission (prevent default for demo)
+        const reportForm = document.querySelector('.report-form');
+        reportForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Report submitted successfully!');
+            reportForm.reset();
+        });
+
+        const settingsButton = document.querySelector('.dropdown-item:first-child');
+        const modalBackdrop = document.querySelector('.modal-backdrop');
+        const closeModal = document.querySelector('.close-modal');
+
+        settingsButton.addEventListener('click', () => {
+            modalBackdrop.classList.add('active');
+        });
+
+        closeModal.addEventListener('click', () => {
+            modalBackdrop.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        modalBackdrop.addEventListener('click', (e) => {
+            if (e.target === modalBackdrop) {
+                modalBackdrop.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

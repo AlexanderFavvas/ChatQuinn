@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinn AI - Verification</title>
+    <link rel="icon" href="../quinn-proj/QuinnWebsiteLogo.svg" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #050505;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .background-frame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .verification-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 3px solid rgba(71, 71, 89, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .verification-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(142, 190, 160, 0.3);
+            border-color: rgba(71, 71, 89, 0.5);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #474759;
+            margin-bottom: 2rem;
+        }
+
+        button {
+            background: linear-gradient(45deg, #8EBEA0, #9DC6AB);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(142, 190, 160, 0.4);
+        }
+
+        button:disabled {
+            background: rgba(71, 71, 89, 0.2);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        #verificationCode {
+            margin: 2rem 0;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #474759;
+        }
+
+        .error {
+            color: #ef4444;
+            margin-top: 1rem;
+        }
+
+        .spinner {
+            display: none;
+            margin: 2rem auto;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(142, 190, 160, 0.1);
+            border-top: 4px solid #8EBEA0;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #confirmButton {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .qr-code {
+            width: 200px;
+            height: 240px;  /* increased height */
+            border-radius: 24px;
+            margin: 2rem auto 1rem;  /* reduced bottom margin */
+            object-fit: cover;
+            object-position: top;  /* align to top */
+        }
+
+        .instructions {
+            color: #474759;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        #getCodeBtn {
+            display: block;  /* show by default */
+            margin: 0 auto;  /* center the button */
+            width: fit-content;  /* make button width fit its content */
+        }
+    </style>
+</head>
+<body>
+    <iframe src="/background.html" class="background-frame" title="background"></iframe>
+    <div class="container">
+        <div class="verification-card">
+            <h1>Telegram Verification</h1>
+            <div class="instructions">
+                1. Download Telegram if you haven't already<br>
+                2. Scan this QR code or search for @QUINN_THE_BOT<br>
+                3. Start a chat with the bot<br>
+                4. Click "Get Code" below
+            </div>
+            <img src="/verification/Quinn_qrcode.png" alt="Telegram Bot QR Code" class="qr-code">
+            <button id="getCodeBtn">Get Code</button>
+            <div id="spinner" class="spinner"></div>
+            <div id="verificationCode"></div>
+            <div id="errorMessage" class="error"></div>
+            <button id="confirmButton">I've sent the code</button>
+        </div>
+    </div>
+    <script src="verification.js"></script>
+</body>
+</html>

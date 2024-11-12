@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in with Google</title>
+    <link rel="stylesheet" href="signin.css">
+</head>
+<body>
+    <iframe src="/background.html" class="background-frame" title="background"></iframe>
+
+    <div class="signup-card">
+        <div class="validation-message"></div>
+        
+        <h2 class="title">Welcome to Quinn</h2>
+        
+        <div class="signin-content">
+            <p class="signin-text">Continue with your Google account</p>
+            
+            <button id="google-signin-button" class="google-button">
+                <div class="google-button-content">
+                    <img src="https://www.google.com/favicon.ico" alt="Google" class="google-icon">
+                    <span>Sign in with Google</span>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <script src="signin.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinn Ai</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="Quinn-Q-Trsp.png" type="image/x-icon">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="footer.css">
+</head>
+<body>
+    <iframe src="background.html" class="background-frame" title="background"></iframe>
+    <div id="navbar-placeholder"></div>
+    <main class="main-content">
+        <div class="hero-content">
+            <h1 class="hero-title">Meet Quinn</h1>
+            <p class="hero-subtitle">Your intelligent assistant that seamlessly manages emails and schedules, letting you focus on what matters.</p>
+            <button class="start-btn" onclick="window.location.href='beta/beta.html'">I Have Beta Access →</button>
+        </div>
+
+       <!-- Add this right after your hero-content div -->
+<!-- We need a container to position the circle relative to the image -->
+        <div style="position: relative;">
+            <div class="glow-circle"></div>
+            <img src="example.png" alt="Quinn Interface" class="hero-image" />
+        </div>
+           
+
+        <section class="announcements-section">
+            <div class="announcements-container">
+                <div class="announcements-header">
+                    <h2 class="announcements-title">Latest Updates</h2>
+                    <div class="announcements-controls">
+                        <button class="announcement-nav prev-announcement">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 18l-6-6 6-6"/>
+                            </svg>
+                        </button>
+                        <button class="announcement-nav next-announcement">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+        
+                <div class="announcements-slider">
+                    <div class="announcement-card active">
+                        <div class="announcement-badge">New Feature</div>
+                        <div class="announcement-content">
+                            <h3>Smart Email Integration</h3>
+                            <p class="announcement-date">November 9, 2024</p>
+                            <p class="announcement-text">Compose and send emails effortlessly through natural conversation. Simply tell our AI what you want to say, and it will draft and send professional emails on your behalf - saving you time and effort.</p>
+                            <a href="beta/beta.html" class="announcement-link">Try it now →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="announcement-card">
+                        <div class="announcement-badge">Coming Soon</div>
+                        <div class="announcement-content">
+                            <h3>Official Release</h3>
+                            <p class="announcement-date">Coming by: November 30 2024</p>
+                            <p class="announcement-text">The complete version will be available soon with enhanced features, improved performance, and a seamless user experience. Get ready for a more powerful way to manage your communications.</p>
+                            <a href="beta/beta.html" class="announcement-link">Beta access →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="announcement-card">
+                        <div class="announcement-badge">Coming Soon</div>
+                        <div class="announcement-content">
+                            <h3>Automatic Calendar Integration</h3>
+                            <p class="announcement-date">Coming by: November 30 2024</p>
+                            <p class="announcement-text">Never miss an important date again. Our AI will automatically detect events mentioned in your emails and seamlessly add them to your calendar, ensuring you stay organized without any extra effort.</p>
+                            <a href="beta/beta.html" class="announcement-link">Beta access →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="footer-placeholder"></div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const announcementCards = document.querySelectorAll('.announcement-card');
+        const announcementPrevBtn = document.querySelector('.prev-announcement');
+        const announcementNextBtn = document.querySelector('.next-announcement');
+        let announcementCurrentIndex = 0;
+    
+        function updateAnnouncements(newIndex) {
+            if (newIndex >= announcementCards.length) {
+                newIndex = 0;
+            } else if (newIndex < 0) {
+                newIndex = announcementCards.length - 1;
+            }
+    
+            if (newIndex === announcementCurrentIndex) {
+                return;
+            }
+    
+            const currentCard = announcementCards[announcementCurrentIndex];
+            const nextCard = announcementCards[newIndex];
+    
+            const isNext = (newIndex > announcementCurrentIndex) || (announcementCurrentIndex === announcementCards.length - 1 && newIndex === 0);
+            const isPrev = (newIndex < announcementCurrentIndex) || (announcementCurrentIndex === 0 && newIndex === announcementCards.length - 1);
+    
+            currentCard.classList.remove('active');
+    
+            if (isNext) {
+                currentCard.classList.add('slide-out-left');
+                nextCard.classList.add('slide-in-right');
+            } else if (isPrev) {
+                currentCard.classList.add('slide-out-right');
+                nextCard.classList.add('slide-in-left');
+            }
+    
+            nextCard.classList.add('active');
+    
+            currentCard.addEventListener('transitionend', function handler() {
+                currentCard.classList.remove('slide-out-left', 'slide-out-right');
+                currentCard.removeEventListener('transitionend', handler);
+            });
+    
+            nextCard.addEventListener('transitionend', function handler() {
+                nextCard.classList.remove('slide-in-right', 'slide-in-left');
+                nextCard.removeEventListener('transitionend', handler);
+            });
+    
+            announcementCurrentIndex = newIndex;
+        }
+    
+        announcementPrevBtn.addEventListener('click', () => {
+            updateAnnouncements(announcementCurrentIndex - 1);
+        });
+    
+        announcementNextBtn.addEventListener('click', () => {
+            updateAnnouncements(announcementCurrentIndex + 1);
+        });
+    
+        const SLIDE_INTERVAL = 7000;
+    
+        let announcementAutoAdvance = setInterval(() => {
+            updateAnnouncements(announcementCurrentIndex + 1);
+        }, SLIDE_INTERVAL);
+    
+        document.querySelector('.announcements-slider').addEventListener('mouseenter', () => {
+            clearInterval(announcementAutoAdvance);
+        });
+    
+        document.querySelector('.announcements-slider').addEventListener('mouseleave', () => {
+            announcementAutoAdvance = setInterval(() => {
+                updateAnnouncements(announcementCurrentIndex + 1);
+            }, SLIDE_INTERVAL);
+        });
+
+        // Navbar and footer loading
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        } else {
+                            entry.target.classList.remove('visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.1
+                });
+
+                document.querySelectorAll('.footer-link').forEach((link) => {
+                    observer.observe(link);
+                });
+            });
+    });
+    </script>
+</body>
+</html>

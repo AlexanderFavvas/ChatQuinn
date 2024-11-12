@@ -1,0 +1,185 @@
+/* Common resets and container styles */
+.nav {
+    background: rgba(255, 255, 255, 0.00);
+    backdrop-filter: blur(5px);
+    padding: 0.7rem 0;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-content {
+    max-width: 1400px;
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+    padding: 0 1rem;
+}
+
+/* Left side - Logo group styles */
+.nav-left {
+    display: flex;
+    align-items: center;
+    margin-left: 2rem; /* Added margin to move content right */
+}
+
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-image {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Added transition for hover effect */
+}
+
+.logo-image:hover {
+    transform: scale(1.05); /* Subtle scale effect on hover */
+}
+
+.logo {
+    color: #94C4A6;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: linear-gradient(45deg, #94C4A6, #9DC6AB);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    position: relative;
+    padding: 0;
+    background-color: transparent;
+}
+
+/* Right side navigation */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    position: relative;
+}
+
+.pricing-btn {
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+    background: none;
+    border: none;
+}
+
+.pricing-btn:hover {
+    color: #94C4A6;
+    transform: none;
+    background: none;
+}
+
+.signin-btn {
+    position: relative;
+    padding: 0.8rem 1.6rem;
+    min-width: 120px;
+    background: none;
+    color: #94C4A6;
+    border: 3px solid #94C4A6;
+    border-radius: 17px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(142, 190, 160, 0);
+}
+
+.signin-btn:hover {
+    background: #94C4A6;
+    color: #FFFFFF;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(142, 190, 160, 0.3);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .nav-content {
+        gap: 0.5rem;
+        padding: 0 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .nav-left {
+        margin-left: 1rem; /* Reduced margin for mobile */
+    }
+
+    .nav-right {
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .logo-image {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .logo-group {
+        gap: 0.5rem;
+    }
+
+    .pricing-btn {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.6rem;
+    }
+
+    .signin-btn {
+        min-width: auto;
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 480px) {
+    .nav-content {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .nav-left {
+        margin-left: 0.5rem; /* Minimal margin for very small screens */
+    }
+
+    .nav-right {
+        gap: 0.5rem;
+    }
+
+    .signin-btn {
+        padding: 0.5rem 0.8rem;
+    }
+
+    .logo-image {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+}
