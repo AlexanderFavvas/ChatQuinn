@@ -53,7 +53,7 @@ h1 {
 .warning-box {
     background: rgba(142, 190, 160, 0.1);
     border: 3px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
+    border-radius: 20px;
     padding: 1.5rem;
     margin-bottom: 2rem;
     display: flex;
@@ -64,7 +64,7 @@ h1 {
 .warning-icon {
     width: 24px;
     height: 24px;
-    background: #8EBEA0;
+    background: #94C4A6;
     color: white;
     border-radius: 50%;
     display: flex;
@@ -80,34 +80,34 @@ h1 {
 }
 
 .warning-box p {
-    color: #474759;
+    color: #ffffff;
     margin-bottom: 1rem;
     line-height: 1.5;
 }
 
 .warning-box ul {
-    color: #474759;
+    color: #ffffff;
     margin-left: 1.5rem;
     line-height: 1.6;
 }
 
 .access-note {
-    background: rgba(71, 71, 89, 0.1);
-    border: 3px solid rgba(71, 71, 89, 0.2);
-    border-radius: 16px;
+    background: rgba(142, 190, 160, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
     padding: 1rem 1.5rem;
     margin-bottom: 2rem;
     text-align: center;
 }
 
 .access-note p {
-    color: #474759;
+    color: #ffffff;
     font-size: 0.95rem;
     line-height: 1.5;
 }
 
 .access-note .beta-free {
-    color: #8EBEA0;
+    color: rgb(142, 122, 211);
     font-weight: 500;
     margin-top: 0.5rem;
 }
@@ -118,7 +118,7 @@ h1 {
 
 .checkbox-container {
     display: block;
-    color: #474759;
+    color: #ffffff;
     cursor: pointer;
     line-height: 1.5;
     padding: 0.25rem 0;  /* Reduced from 0.5rem to 0.25rem */
@@ -140,7 +140,7 @@ h1 {
 }
 
 .terms-link {
-    color: #8EBEA0;
+    color: rgb(142, 122, 211);
     text-decoration: none;
     display: inline;
 }
@@ -153,8 +153,8 @@ h1 {
     width: 100%;
     padding: 1rem 2rem;
     background: none;
-    color: #8EBEA0;
-    border: 3px solid #8EBEA0;
+    color: #94C4A6;
+    border: 3px solid #94C4A6;
     border-radius: 17px;
     font-size: 1rem;
     font-weight: 500;
@@ -163,24 +163,25 @@ h1 {
 }
 
 .continue-btn:enabled {
-    color: #8EBEA0;
-    border-color: #8EBEA0;
+    color: #94C4A6;
+    border-color: #94C4A6;
     background: none;
 }
 
 .continue-btn:enabled:hover {
-    background: #8EBEA0;
+    background: #94C4A6;
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(142, 190, 160, 0.3);
+   
 }
 
 .continue-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-    color: #474759;
-    border-color: #474759;
+    color: #94C4A6;                        /* mainGreen color */
+    border-color: #94C4A6;       
     background: none;
+    
 }
 
 /* Modal Styles */
@@ -216,11 +217,11 @@ h1 {
 .close-modal {
     font-size: 2rem;
     cursor: pointer;
-    color: #474759;
+    color: #ffffff;
 }
 
 .modal-body {
-    color: #474759;
+    color: #ffffff;
     line-height: 1.6;
 }
 

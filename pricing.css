@@ -225,7 +225,7 @@ body {
     background: rgba(148, 196, 166, 0.05); /* Using mainGreen with low opacity */
     color: #94C4A6;                        /* mainGreen color */
     border-color: #94C4A6;                 /* mainGreen color */
-    opacity: 0.4;
+    opacity: 0.5;
     cursor: not-allowed;
   }
   
