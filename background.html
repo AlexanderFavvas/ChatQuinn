@@ -8,95 +8,129 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #232329;
+            background-color: #0a0a0c;
             min-height: 100vh;
             position: relative;
         }
         
-        /* Primary noise layer */
-        body::before {
-            content: "";
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .noise {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-image: url('noise-light.png');
-            opacity: 0.5;
+            opacity: 1
+            ;
             pointer-events: none;
             z-index: 1;
-            mix-blend-mode: multiply;
+            mix-blend-mode: overlay;
         }
 
-        /* Secondary noise layer */
-        body::after {
-            content: "";
+        .blur-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('noise-light.png');
-            opacity: 0.9;
-            pointer-events: none;
-            z-index: 2;
-            mix-blend-mode: overlay;
-            filter: contrast(100%);
-        }
-
-       
-
-        @keyframes noiseAnimation {
-            0% { transform: translate(0, 0); }
-            10% { transform: translate(-1%, -1%); }
-            20% { transform: translate(1%, 1%); }
-            30% { transform: translate(-1%, 1%); }
-            40% { transform: translate(1%, -1%); }
-            50% { transform: translate(-1%, -1%); }
-            60% { transform: translate(1%, 1%); }
-            70% { transform: translate(-1%, 1%); }
-            80% { transform: translate(1%, -1%); }
-            90% { transform: translate(-1%, -1%); }
-            100% { transform: translate(0, 0); }
+            backdrop-filter: blur(90px);
+            z-index: 0;
         }
     </style>
 </head>
 <body>
-    <div class="blotch pink-1"></div>
-    <div class="blotch purple-1"></div>
-    <div class="blotch pink-2"></div>
-    <div class="blotch purple-2"></div>
+    <canvas id="gradient-canvas"></canvas>
+    <div class="blur-overlay"></div>
+    <div class="noise"></div>
 
     <script>
-        window.onload = function() {
-            const elements = document.querySelectorAll('.blotch');
-            const storedState = sessionStorage.getItem('backgroundState');
-            
-            if (storedState) {
-                const state = JSON.parse(storedState);
-                elements.forEach((el, index) => {
-                    el.style.animationDelay = `-${state[index]}s`;
-                });
+        class GradientAnimation {
+            constructor() {
+                this.cnv = document.getElementById('gradient-canvas');
+                this.ctx = this.cnv.getContext('2d');
+                this.circlesNum = 15;
+                this.minRadius = 400;
+                this.maxRadius = 800;
+                this.circles = [];
+                
+                this.colors = [
+                    { r: 71, g: 100, b: 181 },  // Blue
+                    { r: 142, g: 122, b: 211 }, // Purple
+                    { r: 148, g: 196, b: 166 }, // Green
+                    { r: 94, g: 196, b: 166 }
+                       // Teal
+                ];
+                
+                this.resize();
+                this.createCircles();
+                this.drawAnimation();
+                
+                window.addEventListener('resize', () => this.resize());
             }
 
-            setInterval(() => {
-                const currentState = Array.from(elements).map(el => {
-                    const style = window.getComputedStyle(el);
-                    const duration = parseFloat(style.animationDuration);
-                    const delay = parseFloat(style.animationDelay);
-                    const currentTime = (performance.now() / 1000) % duration;
-                    return (currentTime - delay) % duration;
-                });
-                sessionStorage.setItem('backgroundState', JSON.stringify(currentState));
-            }, 1000);
-        };
+            resize() {
+                this.w = this.cnv.width = window.innerWidth;
+                this.h = this.cnv.height = window.innerHeight;
+            }
 
-        document.addEventListener('visibilitychange', function() {
-            const elements = document.querySelectorAll('.blotch');
-            elements.forEach(el => {
-                el.style.animationPlayState = document.hidden ? 'paused' : 'running';
-            });
-        });
+            createCircles() {
+                for (let i = 0; i < this.circlesNum; i++) {
+                    this.circles.push({
+                        x: Math.random() * this.w,
+                        y: Math.random() * this.h,
+                        radius: this.minRadius + Math.random() * (this.maxRadius - this.minRadius),
+                        color: this.colors[Math.floor(Math.random() * this.colors.length)],
+                        speed: { x: (Math.random() - 0.5) * 0.2, y: (Math.random() - 0.5) * 0.2 },
+                        angle: Math.random() * Math.PI * 2
+                    });
+                }
+            }
+
+            drawAnimation() {
+                this.ctx.clearRect(0, 0, this.w, this.h);
+                this.ctx.globalCompositeOperation = 'source-over';
+                this.ctx.fillStyle = '#0a0a0c';
+                this.ctx.fillRect(0, 0, this.w, this.h);
+                this.ctx.globalCompositeOperation = 'screen';
+
+                this.circles.forEach(circle => {
+                    circle.x += circle.speed.x;
+                    circle.y += circle.speed.y;
+                    circle.angle += 0.002;
+
+                    if (circle.x < -circle.radius) circle.x = this.w + circle.radius;
+                    if (circle.x > this.w + circle.radius) circle.x = -circle.radius;
+                    if (circle.y < -circle.radius) circle.y = this.h + circle.radius;
+                    if (circle.y > this.h + circle.radius) circle.y = -circle.radius;
+
+                    const gradient = this.ctx.createRadialGradient(
+                        circle.x, circle.y, 0,
+                        circle.x, circle.y, circle.radius
+                    );
+
+                    gradient.addColorStop(0, `rgba(${circle.color.r}, ${circle.color.g}, ${circle.color.b}, 0.1)`);
+                    gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+                    this.ctx.fillStyle = gradient;
+                    this.ctx.beginPath();
+                    this.ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
+                    this.ctx.fill();
+                });
+
+                requestAnimationFrame(() => this.drawAnimation());
+            }
+        }
+
+        window.onload = () => new GradientAnimation();
     </script>
 </body>
 </html>
