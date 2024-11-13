@@ -1,15 +1,49 @@
-.hero-image {
+.image-container {
     position: relative;
-    display: block;
-    width: 1200px; /* Increased from 1000px to 1200px */
+    width: 1200px;
+    height: 800px;
     margin: 6rem auto 4rem;
+    cursor: pointer; /* Add this line */
+}
+
+.compare-tag {
+    position: absolute;
+    top: 15px; /* Changed from 20px */
+    right: 15px; /* Changed from 20px */
+    background-color: rgb(142, 122, 211);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+}
+
+.image-wrapper {
+    position: absolute;
+    width: 100%;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-wrapper.top {
+    z-index: 2;
+}
+
+.image-wrapper.bottom {
+    transform: translate(40px, 40px);
+    z-index: 1;
+}
+
+.hero-image {
+    width: 100%;
     border-radius: 12px;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.7));
-    z-index: 2;
     opacity: 0;
     animation: fadeInUp 0.5s ease-out forwards;
     animation-delay: 0.5s;
-
 }
 
 .glow-circle {
@@ -18,15 +52,26 @@
     height: 800px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, calc(-50% + 40px)); /* Changed initial position */
+    transform: translate(-50%, -50%);
     background-color: rgb(142, 122, 211);
     border-radius: 50%;
     opacity: 0;
     filter: blur(100px);
-    z-index: 1;
     pointer-events: none;
     animation: glowFadeInUp 0.5s ease-out forwards;
     animation-delay: 0.6s;
+}
+
+.image-wrapper.swap-down {
+    transform: translate(40px, 40px) scale(0.98);
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.image-wrapper.swap-up {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+    z-index: 2;
 }
 
 @keyframes pulse {
@@ -241,7 +286,7 @@ canvas#gradient-canvas {
     background: #94C4A6;
     color: #FFFFFF;
     transform: translateY(-10px);
-   
+    box-shadow: 0 8px 20px rgba(142, 190, 160, 0.3);
 }
 
 /* Announcements Section */
