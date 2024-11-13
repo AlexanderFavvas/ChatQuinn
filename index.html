@@ -21,11 +21,11 @@
 
         <div class="image-container">
             <div class="compare-tag">Click to compare</div>
-            <div class="image-wrapper top">
+            <div class="image-wrapper top z-index-top">
                 <div class="glow-circle"></div>
                 <img src="example.png" alt="Quinn Interface" class="hero-image image-a" />
             </div>
-            <div class="image-wrapper bottom">
+            <div class="image-wrapper bottom z-index-bottom">
                 <div class="glow-circle"></div>
                 <img src="results.png" alt="Quinn Interface" class="hero-image image-b" />
             </div>
@@ -203,9 +203,25 @@
                 if (!swapped) {
                     topWrapper.classList.add('swap-down');
                     bottomWrapper.classList.add('swap-up');
+                    
+                    // Delay z-index change until halfway through the transition
+                    setTimeout(() => {
+                        topWrapper.classList.remove('z-index-top');
+                        topWrapper.classList.add('z-index-bottom');
+                        bottomWrapper.classList.remove('z-index-bottom');
+                        bottomWrapper.classList.add('z-index-top');
+                    }, 600);
                 } else {
                     topWrapper.classList.remove('swap-down');
                     bottomWrapper.classList.remove('swap-up');
+                    
+                    // Delay z-index change until halfway through the transition
+                    setTimeout(() => {
+                        topWrapper.classList.add('z-index-top');
+                        topWrapper.classList.remove('z-index-bottom');
+                        bottomWrapper.classList.add('z-index-bottom');
+                        bottomWrapper.classList.remove('z-index-top');
+                    }, 600);
                 }
                 
                 // Fade tag back in after animation
