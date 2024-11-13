@@ -315,6 +315,7 @@ canvas#gradient-canvas {
     font-size: 3rem;
     font-weight: 600;
     background: linear-gradient(45deg, #94C4A6, #9DC6AB);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1.5rem;
