@@ -29,8 +29,7 @@
             width: 100%;
             height: 100%;
             background-image: url('noise-light.png');
-            opacity: 1
-            ;
+            opacity: 1;
             pointer-events: none;
             z-index: 1;
             mix-blend-mode: overlay;
@@ -66,8 +65,7 @@
                     { r: 71, g: 100, b: 181 },  // Blue
                     { r: 142, g: 122, b: 211 }, // Purple
                     { r: 148, g: 196, b: 166 }, // Green
-                    { r: 94, g: 196, b: 166 }
-                       // Teal
+                    { r: 94, g: 196, b: 166 }   // Teal
                 ];
                 
                 this.resize();
@@ -117,7 +115,8 @@
                         circle.x, circle.y, circle.radius
                     );
 
-                    gradient.addColorStop(0, `rgba(${circle.color.r}, ${circle.color.g}, ${circle.color.b}, 0.1)`);
+                    // Lowered the opacity further from 0.05 to 0.02
+                    gradient.addColorStop(0, `rgba(${circle.color.r}, ${circle.color.g}, ${circle.color.b}, 0)`);
                     gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
 
                     this.ctx.fillStyle = gradient;

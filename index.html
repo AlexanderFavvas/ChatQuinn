@@ -30,7 +30,7 @@
                 <img src="results.png" alt="Quinn Interface" class="hero-image image-b" />
             </div>
         </div>
-
+        <hr style="height: 3px; background-color: rgba(255, 255, 255, 0.1); border: none;">
         <section class="announcements-section">
             <div class="announcements-container">
                 <div class="announcements-header">
@@ -86,147 +86,120 @@
     <div id="footer-placeholder"></div>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const announcementCards = document.querySelectorAll('.announcement-card');
-        const announcementPrevBtn = document.querySelector('.prev-announcement');
-        const announcementNextBtn = document.querySelector('.next-announcement');
-        let announcementCurrentIndex = 0;
-    
-        function updateAnnouncements(newIndex) {
-            if (newIndex >= announcementCards.length) {
-                newIndex = 0;
-            } else if (newIndex < 0) {
-                newIndex = announcementCards.length - 1;
-            }
-    
-            if (newIndex === announcementCurrentIndex) {
-                return;
-            }
-    
-            const currentCard = announcementCards[announcementCurrentIndex];
-            const nextCard = announcementCards[newIndex];
-    
-            const isNext = (newIndex > announcementCurrentIndex) || (announcementCurrentIndex === announcementCards.length - 1 && newIndex === 0);
-            const isPrev = (newIndex < announcementCurrentIndex) || (announcementCurrentIndex === 0 && newIndex === announcementCards.length - 1);
-    
-            currentCard.classList.remove('active');
-    
-            if (isNext) {
-                currentCard.classList.add('slide-out-left');
-                nextCard.classList.add('slide-in-right');
-            } else if (isPrev) {
-                currentCard.classList.add('slide-out-right');
-                nextCard.classList.add('slide-in-left');
-            }
-    
-            nextCard.classList.add('active');
-    
-            currentCard.addEventListener('transitionend', function handler() {
-                currentCard.classList.remove('slide-out-left', 'slide-out-right');
-                currentCard.removeEventListener('transitionend', handler);
-            });
-    
-            nextCard.addEventListener('transitionend', function handler() {
-                nextCard.classList.remove('slide-in-right', 'slide-in-left');
-                nextCard.removeEventListener('transitionend', handler);
-            });
-    
-            announcementCurrentIndex = newIndex;
+        document.addEventListener('DOMContentLoaded', function() {
+    // Announcement section functionality
+    const cards = document.querySelectorAll('.announcement-card');
+    const prevBtn = document.querySelector('.prev-announcement');
+    const nextBtn = document.querySelector('.next-announcement');
+    let currentIndex = 0;
+
+    function updateCards(newIndex) {
+        if (newIndex >= cards.length) {
+            newIndex = 0;
+        } else if (newIndex < 0) {
+            newIndex = cards.length - 1;
         }
-    
-        announcementPrevBtn.addEventListener('click', () => {
-            updateAnnouncements(announcementCurrentIndex - 1);
-        });
-    
-        announcementNextBtn.addEventListener('click', () => {
-            updateAnnouncements(announcementCurrentIndex + 1);
-        });
-    
-        const SLIDE_INTERVAL = 7000;
-    
-        let announcementAutoAdvance = setInterval(() => {
-            updateAnnouncements(announcementCurrentIndex + 1);
-        }, SLIDE_INTERVAL);
-    
-        document.querySelector('.announcements-slider').addEventListener('mouseenter', () => {
-            clearInterval(announcementAutoAdvance);
-        });
-    
-        document.querySelector('.announcements-slider').addEventListener('mouseleave', () => {
-            announcementAutoAdvance = setInterval(() => {
-                updateAnnouncements(announcementCurrentIndex + 1);
-            }, SLIDE_INTERVAL);
-        });
 
-        // Navbar and footer loading
-        fetch('navbar.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navbar-placeholder').innerHTML = data;
-            });
+        // Hide current card
+        cards[currentIndex].classList.remove('active');
+        // Show new card
+        cards[newIndex].classList.add('active');
+        currentIndex = newIndex;
+    }
 
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                        } else {
-                            entry.target.classList.remove('visible');
-                        }
-                    });
-                }, {
-                    threshold: 0.1
-                });
-
-                document.querySelectorAll('.footer-link').forEach((link) => {
-                    observer.observe(link);
-                });
-            });
-
-        // Replace scroll animation with click animation
-        const imageContainer = document.querySelector('.image-container');
-        let swapped = false;
-
-        imageContainer.addEventListener('click', () => {
-            const topWrapper = document.querySelector('.image-wrapper.top');
-            const bottomWrapper = document.querySelector('.image-wrapper.bottom');
-            const compareTag = document.querySelector('.compare-tag');
-            
-            // Only use the animation class
-            compareTag.classList.add('fade-animation');
-            
-            // Remove the class after animation completes
-            setTimeout(() => {
-                compareTag.classList.remove('fade-animation');
-            }, 1200);
-
-            if (!swapped) {
-                topWrapper.classList.add('swap-down');
-                bottomWrapper.classList.add('swap-up');
-                
-                setTimeout(() => {
-                    topWrapper.classList.replace('z-index-top', 'z-index-bottom');
-                    bottomWrapper.classList.replace('z-index-bottom', 'z-index-top');
-                }, 600);
-            } else {
-                topWrapper.classList.remove('swap-down');
-                bottomWrapper.classList.remove('swap-up');
-                
-                setTimeout(() => {
-                    topWrapper.classList.replace('z-index-bottom', 'z-index-top');
-                    bottomWrapper.classList.replace('z-index-top', 'z-index-bottom');
-                }, 600);
-            }
-            
-            swapped = !swapped;
-        });
-
-
+    prevBtn.addEventListener('click', () => {
+        updateCards(currentIndex - 1);
     });
+
+    nextBtn.addEventListener('click', () => {
+        updateCards(currentIndex + 1);
+    });
+
+    // Auto advance
+    const SLIDE_INTERVAL = 7000;
+    let autoAdvance = setInterval(() => {
+        updateCards(currentIndex + 1);
+    }, SLIDE_INTERVAL);
+
+    // Pause on hover
+    const slider = document.querySelector('.announcements-slider');
+    slider.addEventListener('mouseenter', () => {
+        clearInterval(autoAdvance);
+    });
+
+    slider.addEventListener('mouseleave', () => {
+        autoAdvance = setInterval(() => {
+            updateCards(currentIndex + 1);
+        }, SLIDE_INTERVAL);
+    });
+
+    // Navbar and footer loading
+    fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+        });
+
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.footer-link').forEach((link) => {
+                observer.observe(link);
+            });
+        });
+
+    // Image comparison functionality
+    const imageContainer = document.querySelector('.image-container');
+    let swapped = false;
+
+    imageContainer.addEventListener('click', () => {
+        const topWrapper = document.querySelector('.image-wrapper.top');
+        const bottomWrapper = document.querySelector('.image-wrapper.bottom');
+        const compareTag = document.querySelector('.compare-tag');
+        
+        // Only use the animation class
+        compareTag.classList.add('fade-animation');
+        
+        // Remove the class after animation completes
+        setTimeout(() => {
+            compareTag.classList.remove('fade-animation');
+        }, 1200);
+
+        if (!swapped) {
+            topWrapper.classList.add('swap-down');
+            bottomWrapper.classList.add('swap-up');
+            
+            setTimeout(() => {
+                topWrapper.classList.replace('z-index-top', 'z-index-bottom');
+                bottomWrapper.classList.replace('z-index-bottom', 'z-index-top');
+            }, 600);
+        } else {
+            topWrapper.classList.remove('swap-down');
+            bottomWrapper.classList.remove('swap-up');
+            
+            setTimeout(() => {
+                topWrapper.classList.replace('z-index-bottom', 'z-index-top');
+                bottomWrapper.classList.replace('z-index-top', 'z-index-bottom');
+            }, 600);
+        }
+        
+        swapped = !swapped;
+    });
+});
     </script>
 </body>
 </html>

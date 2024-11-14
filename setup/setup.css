@@ -125,9 +125,9 @@ textarea:focus {
 
 /* Updated Get Started Button */
 .completion-button {
-    background: #8EBEA0;
+    background: #94C4A6;
     color: white;
-    border: 3px solid #8EBEA0;
+    border: 3px solid #94C4A6;
     border-radius: 17px;
     padding: 1rem 2rem;
     font-size: 1.1rem;
@@ -171,7 +171,7 @@ textarea:focus {
 }
 
 .completion-button:disabled:hover {
-    background: #8EBEA0;
+    background: #94C4A6;
     color: white;
     transform: none;
     box-shadow: none;
@@ -209,10 +209,12 @@ textarea:focus {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(71, 71, 89, 0.1);
+    
     transition: all 0.3s ease;
     border-radius: 34px;
-    border: 2px solid rgba(142, 190, 160, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+   
+    border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .slider:before {
@@ -228,7 +230,7 @@ textarea:focus {
 }
 
 input:checked + .slider {
-    background-color: #8EBEA0;
+    background-color: rgba(228, 228, 231, 0.4);
 }
 
 input:checked + .slider:before {
@@ -236,7 +238,7 @@ input:checked + .slider:before {
 }
 
 .toggle-label {
-    color: #474759;
+    color: #ffffff;
     font-size: 1rem;
 }
 
@@ -257,7 +259,7 @@ input:checked + .slider:before {
     top: 0;
     left: 0;
     height: 4px;
-    background: linear-gradient(45deg, #8EBEA0, #9DC6AB);
+    background: rgb(142, 122, 211);
     transition: width 0.3s ease;
 }
 

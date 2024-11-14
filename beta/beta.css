@@ -36,7 +36,6 @@ body {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(5px);
     border-radius: 20px;
-
     padding: 3rem;
     max-width: 800px;
     width: 100%;
@@ -51,8 +50,8 @@ h1 {
 }
 
 .warning-box {
-    background: rgba(142, 190, 160, 0.1);
-    border: 3px solid rgba(255, 255, 255, 0.05);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 1.5rem;
     margin-bottom: 2rem;
@@ -92,8 +91,8 @@ h1 {
 }
 
 .access-note {
-    background: rgba(142, 190, 160, 0.1);
-    border: 3px solid rgba(255, 255, 255, 0.05);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 1rem 1.5rem;
     margin-bottom: 2rem;
@@ -114,28 +113,34 @@ h1 {
 
 .terms-box {
     margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .checkbox-container {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #ffffff;
     cursor: pointer;
     line-height: 1.5;
-    padding: 0.25rem 0;  /* Reduced from 0.5rem to 0.25rem */
-    margin-bottom: 0.5rem; /* Reduced from 1rem to 0.5rem */
+    padding: 0.25rem 0;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    width: fit-content;
 }
 
 .checkbox-container:last-child {
-    margin-bottom: 0; /* Remove bottom margin for last checkbox */
+    margin-bottom: 0;
 }
 
 .checkbox-container input {
-    vertical-align: middle;
     margin-right: 0.5rem;
 }
 
 .checkbox-container .checkmark {
-    vertical-align: middle;
     margin-right: 0.5rem;
 }
 
@@ -150,7 +155,10 @@ h1 {
 }
 
 .continue-btn {
-    width: 100%;
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     padding: 1rem 2rem;
     background: none;
     color: #94C4A6;
@@ -160,6 +168,7 @@ h1 {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-align: center;
 }
 
 .continue-btn:enabled {
@@ -172,19 +181,15 @@ h1 {
     background: #94C4A6;
     color: white;
     transform: translateY(-2px);
-   
 }
 
 .continue-btn:disabled {
-    opacity: 0.5;
     cursor: not-allowed;
-    color: #94C4A6;                        /* mainGreen color */
-    border-color: #94C4A6;       
+    color: rgba(228, 228, 231, 0.4);
+    border-color: rgba(228, 228, 231, 0.4);
     background: none;
-    
 }
 
-/* Modal Styles */
 .modal {
     display: none;
     position: fixed;

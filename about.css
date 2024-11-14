@@ -24,38 +24,58 @@ body {
     z-index: -1;
 }
 
-
- 
 .about-content {
-    padding-top: 10rem; /* Adjusted top padding */
+    padding-top: 10rem;
     padding-bottom: 50px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
+/* Title */
+.title {
+    color: #94C4A6;
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 7rem;
+    opacity: 0;
+    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.2s;
+}
+
+/* First Row */
 .about-row {
     display: flex;
     align-items: center;
     gap: 2rem;
-    margin-bottom: 6rem; /* Increased bottom margin for more spacing */
-    opacity: 0;
-    animation: fadeInUp 0.5s ease-out forwards;
-    animation-delay: 0.4s;
+    margin-bottom: 6rem;
+}
 
+.about-row .image-container,
+.about-row .text-container {
+    opacity: 0;
+    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* First row animations */
+.about-row:first-child .image-container {
+    animation-delay: 1s;
+}
+
+.about-row:first-child .text-container {
+    animation-delay: 1.2s;
+}
+
+/* Second row animations */
+.about-row:nth-child(2) .image-container {
+    animation-delay: 0.4s;
+}
+
+.about-row:nth-child(2) .text-container {
+    animation-delay: 0.6s;
 }
 
 .about-row.reverse {
     flex-direction: row-reverse;
-    
-}
-
-
-.about-row:nth-child(1) {
-    animation-delay: 0.4s;
-}
-
-.about-row:nth-child(2) {
-    animation-delay: 0.3s;
 }
 
 .image-container {
@@ -65,8 +85,8 @@ body {
     border-radius: 16px;
     border: 3px solid rgba(255, 255, 255, 0.1);
     padding: 2rem;
-    overflow: hidden; /* Added to ensure image stays within container */
-    position: relative; /* Added for positioning context */
+    overflow: hidden;
+    position: relative;
 }
 
 .image-container img {
@@ -81,10 +101,9 @@ body {
     transform: scale(1.05);
 }
 
-/* Rest of your CSS remains the same */
 .text-container {
     flex: 1;
-    color: #FFFFFF
+    color: #FFFFFF;
 }
 
 .text-container h2 {
@@ -94,14 +113,13 @@ body {
 }
 
 .text-container p {
-    color:#FFFFFF
-    ;
+    color: #FFFFFF;
     font-size: 1.1rem;
     line-height: 1.6;
 }
 
-/* Define the fadeInUp animation */
-@keyframes fadeInUp {
+/* Animation */
+@keyframes fadeIn {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -112,11 +130,15 @@ body {
     }
 }
 
-/* Apply the animation to the contact button */
 
 
+/* Reverse row styling */
+.about-row.reverse-row {
+    flex-direction: row-reverse;
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
-    /* About Page Content */
     .about-content {
         padding-top: 5rem;
         padding-bottom: 30px;
@@ -148,7 +170,6 @@ body {
         text-align: center;
     }
 
-    /* Core Components */
     .capabilities-grid {
         flex-direction: column;
         align-items: center;
@@ -168,7 +189,6 @@ body {
         margin-bottom: 4rem;
     }
 
-    /* Examples Section */
     .examples-title {
         font-size: 2rem;
     }
@@ -184,7 +204,6 @@ body {
         font-size: 0.9rem;
     }
 
-    /* Announcements */
     .announcements-header {
         flex-direction: column;
         gap: 1rem;
@@ -209,25 +228,5 @@ body {
     .capability-card {
         flex: 1 1 calc(50% - 1rem);
         max-width: calc(50% - 1rem);
-    }
-}
-
-/* Styles for the title */
-.title {
-    color: #8EBEA0;
-    font-size: 4rem;
-    text-align: center;
-    margin-bottom: 7rem;
-    opacity: 0; /* Initially hidden */
-    animation: fadeInUp 0.5s ease-out forwards;
-    animation-delay: 0.2s;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
     }
 }
