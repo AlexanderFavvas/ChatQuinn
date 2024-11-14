@@ -1,12 +1,14 @@
 /* Common resets and container styles */
 .nav {
-    background: rgba(255, 255, 255, 0.00);
-    backdrop-filter: blur(5px);
+    background: #0b0b0d;
+    /* Consider reducing or removing backdrop-filter */
+    /* backdrop-filter: blur(5px); */
     padding: 0.7rem 0;
     position: fixed;
     width: 100%;
     z-index: 100;
     border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+    will-change: transform; /* Inform the browser that this element will change */
 }
 
 .nav-content {
@@ -24,7 +26,7 @@
 .nav-left {
     display: flex;
     align-items: center;
-    margin-left: 2rem; /* Added margin to move content right */
+    margin-left: 2rem;
 }
 
 .logo-group {
@@ -38,11 +40,12 @@
     height: 2.5rem;
     object-fit: contain;
     cursor: pointer;
-    transition: transform 0.3s ease; /* Added transition for hover effect */
+    transition: transform 0.3s ease;
+    will-change: transform; /* Inform the browser that this element will change */
 }
 
 .logo-image:hover {
-    transform: scale(1.05); /* Subtle scale effect on hover */
+    transform: scale(1.05);
 }
 
 .logo {
@@ -72,6 +75,21 @@
     position: relative;
 }
 
+.contact-btn {
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+    background: none;
+    border: none;
+}
+
+.contact-btn:hover {
+    color: #94C4A6;
+    transform: none;
+    background: none;
+}
+
 .pricing-btn {
     color: #FFFFFF;
     text-decoration: none;
@@ -87,15 +105,15 @@
     background: none;
 }
 
+/* Sign In Button Styles */
 .signin-btn {
     position: relative;
-    padding: 0.8rem 1.6rem;
-    min-width: 120px;
-    background: none;
-    color: rgb(142, 122, 211);
-    border: 3px solid rgb(142, 122, 211);
-    border-radius: 17px;
-    transition: all 0.3s ease;
+    padding: 0.75rem 1.5rem;
+    min-width: 140px;
+    background: rgb(142, 122, 211);
+    color: #FFFFFF;
+    border: 2px solid rgb(142, 122, 211);
+    border-radius: 16px;
     font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
@@ -104,15 +122,53 @@
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    transform: translateY(0);
-    box-shadow: 0 4px 12px rgba(142, 190, 160, 0);
+    transition: all 0.3s ease;
 }
 
 .signin-btn:hover {
-    background: rgb(142, 122, 211);
-    color: #FFFFFF;
-    transform: translateY(-4px);
-   
+    background: rgb(125, 108, 186);
+    border-color: rgb(125, 108, 186);
+}
+
+/* Arrow Styles for both buttons */
+.arrow-container {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease; /* Added transition */
+}
+
+.arrow-head {
+    fill: currentColor;
+}
+
+.arrow-stem {
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    transform-origin: 11px 50%;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.start-btn:hover .arrow-stem,
+.signin-btn:hover .arrow-stem {
+    transform: scaleX(1);
+}
+
+/* New hover effect for the arrow-container */
+.signin-btn:hover .arrow-container {
+    transform: translateX(5px); /* Moves the arrow forward */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive styles */
@@ -122,35 +178,28 @@
         padding: 0 0.5rem;
         flex-wrap: wrap;
     }
-
     .nav-left {
-        margin-left: 1rem; /* Reduced margin for mobile */
+        margin-left: 1rem;
     }
-
     .nav-right {
         gap: 0.75rem;
         flex-wrap: wrap;
         justify-content: flex-end;
     }
-
     .logo-image {
         width: 2rem;
         height: 2rem;
     }
-
     .logo {
         font-size: 1.2rem;
     }
-
     .logo-group {
         gap: 0.5rem;
     }
-
     .pricing-btn {
         font-size: 0.85rem;
         padding: 0.4rem 0.6rem;
     }
-
     .signin-btn {
         min-width: auto;
         padding: 0.6rem 1rem;
@@ -165,19 +214,15 @@
         width: 100%;
         padding: 0.5rem;
     }
-
     .nav-left {
-        margin-left: 0.5rem; /* Minimal margin for very small screens */
+        margin-left: 0.5rem;
     }
-
     .nav-right {
         gap: 0.5rem;
     }
-
     .signin-btn {
         padding: 0.5rem 0.8rem;
     }
-
     .logo-image {
         width: 1.75rem;
         height: 1.75rem;
