@@ -45,6 +45,16 @@ body {
     text-align: center;
     max-width: 1200px;
     margin: 0 auto;
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.pricing-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .pricing-title {
@@ -54,10 +64,12 @@ body {
     margin-bottom: 1rem;
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 0.5s ease-out forwards;
-    animation-delay: 0.2s;
 }
 
+.pricing-section.visible .pricing-title {
+    animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.2s;
+}
 
 .pricing-subtitle {
     font-size: 2rem;
@@ -65,59 +77,63 @@ body {
     margin-bottom: 4rem;
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 0.5s ease-out forwards;
-    animation-delay: 0.3s;
 }
 
+.pricing-section.visible .pricing-subtitle {
+    animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.3s;
+}
 
 .pricing-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     padding: 2rem;
+    margin-bottom: 4rem;
 }
 
 .pricing-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border: 3px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
+    border-radius: 12px;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 0.5s ease-out forwards;
+    margin-bottom: 8rem;
+}
+
+.pricing-section.visible .pricing-card:nth-child(1) {
+    animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     animation-delay: 0.4s;
 }
 
-/* Apply different animation delays */
-.pricing-card:nth-child(1) {
-    animation-delay: 0.2s;
+.pricing-section.visible .pricing-card:nth-child(2) {
+    animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
 }
 
-.pricing-card:nth-child(2) {
-    animation-delay: 0.4s;
-}
-
-.pricing-card:nth-child(3) {
+.pricing-section.visible .pricing-card:nth-child(3) {
+    animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     animation-delay: 0.6s;
 }
 
 /* Default hover for all pricing cards except Pro */
 .pricing-card:hover {
     transform: translateY(-10px);
-   
     border-color: rgba(142, 190, 160, 0.5);
 }
 
-/* Special hover effect for Pro card - using nth-child(2) since it's the second card */
+/* Special hover effect for Pro card */
 .pricing-card:nth-child(2):hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(142, 122, 211, 0.1);
     border-color: rgb(142, 122, 211);
 }
+
 .card-header {
     text-align: left;
     margin-bottom: 2rem;
@@ -169,7 +185,6 @@ body {
     list-style: none;
 }
 
-
 .card-features li {
     color: #FFFFFF;
     margin-bottom: 1rem;
@@ -184,6 +199,33 @@ body {
     color: #94C4A6;
     font-weight: bold;
 }
+/* Start Button Styles */
+.start-btn {
+    position: relative;
+    padding: 1rem 2rem;
+    min-width: 300px;
+    background: #94C4A6;
+    color: #FFFFFF;
+    border: 3px solid #94C4A6;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.4s;
+}
+
+.start-btn:hover {
+    background: #75a587;
+    border-color: #75a587;
+}
 
 /* Buttons */
 .get-started-btn,
@@ -191,10 +233,10 @@ body {
     position: relative;
     padding: 0.8rem 1.6rem;
     min-width: 120px;
-    background: none;
-    color: #94C4A6;
-    border: 3px solid #94C4A6;
-    border-radius: 17px;
+    background: #94C4A6;
+    color: #FFFFFF;
+    border: 2px solid #94C4A6;
+    border-radius: 16px;
     transition: all 0.3s ease;
     font-size: 0.9rem;
     font-weight: 500;
@@ -204,76 +246,19 @@ body {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    transform: translateY(0);
-   
 }
 
 .get-started-btn:hover,
 .contact-sales-btn:hover {
-    background: #94C4A6;;
-    color: #FFFFFF;
-    transform: translateY(-4px);
-   
-}
-
-.get-started-btn::after,
-.contact-sales-btn::after {
-    font-size: 1.2rem;
-}
-
-.get-started-btn.coming-soon {
-    background: none;
-    color: rgba(228, 228, 231, 0.4);                   /* mainGreen color */
-    border-color:rgba(228, 228, 231, 0.4);               /* mainGreen color */
-   
-    cursor: not-allowed;
-  }
-  
-  .get-started-btn.coming-soon:hover {
-    transform: none;
-    box-shadow: none;
-    background: none;
-    border-color: rgba(228, 228, 231, 0.4);
-    color: rgba(228, 228, 231, 0.4); /* Ensure color remains the same */
-  }
-  
-  .get-started-btn.coming-soon:hover .arrow-stem {
-    transform: scaleX(0); /* Ensure arrow stem does not animate */
-  }
-
-/* Footer */
-
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Apply the animation to the contact button */
-.contact-button {
-    /* Existing styles */
-    animation: fadeInUp 1s ease-in-out forwards;
-}
-
-/* Update arrow size in pricing buttons */
-.arrow-container {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
+    background: #75a587;
+    border-color: #75a587;
 }
 
 /* Arrow Styles */
 .arrow-container {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
+    width: 20px; /* Changed from 24px to 20px */
+    height: 20px; /* Changed from 24px to 20px */
+    transition: transform 0.3s ease; /* Added transition */
 }
 
 .arrow-head {
@@ -289,37 +274,44 @@ body {
     transition: transform 0.2s ease;
 }
 
+.start-btn:hover .arrow-stem,
 .get-started-btn:hover .arrow-stem,
 .contact-sales-btn:hover .arrow-stem {
     transform: scaleX(1);
 }
 
 /* New hover effect for the arrow-container */
+.start-btn:hover .arrow-container,
 .get-started-btn:hover .arrow-container,
 .contact-sales-btn:hover .arrow-container {
     transform: translateX(5px); /* Moves the arrow forward */
 }
 
 /* Coming Soon Button Styles */
+.get-started-btn.coming-soon {
+    background: none;
+    color: rgba(228, 228, 231, 0.4);
+    border-color: rgba(228, 228, 231, 0.4);
+    cursor: not-allowed;
+}
+
+.get-started-btn.coming-soon:hover {
+    transform: none;
+    box-shadow: none;
+    background: none;
+    border-color: rgba(228, 228, 231, 0.4);
+}
+
 .get-started-btn.coming-soon:hover .arrow-stem {
     transform: scaleX(0);
 }
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .pricing-cards {
-        grid-template-columns: 1fr;
+@keyframes fadeInUpEffect {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
     }
-}
-
-@media (max-width: 768px) {
-    .pricing-title {
-        font-size: 2.5rem;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-
-    .pricing-subtitle {
-        font-size: 1.5rem;
-    }
-
-    
 }

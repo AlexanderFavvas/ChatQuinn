@@ -108,37 +108,51 @@
    
 
     <script>
-      
+        // Fetch navbar and footer as before
         fetch('navbar.html')
         .then(response => response.text())
         .then(data => {
             document.getElementById('navbar-placeholder').innerHTML = data;
         });
+
         fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
 
-                // Set up the IntersectionObserver for footer links
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                        } else {
-                            entry.target.classList.remove('visible');
-                        }
-                    });
-                }, {
-                    threshold: 0.1
+            // IntersectionObserver for footer links
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible');
+                    }
                 });
-
-                document.querySelectorAll('.footer-link').forEach((link) => {
-                    observer.observe(link);
-                });
+            }, {
+                threshold: 0.1
             });
 
-        
-        
+            document.querySelectorAll('.footer-link').forEach((link) => {
+                observer.observe(link);
+            });
+        });
+
+        // New code to add 'visible' class to '.pricing-section'
+        document.addEventListener('DOMContentLoaded', function() {
+            const pricingSection = document.querySelector('.pricing-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        pricingSection.classList.add('visible');
+                        observer.unobserve(pricingSection);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            observer.observe(pricingSection);
+        });
     </script>
 </body>
 </html>

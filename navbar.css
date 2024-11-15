@@ -3,7 +3,7 @@
     background: #0b0b0d;
     /* Consider reducing or removing backdrop-filter */
     /* backdrop-filter: blur(5px); */
-    padding: 0.7rem 0;
+    padding: 1rem 0;
     position: fixed;
     width: 100%;
     z-index: 100;
@@ -19,7 +19,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 4rem;
-    padding: 0 1rem;
+    padding: 0 2rem;
 }
 
 /* Left side - Logo group styles */
