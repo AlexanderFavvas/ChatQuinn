@@ -132,8 +132,8 @@
 
 /* Arrow Styles for both buttons */
 .arrow-container {
-    width: 14px;
-    height: 14px;
+    width: 20px; /* Changed from 24px to 20px */
+    height: 20px; /* Changed from 24px to 20px */
     transition: transform 0.3s ease; /* Added transition */
 }
 

@@ -222,7 +222,7 @@ body {
 }
 
 .get-started-btn.coming-soon {
-   
+    background: none;
     color: rgba(228, 228, 231, 0.4);                   /* mainGreen color */
     border-color:rgba(228, 228, 231, 0.4);               /* mainGreen color */
    
@@ -232,7 +232,13 @@ body {
   .get-started-btn.coming-soon:hover {
     transform: none;
     box-shadow: none;
-   
+    background: none;
+    border-color: rgba(228, 228, 231, 0.4);
+    color: rgba(228, 228, 231, 0.4); /* Ensure color remains the same */
+  }
+  
+  .get-started-btn.coming-soon:hover .arrow-stem {
+    transform: scaleX(0); /* Ensure arrow stem does not animate */
   }
 
 /* Footer */
@@ -254,6 +260,49 @@ body {
 .contact-button {
     /* Existing styles */
     animation: fadeInUp 1s ease-in-out forwards;
+}
+
+/* Update arrow size in pricing buttons */
+.arrow-container {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+/* Arrow Styles */
+.arrow-container {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.arrow-head {
+    fill: currentColor;
+}
+
+.arrow-stem {
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    transform-origin: 11px 50%;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.get-started-btn:hover .arrow-stem,
+.contact-sales-btn:hover .arrow-stem {
+    transform: scaleX(1);
+}
+
+/* New hover effect for the arrow-container */
+.get-started-btn:hover .arrow-container,
+.contact-sales-btn:hover .arrow-container {
+    transform: translateX(5px); /* Moves the arrow forward */
+}
+
+/* Coming Soon Button Styles */
+.get-started-btn.coming-soon:hover .arrow-stem {
+    transform: scaleX(0);
 }
 
 /* Responsive Design */
