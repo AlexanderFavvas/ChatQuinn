@@ -241,30 +241,11 @@
         
             // Image comparison functionality
             const imageContainer = document.querySelector('.image-container');
-            let swapped = false;
-        
+
             imageContainer.addEventListener('click', () => {
-                const topWrapper = document.querySelector('.image-wrapper.top');
-                const bottomWrapper = document.querySelector('.image-wrapper.bottom');
-        
-                if (!swapped) {
-                    topWrapper.classList.add('swap-down');
-                    bottomWrapper.classList.add('swap-up');
-                    setTimeout(() => {
-                        topWrapper.classList.replace('z-index-top', 'z-index-bottom');
-                        bottomWrapper.classList.replace('z-index-bottom', 'z-index-top');
-                    }, 600);
-                } else {
-                    topWrapper.classList.remove('swap-down');
-                    bottomWrapper.classList.remove('swap-up');
-                    setTimeout(() => {
-                        topWrapper.classList.replace('z-index-bottom', 'z-index-top');
-                        bottomWrapper.classList.replace('z-index-top', 'z-index-bottom');
-                    }, 600);
-                }
-                swapped = !swapped;
+                imageContainer.classList.toggle('swapped');
             });
-        
+
             // Navbar and footer loading
             fetch('navbar.html')
                 .then(response => response.text())

@@ -228,29 +228,32 @@
 .image-wrapper {
     position: absolute;
     width: 100%;
-    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.5s ease, opacity 0.5s ease;
     opacity: 1;
 }
 
 .image-wrapper.top {
     transform: translate(0, 0) scale(1);
     opacity: 1;
+    z-index: 2;
 }
 
 .image-wrapper.bottom {
     transform: translate(40px, 40px) scale(0.95);
     opacity: 0.6;
+    z-index: 1;
 }
 
-.image-wrapper.swap-down {
+.image-container.swapped .image-wrapper.top {
     transform: translate(40px, 40px) scale(0.95);
     opacity: 0.6;
+    z-index: 1;
 }
 
-.image-wrapper.swap-up {
+.image-container.swapped .image-wrapper.bottom {
     transform: translate(0, 0) scale(1);
     opacity: 1;
+    z-index: 2;
 }
 
 .z-index-top {
