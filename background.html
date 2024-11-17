@@ -8,9 +8,10 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #232329;
+            background-color: #0b0b0e;
             min-height: 100vh;
             position: relative;
+            font-family: 'Mona Sans', sans-serif;
         }
         
         canvas {
@@ -31,105 +32,18 @@
             background-image: url('noise-light.png');
             opacity: 1;
             pointer-events: none;
-            z-index: 1;
+            z-index: 9;
             mix-blend-mode: overlay;
         }
 
-        .blur-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            backdrop-filter: blur(90px);
-            z-index: 0;
-        }
+       
     </style>
 </head>
 <body>
     <canvas id="gradient-canvas"></canvas>
-    <div class="blur-overlay"></div>
+  
     <div class="noise"></div>
 
-    <script>
-        class GradientAnimation {
-            constructor() {
-                this.cnv = document.getElementById('gradient-canvas');
-                this.ctx = this.cnv.getContext('2d');
-                this.circlesNum = 15;
-                this.minRadius = 400;
-                this.maxRadius = 800;
-                this.circles = [];
-                
-                this.colors = [
-                    { r: 71, g: 100, b: 181 },  // Blue
-                    { r: 142, g: 122, b: 211 }, // Purple
-                    { r: 148, g: 196, b: 166 }, // Green
-                    { r: 94, g: 196, b: 166 }   // Teal
-                ];
-                
-                this.resize();
-                this.createCircles();
-                this.drawAnimation();
-                
-                window.addEventListener('resize', () => this.resize());
-            }
-
-            resize() {
-                this.w = this.cnv.width = window.innerWidth;
-                this.h = this.cnv.height = window.innerHeight;
-            }
-
-            createCircles() {
-                for (let i = 0; i < this.circlesNum; i++) {
-                    this.circles.push({
-                        x: Math.random() * this.w,
-                        y: Math.random() * this.h,
-                        radius: this.minRadius + Math.random() * (this.maxRadius - this.minRadius),
-                        color: this.colors[Math.floor(Math.random() * this.colors.length)],
-                        speed: { x: (Math.random() - 0.5) * 0.2, y: (Math.random() - 0.5) * 0.2 },
-                        angle: Math.random() * Math.PI * 2
-                    });
-                }
-            }
-
-            drawAnimation() {
-                this.ctx.clearRect(0, 0, this.w, this.h);
-                this.ctx.globalCompositeOperation = 'source-over';
-                this.ctx.fillStyle = '#0a0a0c';
-                this.ctx.fillRect(0, 0, this.w, this.h);
-                this.ctx.globalCompositeOperation = 'screen';
-
-                this.circles.forEach(circle => {
-                    circle.x += circle.speed.x;
-                    circle.y += circle.speed.y;
-                    circle.angle += 0.002;
-
-                    if (circle.x < -circle.radius) circle.x = this.w + circle.radius;
-                    if (circle.x > this.w + circle.radius) circle.x = -circle.radius;
-                    if (circle.y < -circle.radius) circle.y = this.h + circle.radius;
-                    if (circle.y > this.h + circle.radius) circle.y = -circle.radius;
-
-                    const gradient = this.ctx.createRadialGradient(
-                        circle.x, circle.y, 0,
-                        circle.x, circle.y, circle.radius
-                    );
-
-                    // Lowered the opacity further from 0.05 to 0.02
-                    gradient.addColorStop(0, `rgba(${circle.color.r}, ${circle.color.g}, ${circle.color.b}, 0)`);
-                    gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
-                    this.ctx.fillStyle = gradient;
-                    this.ctx.beginPath();
-                    this.ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
-                    this.ctx.fill();
-                });
-
-                requestAnimationFrame(() => this.drawAnimation());
-            }
-        }
-
-        window.onload = () => new GradientAnimation();
-    </script>
+  
 </body>
 </html>

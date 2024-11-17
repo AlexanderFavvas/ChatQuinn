@@ -1,14 +1,15 @@
-/* Common resets and container styles */
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;700&display=swap');
+
+body {
+    font-family: 'Mona Sans', sans-serif;
+}
+
 .nav {
-    background: #0b0b0d;
-    /* Consider reducing or removing backdrop-filter */
-    /* backdrop-filter: blur(5px); */
     padding: 1rem 0;
     position: fixed;
     width: 100%;
     z-index: 100;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.1);
-    will-change: transform; /* Inform the browser that this element will change */
+    will-change: transform;
 }
 
 .nav-content {
@@ -22,7 +23,6 @@
     padding: 0 2rem;
 }
 
-/* Left side - Logo group styles */
 .nav-left {
     display: flex;
     align-items: center;
@@ -41,7 +41,7 @@
     object-fit: contain;
     cursor: pointer;
     transition: transform 0.3s ease;
-    will-change: transform; /* Inform the browser that this element will change */
+    will-change: transform;
 }
 
 .logo-image:hover {
@@ -49,25 +49,29 @@
 }
 
 .logo {
-    color: #94C4A6;
-    font-size: 1.5rem;
+    color: rgb(255, 255, 255);
+    font-size: 2rem;
+    font-family: 'Mona Sans', system-ui, sans-serif;
     font-weight: 600;
-    background: linear-gradient(45deg, #94C4A6, #9DC6AB);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
     text-decoration: none;
     white-space: nowrap;
     cursor: pointer;
     border: none;
     outline: none;
-    font-family: inherit;
     position: relative;
     padding: 0;
     background-color: transparent;
+    -webkit-text-fill-color: initial;
 }
 
-/* Right side navigation */
+.logo::first-letter {
+    color: rgb(142, 122, 211);
+}
+
+.logo span {
+    color: #ffffff;
+}
+
 .nav-right {
     display: flex;
     align-items: center;
@@ -79,13 +83,13 @@
     color: #FFFFFF;
     text-decoration: none;
     transition: color 0.3s ease;
-    font-weight: 500;
+    font-weight: 600;
     background: none;
     border: none;
 }
 
 .contact-btn:hover {
-    color: #94C4A6;
+    color: rgb(142, 122, 211);
     transform: none;
     background: none;
 }
@@ -94,18 +98,18 @@
     color: #FFFFFF;
     text-decoration: none;
     transition: color 0.3s ease;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1rem;
     background: none;
     border: none;
 }
 
 .pricing-btn:hover {
-    color: #94C4A6;
+    color: rgb(142, 122, 211);
     transform: none;
     background: none;
 }
 
-/* Sign In Button Styles */
 .signin-btn {
     position: relative;
     padding: 0.75rem 1.5rem;
@@ -114,8 +118,8 @@
     color: #FFFFFF;
     border: 2px solid rgb(142, 122, 211);
     border-radius: 16px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
     text-decoration: none;
     display: flex;
@@ -130,11 +134,10 @@
     border-color: rgb(125, 108, 186);
 }
 
-/* Arrow Styles for both buttons */
 .arrow-container {
-    width: 20px; /* Changed from 24px to 20px */
-    height: 20px; /* Changed from 24px to 20px */
-    transition: transform 0.3s ease; /* Added transition */
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
 }
 
 .arrow-head {
@@ -155,9 +158,8 @@
     transform: scaleX(1);
 }
 
-/* New hover effect for the arrow-container */
 .signin-btn:hover .arrow-container {
-    transform: translateX(5px); /* Moves the arrow forward */
+    transform: translateX(5px);
 }
 
 @keyframes fadeInUp {
@@ -168,63 +170,5 @@
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-/* Responsive styles */
-@media screen and (max-width: 768px) {
-    .nav-content {
-        gap: 0.5rem;
-        padding: 0 0.5rem;
-        flex-wrap: wrap;
-    }
-    .nav-left {
-        margin-left: 1rem;
-    }
-    .nav-right {
-        gap: 0.75rem;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-    }
-    .logo-image {
-        width: 2rem;
-        height: 2rem;
-    }
-    .logo {
-        font-size: 1.2rem;
-    }
-    .logo-group {
-        gap: 0.5rem;
-    }
-    .pricing-btn {
-        font-size: 0.85rem;
-        padding: 0.4rem 0.6rem;
-    }
-    .signin-btn {
-        min-width: auto;
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
-        white-space: nowrap;
-    }
-}
-
-/* Extra small devices */
-@media screen and (max-width: 480px) {
-    .nav-content {
-        width: 100%;
-        padding: 0.5rem;
-    }
-    .nav-left {
-        margin-left: 0.5rem;
-    }
-    .nav-right {
-        gap: 0.5rem;
-    }
-    .signin-btn {
-        padding: 0.5rem 0.8rem;
-    }
-    .logo-image {
-        width: 1.75rem;
-        height: 1.75rem;
     }
 }
