@@ -1,91 +1,3 @@
-// Particle system for visual effects
-class ParticleSystem {
-    constructor(config = {}) {
-        this.canvas = document.getElementById('particle-canvas');
-        this.ctx = this.canvas.getContext('2d');
-        this.particles = [];
-        this.config = {
-            colors: [
-                '#E6E6FA',
-                '#DCD0FF',
-                '#C8B6FF',
-                '#B8A6FF',
-                '#D8BFD8',
-                '#CDB4E6'
-            ],
-            count: 40,
-            sizeMin: 10,
-            sizeMax: 25,
-            floatAmplitude: 30,
-            floatSpeed: 3000,
-            ...config
-        };
-
-        this.init();
-    }
-
-    init() {
-        this.resizeCanvas();
-        window.addEventListener('resize', () => this.resizeCanvas());
-        this.createParticles();
-        this.startAnimation();
-    }
-
-    resizeCanvas() {
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
-    }
-
-    createParticles() {
-        this.particles = Array.from({ length: this.config.count }, () => ({
-            x: Math.random() * this.canvas.width,
-            y: Math.random() * this.canvas.height,
-            size: this.getRandomNumber(this.config.sizeMin, this.config.sizeMax),
-            color: this.getRandomArrayElement(this.config.colors),
-            blur: this.getRandomNumber(3, 5),
-            phaseOffset: Math.random() * Math.PI * 2,
-            horizontalOffset: Math.random() * Math.PI * 2
-        }));
-    }
-
-    startAnimation() {
-        const animate = (currentTime) => {
-            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-            
-            this.particles.forEach(particle => {
-                const verticalMovement = Math.sin((currentTime / this.config.floatSpeed) + particle.phaseOffset) 
-                    * this.config.floatAmplitude;
-                const horizontalMovement = Math.sin((currentTime / (this.config.floatSpeed * 1.5)) + particle.horizontalOffset) 
-                    * (this.config.floatAmplitude * 0.5);
-
-                this.drawParticle(particle, particle.x + horizontalMovement, particle.y + verticalMovement);
-            });
-
-            requestAnimationFrame(animate);
-        };
-
-        requestAnimationFrame(animate);
-    }
-
-    drawParticle(particle, x, y) {
-        this.ctx.beginPath();
-        this.ctx.arc(x, y, particle.size / 2, 0, Math.PI * 2);
-        this.ctx.globalAlpha = 0.2;
-        this.ctx.fillStyle = particle.color;
-        this.ctx.shadowColor = particle.color;
-        this.ctx.shadowBlur = particle.blur;
-        this.ctx.fill();
-    }
-
-    getRandomArrayElement(array) {
-        return array[Math.floor(Math.random() * array.length)];
-    }
-
-    getRandomNumber(min, max) {
-        return min + Math.random() * (max - min);
-    }
-}
-
 class SetupFlow {
     constructor() {
         this.state = {
@@ -97,7 +9,7 @@ class SetupFlow {
             errors: [],
             saveRetryCount: 0,
             maxRetries: 3,
-            retryDelay: 1000, // ms
+            retryDelay: 1000,
         };
 
         this.questions = [
@@ -152,34 +64,11 @@ class SetupFlow {
             progressBar: document.querySelector('.progress-bar')
         };
 
-        // Remove or comment out the particle system initialization
-        // this.particleSystem = new ParticleSystem();
-
-        this.deleteAllCookies();
         this.init();
-    }
-
-    deleteAllCookies() {
-        const cookies = document.cookie.split(';');
-        
-        for (let cookie of cookies) {
-            const eqPos = cookie.indexOf('=');
-            const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
-            
-            // Delete the cookie by setting an expired date
-            document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
-            
-            // Also try to delete for all possible paths and domains
-            document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=${window.location.hostname}`;
-            document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=.${window.location.hostname}`;
-        }
     }
 
     async init() {
         try {
-            // Remove or comment out the particle system initialization
-            // this.particleSystem = new ParticleSystem();
-
             await this.loadSavedAnswers();
             this.showInitialScreen();
             this.setupUnloadHandler();
@@ -208,7 +97,6 @@ class SetupFlow {
     async loadSavedAnswers() {
         try {
             const response = await this.makeRequest('GET', 'getData');
-            
             if (response.ok) {
                 const data = await response.json();
                 if (data.settings) {
@@ -291,7 +179,6 @@ class SetupFlow {
         };
         
         this.state.errors.push(errorDetails);
-        
         this.showErrorMessage(userMessage || 'An error occurred. Your progress has been saved locally.');
     }
 
@@ -299,7 +186,6 @@ class SetupFlow {
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error-message';
         errorDiv.textContent = message;
-        errorDiv.style.cssText = 'color: #ff4444; margin-top: 1rem; padding: 0.5rem; text-align: center;';
         
         const existingError = this.elements.container.querySelector('.error-message');
         if (existingError) {
@@ -361,8 +247,8 @@ class SetupFlow {
             <div class="input-container">
                 ${this.createInputElement(questionData)}
                 <div class="button-container">
-                    <button class="button secondary" onclick="setupFlow.navigateQuestion('prev')">← Back</button>
-                    <button class="button" onclick="setupFlow.navigateQuestion('next')">Next →</button>
+                    <button class="button back" onclick="setupFlow.navigateQuestion('prev')">Back</button>
+                    <button class="button" onclick="setupFlow.navigateQuestion('next')">Next</button>
                 </div>
             </div>
         `;
@@ -416,7 +302,7 @@ class SetupFlow {
             <div class="question">Welcome to Quinn! Let's get you set up.</div>
             <div class="input-container">
                 <div class="button-container">
-                    <button class="button" onclick="setupFlow.navigateQuestion('next')">Get Started →</button>
+                    <button class="button" onclick="setupFlow.navigateQuestion('next')">Get Started</button>
                 </div>
             </div>
         `;
@@ -428,8 +314,8 @@ class SetupFlow {
             <div class="question">All set! Welcome to Quinn.</div>
             <div class="input-container">
                 <div class="button-container">
-                    <button class="button secondary" onclick="setupFlow.navigateQuestion('prev')">← Back</button>
-                    <button class="completion-button" onclick="setupFlow.finishSetup()">Get started →</button>
+                    <button class="button back" onclick="setupFlow.navigateQuestion('prev')">Back</button>
+                    <button class="button" onclick="setupFlow.finishSetup()">Get Started</button>
                 </div>
             </div>
         `;
@@ -437,22 +323,18 @@ class SetupFlow {
     }
 
     async finishSetup() {
-        const button = this.elements.container.querySelector('.completion-button');
+        const button = this.elements.container.querySelector('.button');
         
-        // Disable button and show loading state
         button.disabled = true;
-        const originalText = button.textContent;
         button.innerHTML = `
             <span class="loading-spinner"></span>
-            <span class="loading-dots">Saving settings</span>
+            Setting up...
         `;
 
         try {
-            // Add completion data
             this.state.answers.setupCompleted = new Date().toISOString();
             this.state.answers.setupStatus = 'completed';
 
-            // Save all settings with retries
             let success = false;
             this.state.saveRetryCount = 0;
 
@@ -472,38 +354,19 @@ class SetupFlow {
                 }
             }
 
-            // Show success state briefly before redirect
-            button.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: middle;">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                Settings saved!
-            `;
-
-            // Wait a moment to show the success state
+            button.innerHTML = 'Success!';
             await new Promise(resolve => setTimeout(resolve, 1000));
-
-            // Redirect to verification page instead of home
             window.location.href = '/verification/verification.html';
             
         } catch (error) {
             console.error('Failed to save settings:', error);
             this.handleError(error, 'Failed to save settings');
             
-            // Show error state
-            button.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: middle;">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="15" y1="9" x2="9" y2="15"></line>
-                    <line x1="9" y1="9" x2="15" y2="15"></line>
-                </svg>
-                Failed to save
-            `;
+            button.innerHTML = 'Failed to save';
             
-            // Re-enable button after a delay
             setTimeout(() => {
                 button.disabled = false;
-                button.innerHTML = originalText;
+                button.innerHTML = 'Get Started';
             }, 2000);
         }
     }
