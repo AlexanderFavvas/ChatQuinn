@@ -38,7 +38,6 @@ body {
     min-height: 100vh;
 }
 
-/* Pricing Section */
 .pricing-section {
     padding-top: 4rem;
     text-align: center;
@@ -66,7 +65,7 @@ body {
 }
 
 .pricing-section.visible .pricing-title {
-    animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     animation-delay: 0.1s;
 }
 
@@ -80,11 +79,10 @@ body {
 }
 
 .pricing-section.visible .pricing-subtitle {
-    animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.2s;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.15s;
 }
 
-/* Pricing Cards */
 .pricing-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -108,18 +106,18 @@ body {
 }
 
 .pricing-section.visible .pricing-card:nth-child(1) {
-    animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.3s;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.2s;
 }
 
 .pricing-section.visible .pricing-card:nth-child(2) {
-    animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.4s;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.25s;
 }
 
 .pricing-section.visible .pricing-card:nth-child(3) {
-    animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.5s;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.3s;
 }
 
 .pricing-card:hover {
@@ -133,7 +131,6 @@ body {
     border-color: rgb(142, 122, 211);
 }
 
-/* Card Header */
 .card-header {
     text-align: left;
     margin-bottom: 2rem;
@@ -151,7 +148,6 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* Price Styling */
 .price {
     font-size: 2.5rem;
     color: #FFFFFF;
@@ -176,7 +172,6 @@ body {
     opacity: 0.7;
 }
 
-/* Features List */
 .card-features {
     text-align: left;
     margin: 2rem 0;
@@ -202,7 +197,6 @@ body {
     font-weight: 600;
 }
 
-/* Buttons */
 .get-started-btn,
 .contact-sales-btn {
     position: relative;
@@ -247,7 +241,6 @@ body {
     transform: scaleX(0);
 }
 
-/* Arrow Animation */
 .arrow-container {
     width: 20px;
     height: 20px;
@@ -275,7 +268,6 @@ button:not(.coming-soon):hover .arrow-container {
     transform: translateX(5px);
 }
 
-/* Animations */
 @keyframes fadeInUpEffect {
     from {
         opacity: 0;
@@ -287,7 +279,6 @@ button:not(.coming-soon):hover .arrow-container {
     }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .pricing-cards {
         grid-template-columns: 1fr;
@@ -308,7 +299,6 @@ button:not(.coming-soon):hover .arrow-container {
     }
 }
 
-/* Scrollbar */
 *::-webkit-scrollbar {
     display: none;
 }
