@@ -2,17 +2,20 @@
 <html>
 <head>
     <title>Sign In Callback</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Mona Sans', sans-serif;
         }
 
         body {
             min-height: 100vh;
-            background-color: #050505;
+            background-color: #0b0b0e;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -29,66 +32,76 @@
             border: none;
             pointer-events: none;
             z-index: -1;
+            opacity: 0;
+            animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.1s;
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            border-radius: 24px;
-            border: 3px solid rgba(142, 190, 160, 0.3);
+            border-radius: 12px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
             padding: 3rem;
             text-align: center;
             max-width: 400px;
             width: 90%;
             z-index: 1;
+            opacity: 0;
+            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.15s;
         }
 
         #status {
-            color: #474759;
+            color: #ffffff;
             font-size: 1.2rem;
             font-weight: 500;
             margin-top: 1.5rem;
+            opacity: 0;
+            animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.2s;
         }
 
         .loader {
             width: 48px;
             height: 48px;
-            border: 5px solid #8EBEA0;
+            border: 5px solid rgb(142, 122, 211);
             border-bottom-color: transparent;
             border-radius: 50%;
             display: inline-block;
             margin-bottom: 1.5rem;
-            animation: rotation 1s linear infinite;
+            opacity: 0;
+            animation: rotation 1s linear infinite, fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0s, 0.25s;
         }
 
-        @keyframes rotation {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Success and Error states */
         .success {
-            color: #8EBEA0;
+            color: rgb(142, 122, 211);
         }
 
         .error {
-            color: #EF4444;
+            color: #ef4444;
         }
 
-        /* Background gradient similar to homepage */
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(142, 190, 160, 0.1), transparent),
-                        radial-gradient(circle at bottom left, rgba(142, 190, 160, 0.1), transparent);
-            z-index: -1;
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -98,7 +111,6 @@
         <span class="loader"></span>
         <div id="status">Processing sign in...</div>
     </div>
-
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
@@ -106,6 +118,7 @@
             window.location.href = `https://us-central1-movie-thing-439716.cloudfunctions.net/function-1?code=${encodeURIComponent(code)}`;
         } else {
             document.getElementById('status').textContent = 'No authorization code received';
+            document.getElementById('status').classList.add('error');
         }
     </script>
 </body>
