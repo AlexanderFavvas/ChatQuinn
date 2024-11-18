@@ -1,15 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;600;800&display=swap');
+
+/* Font Size Definitions */
+:root {
+    --font-size-default: 1rem;
+    --font-size-subtitle: 1.5rem;
+    --font-size-xs: 0.875rem;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
-    min-height: 100vh;
-    background-color: #050505;
-    position: relative;
-    overflow-x: hidden;
+    font-family: 'Mona Sans', sans-serif;
+    font-size: var(--font-size-default);
+    line-height: 1.5;
+    font-weight: 400; /* Normal text */
 }
 
 .background-frame {
@@ -32,10 +40,10 @@ body {
 }
 
 .beta-container {
-    border: 3px solid rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.1); /* Border width set to 3px */
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(5px);
-    border-radius: 20px;
+    border-radius: 12px; /* Border-radius set to 12px */
     padding: 3rem;
     max-width: 800px;
     width: 100%;
@@ -44,15 +52,16 @@ body {
 
 h1 {
     font-size: 2.5rem;
-    color: #94C4A6;
+    color: rgb(142, 122, 211);
     margin-bottom: 2rem;
     text-align: center;
+    font-weight: 800; /* Updated to 800 for titles */
 }
 
 .warning-box {
-    border: 3px solid rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.1); /* Border width set to 3px */
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
+    border-radius: 12px; /* Border-radius set to 12px */
     padding: 1.5rem;
     margin-bottom: 2rem;
     display: flex;
@@ -63,13 +72,13 @@ h1 {
 .warning-icon {
     width: 24px;
     height: 24px;
-    background: #94C4A6;
+    background: rgb(142, 122, 211);
     color: white;
-    border-radius: 50%;
+    border-radius: 50%; /* Keeping circular shape */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
+    font-weight: 700; /* You might want to adjust this if needed */
     font-size: 16px;
     flex-shrink: 0;
 }
@@ -82,18 +91,21 @@ h1 {
     color: #ffffff;
     margin-bottom: 1rem;
     line-height: 1.5;
+    font-weight: 400; /* Normal text */
 }
 
 .warning-box ul {
     color: #ffffff;
     margin-left: 1.5rem;
     line-height: 1.6;
+    font-weight: 400; /* Normal text */
+    font-size: var(--font-size-xs); /* XS font size for list items */
 }
 
 .access-note {
-    border: 3px solid rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.1); /* Border width set to 3px */
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
+    border-radius: 12px; /* Border-radius set to 12px */
     padding: 1rem 1.5rem;
     margin-bottom: 2rem;
     text-align: center;
@@ -103,11 +115,12 @@ h1 {
     color: #ffffff;
     font-size: 0.95rem;
     line-height: 1.5;
+    font-weight: 400; /* Normal text */
 }
 
 .access-note .beta-free {
     color: rgb(142, 122, 211);
-    font-weight: 500;
+    font-weight: 600; /* Semi-bold if needed */
     margin-top: 0.5rem;
 }
 
@@ -130,6 +143,7 @@ h1 {
     margin-bottom: 0.5rem;
     text-align: center;
     width: fit-content;
+    font-weight: 400; /* Normal text */
 }
 
 .checkbox-container:last-child {
@@ -148,46 +162,43 @@ h1 {
     color: rgb(142, 122, 211);
     text-decoration: none;
     display: inline;
+    font-weight: 400; /* Normal text */
 }
 
 .terms-link:hover {
     text-decoration: underline;
 }
 
+/* Enabled Button */
 .continue-btn {
     width: 50%;
     display: block;
     margin-left: auto;
     margin-right: auto;
     padding: 1rem 2rem;
-    background: none;
-    color: #94C4A6;
-    border: 3px solid #94C4A6;
-    border-radius: 17px;
+    background: rgb(142, 122, 211); /* Purple background */
+    color: white; /* White text */
+    border: 3px solid rgb(142, 122, 211); /* Border width set to 3px */
+    border-radius: 16px; /* Border-radius set to 16px */
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600; /* Semi-bold for buttons */
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, border-color 0.3s ease;
     text-align: center;
 }
 
-.continue-btn:enabled {
-    color: #94C4A6;
-    border-color: #94C4A6;
-    background: none;
+/* Hover Effect */
+.continue-btn:hover {
+    background: rgb(125, 108, 186); /* Darker purple on hover */
+    border-color: rgb(125, 108, 186);
 }
 
-.continue-btn:enabled:hover {
-    background: #94C4A6;
-    color: white;
-    transform: translateY(-2px);
-}
-
+/* Disabled Button */
 .continue-btn:disabled {
     cursor: not-allowed;
-    color: rgba(228, 228, 231, 0.4);
-    border-color: rgba(228, 228, 231, 0.4);
-    background: none;
+    color: #e0e0e0; /* Lighter gray text */
+    background: #b3b3b3; /* Light gray background */
+    border-color: #b3b3b3; /* Light gray border */
 }
 
 .modal {
@@ -206,7 +217,7 @@ h1 {
     backdrop-filter: blur(10px);
     margin: 5% auto;
     padding: 2rem;
-    border-radius: 24px;
+    border-radius: 12px; /* Border-radius set to 12px */
     max-width: 800px;
     max-height: 80vh;
     overflow-y: auto;
@@ -228,6 +239,7 @@ h1 {
 .modal-body {
     color: #ffffff;
     line-height: 1.6;
+    font-weight: 400; /* Normal text */
 }
 
 @keyframes fadeInUp {

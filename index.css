@@ -615,6 +615,7 @@ canvas#gradient-canvas {
 }
 .start-btn:hover {
     background: rgb(125, 108, 186);
+    border-color: rgb(125, 108, 186);
 
 }
 
@@ -901,7 +902,7 @@ canvas#gradient-canvas {
 .pill-title {
     color: #FFFFFF;
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 800;
     margin-bottom: 0.5rem;
     opacity: 0;
     transform: translateY(20px);
