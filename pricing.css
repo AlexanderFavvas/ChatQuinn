@@ -1,17 +1,19 @@
-/* quinn-price-style.css */
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;600;700;800&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
     min-height: 100vh;
-    background-color: #050505;
+    background-color: #0b0b0e;
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
+    font-family: 'Mona Sans', sans-serif;
+    font-size: 1rem;
 }
 
 .background-frame {
@@ -24,9 +26,6 @@ body {
     pointer-events: none;
     z-index: -1;
 }
-
-/* Navigation */
-
 
 .main-content {
     padding-top: 100px;
@@ -41,12 +40,12 @@ body {
 
 /* Pricing Section */
 .pricing-section {
-    padding-top: 8rem;
+    padding-top: 4rem;
     text-align: center;
     max-width: 1200px;
     margin: 0 auto;
     margin-top: 3rem;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
     opacity: 0;
     transform: translateY(40px);
 }
@@ -58,9 +57,9 @@ body {
 }
 
 .pricing-title {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 800;
-    color: #94C4A6;
+    color: rgb(255, 255, 255);
     margin-bottom: 1rem;
     opacity: 0;
     transform: translateY(20px);
@@ -68,12 +67,13 @@ body {
 
 .pricing-section.visible .pricing-title {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.2s;
+    animation-delay: 0.1s;
 }
 
 .pricing-subtitle {
-    font-size: 2rem;
-    color: #E1E1E3;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #FFFFFF;
     margin-bottom: 4rem;
     opacity: 0;
     transform: translateY(20px);
@@ -81,9 +81,10 @@ body {
 
 .pricing-section.visible .pricing-subtitle {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.3s;
+    animation-delay: 0.2s;
 }
 
+/* Pricing Cards */
 .pricing-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -103,37 +104,36 @@ body {
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
-    margin-bottom: 8rem;
+    margin-bottom: 2rem;
 }
 
 .pricing-section.visible .pricing-card:nth-child(1) {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.3s;
 }
 
 .pricing-section.visible .pricing-card:nth-child(2) {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.5s;
+    animation-delay: 0.4s;
 }
 
 .pricing-section.visible .pricing-card:nth-child(3) {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.6s;
+    animation-delay: 0.5s;
 }
 
-/* Default hover for all pricing cards except Pro */
 .pricing-card:hover {
     transform: translateY(-10px);
-    border-color: rgba(142, 190, 160, 0.5);
+    border-color: rgba(255, 255, 255, 1);
 }
 
-/* Special hover effect for Pro card */
 .pricing-card:nth-child(2):hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(142, 122, 211, 0.1);
     border-color: rgb(142, 122, 211);
 }
 
+/* Card Header */
 .card-header {
     text-align: left;
     margin-bottom: 2rem;
@@ -141,16 +141,17 @@ body {
 
 .card-header h3 {
     color: #FFFFFF;
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
 }
 
 .tier-description {
-    color: #E1E1E3;
+    color: #FFFFFF;
     font-size: 1rem;
     margin-bottom: 1.5rem;
 }
 
+/* Price Styling */
 .price {
     font-size: 2.5rem;
     color: #FFFFFF;
@@ -162,7 +163,7 @@ body {
 .price span {
     font-size: 1rem;
     color: #b2b2b3;
-    font-weight: normal;
+    font-weight: 600;
 }
 
 .original-price {
@@ -175,6 +176,7 @@ body {
     opacity: 0.7;
 }
 
+/* Features List */
 .card-features {
     text-align: left;
     margin: 2rem 0;
@@ -196,35 +198,8 @@ body {
 
 .card-features li:before {
     content: "✓";
-    color: #94C4A6;
-    font-weight: bold;
-}
-/* Start Button Styles */
-.start-btn {
-    position: relative;
-    padding: 1rem 2rem;
-    min-width: 300px;
-    background: #94C4A6;
-    color: #FFFFFF;
-    border: 3px solid #94C4A6;
-    border-radius: 16px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    opacity: 0;
-    transition: all 0.3s ease;
-    animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.4s;
-}
-
-.start-btn:hover {
-    background: #75a587;
-    border-color: #75a587;
+    color: rgb(142, 122, 211);
+    font-weight: 600;
 }
 
 /* Buttons */
@@ -233,13 +208,13 @@ body {
     position: relative;
     padding: 0.8rem 1.6rem;
     min-width: 120px;
-    background: #94C4A6;
+    background: rgb(142, 122, 211);
     color: #FFFFFF;
-    border: 2px solid #94C4A6;
+    border: 2px solid rgb(142, 122, 211);
     border-radius: 16px;
     transition: all 0.3s ease;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
     text-decoration: none;
     display: flex;
@@ -250,44 +225,10 @@ body {
 
 .get-started-btn:hover,
 .contact-sales-btn:hover {
-    background: #75a587;
-    border-color: #75a587;
+    background: rgb(125, 108, 186);
+    border-color: rgb(125, 108, 186);
 }
 
-/* Arrow Styles */
-.arrow-container {
-    width: 20px; /* Changed from 24px to 20px */
-    height: 20px; /* Changed from 24px to 20px */
-    transition: transform 0.3s ease; /* Added transition */
-}
-
-.arrow-head {
-    fill: currentColor;
-}
-
-.arrow-stem {
-    stroke: currentColor;
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    transform-origin: 11px 50%;
-    transform: scaleX(0);
-    transition: transform 0.2s ease;
-}
-
-.start-btn:hover .arrow-stem,
-.get-started-btn:hover .arrow-stem,
-.contact-sales-btn:hover .arrow-stem {
-    transform: scaleX(1);
-}
-
-/* New hover effect for the arrow-container */
-.start-btn:hover .arrow-container,
-.get-started-btn:hover .arrow-container,
-.contact-sales-btn:hover .arrow-container {
-    transform: translateX(5px); /* Moves the arrow forward */
-}
-
-/* Coming Soon Button Styles */
 .get-started-btn.coming-soon {
     background: none;
     color: rgba(228, 228, 231, 0.4);
@@ -305,6 +246,36 @@ body {
 .get-started-btn.coming-soon:hover .arrow-stem {
     transform: scaleX(0);
 }
+
+/* Arrow Animation */
+.arrow-container {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.arrow-head {
+    fill: currentColor;
+}
+
+.arrow-stem {
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    transform-origin: 11px 50%;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+button:not(.coming-soon):hover .arrow-stem {
+    transform: scaleX(1);
+}
+
+button:not(.coming-soon):hover .arrow-container {
+    transform: translateX(5px);
+}
+
+/* Animations */
 @keyframes fadeInUpEffect {
     from {
         opacity: 0;
@@ -314,4 +285,30 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pricing-cards {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .pricing-title {
+        font-size: 2.5rem;
+    }
+
+    .pricing-subtitle {
+        font-size: 1.25rem;
+    }
+
+    .main-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* Scrollbar */
+*::-webkit-scrollbar {
+    display: none;
 }

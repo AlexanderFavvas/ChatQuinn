@@ -45,7 +45,7 @@
                 </div>
 
                 <!-- Right Section - Contact Form -->
-                <div class="contact-form-container fade-up" >
+                <div class="contact-form-container fade-up">
                     <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
                         <input type="hidden" name="access_key" value="b922fabd-ef3d-4346-b6e1-d9d4bece5063">
                         <input type="checkbox" name="botcheck" class="hidden">
@@ -104,67 +104,89 @@
         </main>
         <div id="footer-placeholder"></div>
 
+        <!-- Include navbar.js first -->
+        <script src="navbar.js"></script>
         <script>
-            function toggleAdditionalFields() {
-                const select = document.getElementById('subject-select');
-                const otherInput = document.getElementById('other-subject');
-                const salesFields = document.getElementById('sales-fields');
-                
-                // Reset fields
-                otherInput.classList.add('hidden');
-                otherInput.required = false;
-                salesFields.classList.add('hidden');
-                const salesInputs = salesFields.querySelectorAll('input');
-                salesInputs.forEach(input => input.required = false);
-                
-                // Show relevant fields based on selection
-                if (select.value === 'other') {
-                    otherInput.classList.remove('hidden');
-                    otherInput.required = true;
-                } else if (select.value === 'sales') {
-                    salesFields.classList.remove('hidden');
-                    salesInputs.forEach(input => input.required = true);
+            document.addEventListener('DOMContentLoaded', function() {
+                // Form functions
+                function toggleAdditionalFields() {
+                    const select = document.getElementById('subject-select');
+                    const otherInput = document.getElementById('other-subject');
+                    const salesFields = document.getElementById('sales-fields');
+                    
+                    // Reset fields
+                    otherInput.classList.add('hidden');
+                    otherInput.required = false;
+                    salesFields.classList.add('hidden');
+                    const salesInputs = salesFields.querySelectorAll('input');
+                    salesInputs.forEach(input => input.required = false);
+                    
+                    // Show relevant fields based on selection
+                    if (select.value === 'other') {
+                        otherInput.classList.remove('hidden');
+                        otherInput.required = true;
+                    } else if (select.value === 'sales') {
+                        salesFields.classList.remove('hidden');
+                        salesInputs.forEach(input => input.required = true);
+                    }
                 }
-            }
-
-            document.getElementById('contact-form').addEventListener('submit', async (e) => {
-                const submitButton = e.target.querySelector('.send-btn');
-                submitButton.innerHTML = 'Sending...';
-                submitButton.disabled = true;
-
-                setTimeout(() => {
-                    submitButton.innerHTML = 'Send Message →';
-                    submitButton.disabled = false;
-                }, 2000);
-            });
-
-            // Load navbar and footer
-            fetch('navbar.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('navbar-placeholder').innerHTML = data;
+                
+                const contactForm = document.getElementById('contact-form');
+                if (contactForm) {
+                    contactForm.addEventListener('submit', async (e) => {
+                        const submitButton = e.target.querySelector('.send-btn');
+                        submitButton.innerHTML = 'Sending...';
+                        submitButton.disabled = true;
+                        
+                        setTimeout(() => {
+                            submitButton.innerHTML = 'Send Message →';
+                            submitButton.disabled = false;
+                        }, 2000);
+                    });
+                }
+                
+                // Create intersection observer
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        } else {
+                            entry.target.classList.remove('visible');
+                        }
+                    });
+                }, {
+                    threshold: 0.1
                 });
-            fetch('footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer-placeholder').innerHTML = data;
 
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add('visible');
+                // Load navbar with scroll effect
+                fetch('navbar.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('navbar-placeholder').innerHTML = data;
+                        // Initialize navbar scroll effect after navbar is loaded
+                        const nav = document.querySelector('.nav');
+                        window.addEventListener('scroll', () => {
+                            if (window.scrollY > 0) {
+                                nav.classList.add('scrolled');
                             } else {
-                                entry.target.classList.remove('visible');
+                                nav.classList.remove('scrolled');
                             }
                         });
-                    }, {
-                        threshold: 0.1
                     });
-
-                    document.querySelectorAll('.footer-link').forEach((link) => {
-                        observer.observe(link);
+                
+                // Load footer
+                fetch('footer.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('footer-placeholder').innerHTML = data;
+                        document.querySelectorAll('.footer-link').forEach((link) => {
+                            observer.observe(link);
+                        });
                     });
-                });
+                
+                // Make toggleAdditionalFields available globally
+                window.toggleAdditionalFields = toggleAdditionalFields;
+            });
         </script>
     </body>
 </html>

@@ -34,8 +34,7 @@ body {
     font-size: 1rem;
     opacity: 0;
     font-weight: 600;
-    transform: translateY(10px);
-    transition: color 0.3s ease, opacity 0.5s ease-out, transform 0.5s ease-out;
+   
     display: inline-block;
 }
 
@@ -54,24 +53,3 @@ body {
 }
 
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}

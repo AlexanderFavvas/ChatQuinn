@@ -108,50 +108,60 @@
    
 
     <script>
-        // Fetch navbar and footer as before
-        fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar-placeholder').innerHTML = data;
+        // Create observers at the top level
+        const observeElements = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
         });
 
-        fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
+        function initializeNavbar() {
+            const nav = document.querySelector('.nav');
+            if (nav) {
+                // Check initial scroll position
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                }
 
-            // IntersectionObserver for footer links
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+                // Add scroll event listener
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        nav.classList.add('scrolled');
                     } else {
-                        entry.target.classList.remove('visible');
+                        nav.classList.remove('scrolled');
                     }
                 });
-            }, {
-                threshold: 0.1
-            });
+            }
+        }
 
-            document.querySelectorAll('.footer-link').forEach((link) => {
-                observer.observe(link);
-            });
-        });
-
-        // New code to add 'visible' class to '.pricing-section'
         document.addEventListener('DOMContentLoaded', function() {
-            const pricingSection = document.querySelector('.pricing-section');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        pricingSection.classList.add('visible');
-                        observer.unobserve(pricingSection);
-                    }
+            // Load navbar and initialize it
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                    initializeNavbar();
                 });
-            }, {
-                threshold: 0.1
-            });
-            observer.observe(pricingSection);
+
+            // Load footer
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                    document.querySelectorAll('.footer-link').forEach((link) => {
+                        observeElements.observe(link);
+                    });
+                });
+
+            // Observe pricing section
+            const pricingSection = document.querySelector('.pricing-section');
+            if (pricingSection) {
+                observeElements.observe(pricingSection);
+            }
         });
     </script>
 </body>

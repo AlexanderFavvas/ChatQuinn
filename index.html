@@ -228,92 +228,118 @@
     </main>
     <div id="footer-placeholder"></div>
     <script>
-       document.addEventListener('DOMContentLoaded', function() {
-    // Announcement cards functionality
-    const cards = document.querySelectorAll('.announcement-card');
-    const prevBtn = document.querySelector('.prev-announcement');
-    const nextBtn = document.querySelector('.next-announcement');
-    let currentIndex = 0;
+        // Create observer at the top level
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
 
-    function updateCards(newIndex) {
-        if (newIndex >= cards.length) {
-            newIndex = 0;
-        } else if (newIndex < 0) {
-            newIndex = cards.length - 1;
-        }
-        cards[currentIndex].classList.remove('active');
-        cards[newIndex].classList.add('active');
-        currentIndex = newIndex;
-    }
+        function initializeNavbar() {
+    const nav = document.querySelector('.nav');
+    const triggerSection = document.querySelector('.why-choose-section'); // Change this to whatever section you want
 
-    prevBtn.addEventListener('click', () => {
-        updateCards(currentIndex - 1);
-    });
-
-    nextBtn.addEventListener('click', () => {
-        updateCards(currentIndex + 1);
-    });
-
-    const SLIDE_INTERVAL = 7000;
-    let autoAdvance = setInterval(() => {
-        updateCards(currentIndex + 1);
-    }, SLIDE_INTERVAL);
-
-    const slider = document.querySelector('.announcements-slider');
-    slider.addEventListener('mouseenter', () => {
-        clearInterval(autoAdvance);
-    });
-
-    slider.addEventListener('mouseleave', () => {
-        autoAdvance = setInterval(() => {
-            updateCards(currentIndex + 1);
-        }, SLIDE_INTERVAL);
-    });
-
-    // Intersection Observer for animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+    if (nav && triggerSection) {
+        window.addEventListener('scroll', () => {
+            const triggerPosition = triggerSection.offsetTop;
+            
+            if (window.scrollY >= triggerPosition - 100) { // -100 makes it trigger slightly before hitting the section
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
             }
         });
-    }, {
-        threshold: 0.1
-    });
+    }
+}
 
-    // Observe all sections
-    const announcementsSection = document.querySelector('.announcements-section');
-    const pricingSection = document.querySelector('.pricing-section');
-    const whyChooseSection = document.querySelector('.why-choose-section');
-    const pillContainer = document.querySelector('.pill-container');
 
-    if (whyChooseSection) observer.observe(whyChooseSection);
-    if (announcementsSection) observer.observe(announcementsSection);
-    if (pricingSection) observer.observe(pricingSection);
-    if (pillContainer) observer.observe(pillContainer);
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load navbar
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                    initializeNavbar();
+                });
 
-    // Image container click handler
-    const imageContainer = document.querySelector('.image-container');
-    imageContainer.addEventListener('click', () => {
-        imageContainer.classList.toggle('swapped');
-    });
+            // Load footer
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                    document.querySelectorAll('.footer-link').forEach((link) => {
+                        observer.observe(link);
+                    });
+                });
 
-    // Load navbar and footer
-    fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar-placeholder').innerHTML = data;
-        });
+            // Announcement cards functionality
+            const cards = document.querySelectorAll('.announcement-card');
+            const prevBtn = document.querySelector('.prev-announcement');
+            const nextBtn = document.querySelector('.next-announcement');
+            let currentIndex = 0;
 
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
-            document.querySelectorAll('.footer-link').forEach((link) => {
-                observer.observe(link);
+            if (cards.length > 0 && prevBtn && nextBtn) {
+                function updateCards(newIndex) {
+                    if (newIndex >= cards.length) {
+                        newIndex = 0;
+                    } else if (newIndex < 0) {
+                        newIndex = cards.length - 1;
+                    }
+                    cards[currentIndex].classList.remove('active');
+                    cards[newIndex].classList.add('active');
+                    currentIndex = newIndex;
+                }
+
+                prevBtn.addEventListener('click', () => {
+                    updateCards(currentIndex - 1);
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    updateCards(currentIndex + 1);
+                });
+
+                const SLIDE_INTERVAL = 7000;
+                let autoAdvance = setInterval(() => {
+                    updateCards(currentIndex + 1);
+                }, SLIDE_INTERVAL);
+
+                const slider = document.querySelector('.announcements-slider');
+                if (slider) {
+                    slider.addEventListener('mouseenter', () => {
+                        clearInterval(autoAdvance);
+                    });
+
+                    slider.addEventListener('mouseleave', () => {
+                        autoAdvance = setInterval(() => {
+                            updateCards(currentIndex + 1);
+                        }, SLIDE_INTERVAL);
+                    });
+                }
+            }
+
+            // Observe all sections
+            const sections = [
+                '.announcements-section',
+                '.pricing-section',
+                '.why-choose-section',
+                '.pill-container'
+            ].forEach(selector => {
+                const element = document.querySelector(selector);
+                if (element) observer.observe(element);
             });
+
+            // Image container click handler
+            const imageContainer = document.querySelector('.image-container');
+            if (imageContainer) {
+                imageContainer.addEventListener('click', () => {
+                    imageContainer.classList.toggle('swapped');
+                });
+            }
         });
-});
     </script>
 </body>
 </html>

@@ -1,8 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Mona Sans', sans-serif;
-    font-size: 1rem; 
+    font-size: 1rem;
+    line-height: 1.5;
 }
 .glow-underlay {
     position: absolute;
@@ -66,7 +73,7 @@ body {
     position: relative;
     padding-right: 0;
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.2s;
+    animation-delay: 0.1s;
 }
 
 .hero-title::after {
@@ -92,9 +99,10 @@ body {
     margin-bottom: 3rem;
     line-height: 1.5;
     opacity: 0;
+    font-weight: 500;
     text-align: center;
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.3s;
+    animation-delay: 0.2s;
 }
 .arrow-container {
     width: 20px;
@@ -256,13 +264,7 @@ canvas#gradient-canvas {
     animation-delay: 0.1s;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
+
 
 *::-webkit-scrollbar {
     display: none;
@@ -304,8 +306,7 @@ canvas#gradient-canvas {
 }
 
 .announcement-nav:hover {
-    background: rgba(142, 190, 160, 0.7);
-    border-color: rgba(142, 190, 160, 0.9);
+   
     transform: translateY(-2px);
 }
 .announcements-section {
@@ -319,7 +320,7 @@ canvas#gradient-canvas {
 
 .announcements-section.visible {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.2s;
+    animation-delay: 0.3s;
 }
 
 .announcements-container {
@@ -377,7 +378,7 @@ canvas#gradient-canvas {
     width: 100%;
     display: none;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     border-radius: 12px;
     border: 3px solid rgba(255, 255, 255, 0.1);
     padding: 2rem;
@@ -458,11 +459,12 @@ canvas#gradient-canvas {
 
 .pricing-section.visible .pricing-title {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.2s;
+    animation-delay: 0.1s;
 }
 
 .pricing-subtitle {
     font-size: 1.5rem;
+    font-weight: 500;
     color: #FFFFFF;
     margin-bottom: 4rem;
     opacity: 0;
@@ -471,7 +473,7 @@ canvas#gradient-canvas {
 
 .pricing-section.visible .pricing-subtitle {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.3s;
+    animation-delay: 0.2s;
 }
 
 .pricing-cards {
@@ -498,17 +500,17 @@ canvas#gradient-canvas {
 
 .pricing-section.visible .pricing-card:nth-child(1) {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.3s;
 }
 
 .pricing-section.visible .pricing-card:nth-child(2) {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.5s;
+    animation-delay: 0.4s;
 }
 
 .pricing-section.visible .pricing-card:nth-child(3) {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.6s;
+    animation-delay: 0.5s;
 }
 
 .pricing-card:hover {
@@ -593,7 +595,7 @@ canvas#gradient-canvas {
     min-width: 300px;
     background: rgb(142, 122, 211);
     color: #FFFFFF;
-    border: 3px solid rgb(142, 122, 211);
+    border: 3px solid rgb(255, 255, 255, 0.1);
     border-radius: 16px;
     font-size: 1rem;
     font-weight: 600;
@@ -606,12 +608,14 @@ canvas#gradient-canvas {
     opacity: 0;
     transition: all 0.3s ease;
     animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.3s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(142, 122, 211, 0.5),
+                inset 0 0 15px rgba(255, 255, 255, 0.1);  /* Multi-layered shadow for more definition */
 }
-
 .start-btn:hover {
     background: rgb(125, 108, 186);
-    border-color: rgb(125, 108, 186);
+
 }
 
 .get-started-btn,
@@ -722,7 +726,7 @@ canvas#gradient-canvas {
 
 .why-choose-section.visible .why-choose-title {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.2s;
+    animation-delay: 0.1s;
 }
 
 .why-choose-subtitle {
@@ -730,6 +734,7 @@ canvas#gradient-canvas {
     color: #FFFFFF;
     margin-bottom: 4rem;
     opacity: 0;
+    font-weight: 500;
     max-width: 800px;
     margin: 0 auto;
     transform: translateY(20px);
@@ -737,7 +742,7 @@ canvas#gradient-canvas {
 
 .why-choose-section.visible .why-choose-subtitle {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.3s;
+    animation-delay: 0.1s;
 }
 
 .why-choose-cards {
@@ -760,17 +765,17 @@ canvas#gradient-canvas {
 
 .why-choose-section.visible .why-choose-card:nth-child(1) {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.3s;
 }
 
 .why-choose-section.visible .why-choose-card:nth-child(2) {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.5s;
+    animation-delay: 0.4s;
 }
 
 .why-choose-section.visible .why-choose-card:nth-child(3) {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.6s;
+    animation-delay: 0.5s;
 }
 
 .why-choose-card:hover {
@@ -904,7 +909,7 @@ canvas#gradient-canvas {
 
 .pill-container.visible .pill-title {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.2s;
+    animation-delay: 0.1s;
 }
 
 .pill-subtitle {
@@ -918,7 +923,7 @@ canvas#gradient-canvas {
 
 .pill-container.visible .pill-subtitle {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.3s;
+    animation-delay: 0.2s;
 }
 
 .pill-buttons {
@@ -931,7 +936,7 @@ canvas#gradient-canvas {
 
 .pill-container.visible .pill-buttons {
     animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.4s;
+    animation-delay: 0.3s;
 }
 
 .pill-btn {
