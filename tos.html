@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service</title>
     <link rel="stylesheet" href="tos.css">
-    <link rel="icon" href="QuinnWebsiteLogo.svg" type="image/x-icon">
+    <link rel="icon" href="quinn_logo.png" type="image/x-icon">
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="footer.css">
 </head>
@@ -16,9 +16,9 @@
 
     <main class="tos-content">
         <div class="tos-container">
-            <h1 class="tos-title">Terms of Service</h1>
+            <h1 class="tos-title">TERMS OF SERVICE</h1>
             <div class="tos-effective-date">
-                <p>Effective Date: November 4, 2024
+                <p>EFFECTIVE DATE: NOVEMBER 4, 2024
 
                 </p>
             </div>
@@ -175,7 +175,7 @@
             <div class="tos-section">
                 <h2>26. Contact Information</h2>
                 <p>For any questions or concerns regarding these Terms, please contact us at:</p>
-                <p>alexanderfavvas@gmail.com</p>
+                <p></p>
             </div>
 
             <div class="tos-section">
@@ -190,37 +190,44 @@
     </main>
     <div id="footer-placeholder"></div>
     <script>
-      
-        fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('navbar-placeholder').innerHTML = data;
-        });
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
+      fetch('navbar.html')
+.then(response => response.text())
+.then(data => {
+    document.getElementById('navbar-placeholder').innerHTML = data;
+    
+    // Initialize navbar scroll effect after navbar is loaded
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 0) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+});
 
-                // Set up the IntersectionObserver for footer links
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                        } else {
-                            entry.target.classList.remove('visible');
-                        }
-                    });
-                }, {
-                    threshold: 0.1
-                });
+fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
 
-                document.querySelectorAll('.footer-link').forEach((link) => {
-                    observer.observe(link);
-                });
+        // Set up the IntersectionObserver for footer links
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
             });
+        }, {
+            threshold: 0.1
+        });
 
-        
-        
+        document.querySelectorAll('.footer-link').forEach((link) => {
+            observer.observe(link);
+        });
+    });
     </script>
 </body>
 </html>

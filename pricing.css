@@ -279,25 +279,7 @@ button:not(.coming-soon):hover .arrow-container {
     }
 }
 
-@media (max-width: 768px) {
-    .pricing-cards {
-        grid-template-columns: 1fr;
-        padding: 1rem;
-    }
 
-    .pricing-title {
-        font-size: 2.5rem;
-    }
-
-    .pricing-subtitle {
-        font-size: 1.25rem;
-    }
-
-    .main-content {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-}
 
 *::-webkit-scrollbar {
     display: none;

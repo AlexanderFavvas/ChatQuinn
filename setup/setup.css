@@ -243,36 +243,3 @@ input:checked + .slider:before {
         transform: rotate(360deg);
     }
 }
-
-/* Media Queries */
-@media (max-width: 768px) {
-    .question {
-        font-size: 1.5rem;
-    }
-
-    .question-container {
-        padding: 1.5rem;
-    }
-
-    .button {
-        padding: 0.8rem 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .setup-container {
-        padding: 1rem;
-    }
-
-    .question-container {
-        padding: 1.2rem;
-    }
-
-    .button-container {
-        flex-direction: column;
-    }
-
-    .button {
-        width: 100%;
-    }
-}
