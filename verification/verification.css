@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #0b0b0e;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: 'Mona Sans', sans-serif;
+    font-size: 1rem;
+}
+
+.background-frame {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0;
+    animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.1s;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.15s;
+}
+
+.verification-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    border-radius: 12px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.2s;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgb(142, 122, 211);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.25s;
+}
+
+.custom-button {
+    position: relative;
+    padding: 0.75rem 1.5rem;
+    min-width: 140px;
+    background: rgb(142, 122, 211);
+    color: #FFFFFF;
+    border: 2px solid rgb(142, 122, 211);
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.3s;
+}
+
+.arrow-container {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+    position: relative;
+    top: 2px;
+}
+
+.custom-button:hover {
+    background: rgb(125, 108, 186);
+    border-color: rgb(125, 108, 186);
+}
+
+.custom-button:disabled {
+    background: rgba(71, 71, 89, 0.2);
+    border-color: rgba(71, 71, 89, 0.2);
+    color: rgba(255, 255, 255, 0.3);
+    cursor: not-allowed;
+}
+
+.arrow-head {
+    fill: currentColor;
+}
+
+.arrow-stem {
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    transform-origin: 11px 50%;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.custom-button:hover .arrow-stem {
+    transform: scaleX(1);
+}
+
+.custom-button:hover .arrow-container {
+    transform: translateX(5px);
+}
+
+#verificationCode {
+    margin: 2rem 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #474759;
+    opacity: 0;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.35s;
+}
+
+.error {
+    color: #ef4444;
+    margin-top: 1rem;
+    opacity: 0;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.4s;
+}
+
+.spinner {
+    display: none;
+    margin: 2rem auto;
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(142, 190, 160, 0.1);
+    border-top: 4px solid rgb(142, 122, 211);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#confirmButton {
+    display: none;
+    margin-top: 2rem;
+    opacity: 0;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.45s;
+}
+
+.qr-code {
+    width: 200px;
+    height: 240px;
+    border-radius: 24px;
+    margin: 2rem auto 1rem;
+    object-fit: cover;
+    object-position: top;
+    opacity: 0;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.5s;
+}
+
+.instructions {
+    color: #FFFFFF;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    opacity: 0;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.55s;
+}
+
+#getCodeBtn {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+    opacity: 0;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.6s;
+}
+
+@keyframes fadeInUpEffect {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
