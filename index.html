@@ -239,33 +239,24 @@
             threshold: 0.1
         });
 
-        function initializeNavbar() {
-    const nav = document.querySelector('.nav');
-    const triggerSection = document.querySelector('.why-choose-section'); // Change this to whatever section you want
-
-    if (nav && triggerSection) {
-        window.addEventListener('scroll', () => {
-            const triggerPosition = triggerSection.offsetTop;
-            
-            if (window.scrollY >= triggerPosition - 100) { // -100 makes it trigger slightly before hitting the section
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-    }
-}
-
-
         document.addEventListener('DOMContentLoaded', function() {
-            // Load navbar
+            // Load navbar with new scroll behavior
             fetch('navbar.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('navbar-placeholder').innerHTML = data;
-                    initializeNavbar();
+                    // Initialize navbar scroll effect after navbar is loaded
+                    const nav = document.querySelector('.nav');
+                    window.addEventListener('scroll', () => {
+                        if (window.scrollY > 0) {
+                            nav.classList.add('scrolled');
+                        } else {
+                            nav.classList.remove('scrolled');
+                        }
+                    });
                 });
 
+            // Rest of your existing JavaScript remains the same
             // Load footer
             fetch('footer.html')
                 .then(response => response.text())
@@ -276,7 +267,7 @@
                     });
                 });
 
-            // Announcement cards functionality
+            // Your existing announcement cards functionality
             const cards = document.querySelectorAll('.announcement-card');
             const prevBtn = document.querySelector('.prev-announcement');
             const nextBtn = document.querySelector('.next-announcement');
