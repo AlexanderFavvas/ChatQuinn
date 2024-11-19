@@ -1008,3 +1008,425 @@ canvas#gradient-canvas {
     transform: translateX(5px);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, 
+body {
+    font-family: 'Mona Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+/* Can also add this to prevent overscroll bounce in some browsers */
+html {
+    overscroll-behavior: none;
+}
+
+.glow-underlay {
+    position: absolute;
+    width: 1920px;
+    height: 2700px;
+    left: 50%;
+    top: -800px;
+    transform: translateX(-50%);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    animation: glowFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.45s;
+}
+
+.glow-image {
+    width: 1920px;
+    height: 2700px;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;  
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 4rem;
+    position: relative;
+    min-height: 80vh;
+}
+
+.hero-background-image {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    max-width: 800px;
+    padding: 2rem 2rem; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 72px;
+    margin-bottom: 1rem;
+    margin-top: 10rem;
+    line-height: 1.2;
+    opacity: 0;
+    text-align: center;
+    display: inline-block;
+    white-space: nowrap;
+    position: relative;
+    padding-right: 0;
+    animation: fadeInUpEffect 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.1s;
+}
+
+.hero-title::after {
+    content: "BETA";
+    position: absolute;
+    top: 0;
+    right: -60px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgb(142, 122, 211);
+    background: #ffffff;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    opacity: 0;
+    letter-spacing: 0.03rem;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.15s;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    margin-bottom: 3rem;
+    line-height: 1.5;
+    opacity: 0;
+    font-weight: 500;
+    text-align: center;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.2s;
+}
+
+/* Rest of your original CSS above media queries remains the same */
+
+@media (max-width: 1400px) {
+    .hero-section {
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    .announcements-container,
+    .why-choose-container {
+        max-width: 100%;
+        padding: 0 2rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 60px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+
+    .image-container {
+        width: min(900px, 90vw);
+    }
+
+    .why-choose-cards,
+    .pricing-cards {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .glow-underlay {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 48px;
+        margin-top: 8rem;
+    }
+
+    .why-choose-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    .pricing-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    .why-choose-title,
+    .pricing-title,
+    .announcements-title {
+        font-size: 2.5rem;
+    }
+
+    .why-choose-subtitle,
+    .pricing-subtitle {
+        font-size: 1.25rem;
+    }
+
+    .announcements-section {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 1rem;
+    }
+
+    .hero-title {
+        font-size: 36px;
+        margin-top: 6rem;
+        white-space: normal;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .why-choose-cards,
+    .pricing-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .why-choose-card,
+    .pricing-card {
+        margin-bottom: 1rem;
+    }
+
+    .start-btn,
+    .get-started-btn,
+    .contact-sales-btn {
+        min-width: 250px;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .announcements-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+        margin-bottom: 2rem;
+    }
+
+    .announcement-card {
+        padding: 1.5rem;
+    }
+
+    .context-wrapper {
+        padding: 2rem 1rem;
+    }
+
+    .pill-container {
+        margin: 4rem 1rem;
+        padding: 1.5rem;
+        max-width: calc(100% - 2rem);
+        box-sizing: border-box;
+    }
+
+    .pill-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .pill-btn {
+        width: 100%;
+    }
+
+    .pricing-section,
+    .why-choose-section {
+        padding: 2rem 1rem;
+    }
+
+    .image-container {
+        margin: 2rem auto;
+    }
+
+    .hero-title::after {
+        position: static;
+        display: inline-block;
+        margin-left: 0.5rem;
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 32px;
+        margin-top: 4rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.875rem;
+    }
+
+    .why-choose-title,
+    .pricing-title,
+    .announcements-title {
+        font-size: 2rem;
+    }
+
+    .compare-tag {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .announcement-badge {
+        font-size: 0.75rem;
+    }
+
+    .announcement-content h3 {
+        font-size: 1.25rem;
+    }
+
+    .announcement-content {
+        padding: 1rem;
+    }
+
+    .price {
+        font-size: 2rem;
+    }
+
+    .original-price {
+        font-size: 1.25rem;
+        position: static;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .pill-container {
+        margin: 3rem 1rem;
+        padding: 1.25rem;
+    }
+
+    .pricing-card,
+    .why-choose-card {
+        padding: 1.25rem;
+    }
+
+    .card-features li {
+        font-size: 0.875rem;
+    }
+
+    .announcements-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .announcement-nav {
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .start-btn,
+    .get-started-btn,
+    .contact-sales-btn {
+        min-width: 200px;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.875rem;
+    }
+
+    .pill-btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Animation keyframes remain the same */
+@keyframes fadeInScaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUpEffect {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glowFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes glowFadeInUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, calc(-50% + 40px));
+    }
+    to {
+        opacity: 0.2;
+        transform: translate(-50%, -50%);
+    }
+}
