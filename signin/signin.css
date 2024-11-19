@@ -9,7 +9,7 @@
 
 body {
     font-family: 'Mona Sans', sans-serif;
-    font-size: 1rem; /* Default font size */
+    font-size: 1rem;
     line-height: 1.5;
     min-height: 100vh;
     display: flex;
@@ -50,7 +50,7 @@ body {
     color: rgb(142, 122, 211);
     font-size: 3rem;
     margin-bottom: 1.5rem;
-    font-weight: 800; /* Bold for titles */
+    font-weight: 800;
     text-align: center;
     background: rgb(142, 122, 211);
     -webkit-background-clip: text;
@@ -67,18 +67,20 @@ body {
 .signin-text {
     color: #FFFFFF;
     text-align: center;
-    font-size: 1rem; /* Default font size */
+    font-size: 1rem;
 }
 
 .google-button {
-    width: 80%; /* Reduced from 100% to 80% for narrower appearance */
+    width: 280px;
+    max-width: 90%;
+    min-width: 200px;
     padding: 1rem;
     background: rgb(142, 122, 211);
     border: 3px solid transparent;
     border-radius: 16px;
     color: white;
-    font-size: 1rem; /* Default font size */
-    font-weight: 600; /* Semi-bold for buttons */
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -137,7 +139,7 @@ body {
     color: white;
     padding: 12px 24px;
     border-radius: 12px;
-    font-size: 0.9rem; /* Smaller font size */
+    font-size: 0.9rem;
     opacity: 0;
     transition: all 0.3s ease;
     pointer-events: none;
@@ -151,6 +153,16 @@ body {
     transform: translateX(-50%) translateY(0);
 }
 
+.loading .google-button {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.loading .google-icon {
+    animation: spin 1s linear infinite;
+}
+
+/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -167,16 +179,173 @@ body {
     100% { background-position: -200% 50%; }
 }
 
-.loading .google-button {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-.loading .google-icon {
-    animation: spin 1s linear infinite;
-}
-
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+    .signup-card {
+        padding: 2.25rem;
+        max-width: 400px;
+    }
+
+    .title {
+        font-size: 2.75rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .signup-card {
+        padding: 2rem;
+        max-width: 380px;
+    }
+
+    .title {
+        font-size: 2.5rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .signin-content {
+        gap: 1.25rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .signup-card {
+        padding: 1.75rem;
+        max-width: 340px;
+    }
+
+    .title {
+        font-size: 2.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .signin-text {
+        font-size: 0.95rem;
+    }
+
+    .google-button {
+        width: 260px;
+        padding: 0.9rem;
+        font-size: 0.95rem;
+    }
+
+    .google-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    body {
+        padding: 0.875rem;
+    }
+
+    .signup-card {
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .signin-text {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+    }
+
+    .google-button {
+        width: 240px;
+        padding: 0.85rem;
+        font-size: 0.9rem;
+    }
+
+    .google-button-content {
+        gap: 0.6rem;
+    }
+
+    .validation-message {
+        font-size: 0.85rem;
+        padding: 10px 20px;
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .signup-card {
+        padding: 1.25rem;
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .signin-text {
+        font-size: 0.85rem;
+    }
+
+    .google-button {
+        width: 220px;
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .google-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    body {
+        padding: 1rem;
+    }
+
+    .signup-card {
+        padding: 1.25rem;
+        max-width: 340px;
+    }
+
+    .title {
+        font-size: 2rem;
+        margin-bottom: 0.875rem;
+    }
+
+    .signin-content {
+        gap: 1rem;
+    }
+
+    .google-button {
+        padding: 0.75rem;
+    }
+}
+
+@media screen and (min-height: 1000px) {
+    .signup-card {
+        transform: scale(1.1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .signup-card {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .google-button::before {
+        animation: none;
+    }
+
+    .loading .google-icon {
+        animation: none;
+    }
 }

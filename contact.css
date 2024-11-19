@@ -301,3 +301,123 @@ textarea::-webkit-scrollbar-thumb {
         opacity: 1;
     }
 }
+/* Tablet devices */
+@media screen and (max-width: 1024px) {
+    .main-content {
+        padding: 100px 1.5rem 3rem;
+    }
+
+    .contact-container {
+        gap: 2rem;
+        padding-top: 2rem;
+    }
+
+    .contact-info, .contact-form {
+        padding: 2.5rem;
+    }
+
+    .contact-title {
+        font-size: 2.5rem;
+    }
+
+    .contact-subtitle {
+        font-size: 1.25rem;
+    }
+}
+
+/* Mobile devices */
+@media screen and (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .contact-info {
+        padding: 2rem 1rem;
+    }
+
+    .contact-form {
+        padding: 2rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-group.half {
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-subtitle {
+        font-size: 1.125rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .send-btn {
+        min-width: 100%;
+    }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+    .main-content {
+        padding: 80px 1rem 2rem;
+    }
+
+    .contact-info, .contact-form {
+        padding: 1.5rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+        padding: 1rem;
+        font-size: 0.875rem;
+    }
+
+    .contact-row {
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .icon-box {
+        padding: 0.5rem;
+    }
+
+    .icon {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* For iPhone SE and other very small devices */
+@media screen and (max-width: 375px) {
+    .contact-title {
+        font-size: 1.75rem;
+    }
+
+    .contact-subtitle {
+        font-size: 1rem;
+    }
+
+    .contact-info, .contact-form {
+        padding: 1.25rem;
+    }
+}
+
+/* For handling height on smaller devices */
+@media screen and (max-height: 700px) {
+    .main-content {
+        padding-top: 60px;
+    }
+    
+    .contact-container {
+        padding-top: 1rem;
+    }
+}

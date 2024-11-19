@@ -181,3 +181,146 @@ body {
 .signin-btn:hover .arrow-container {
     transform: translateX(5px);
 }
+/* Large screens (laptops/desktops) */
+@media screen and (max-width: 1200px) {
+    .nav-content {
+        width: 100%;
+        padding: 0 1.5rem;
+    }
+    
+    .nav-right {
+        gap: 2rem;
+    }
+}
+
+/* Tablet devices */
+@media screen and (max-width: 768px) {
+    .nav-content {
+        padding: 0 1rem;
+    }
+
+    .nav-left {
+        margin-left: 0;
+    }
+
+    .logo {
+        font-size: 1.75rem;
+    }
+
+    .logo-image {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .nav-right {
+        gap: 1.5rem;
+    }
+
+    .contact-btn,
+    .pricing-btn {
+        padding: 0.5rem;
+    }
+
+    .signin-btn {
+        min-width: 120px;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Mobile devices */
+@media screen and (max-width: 640px) {
+    .nav {
+        padding: 0.75rem 0;
+    }
+
+    .nav-content {
+        gap: 1rem;
+    }
+
+    .nav-right {
+        gap: 0.75rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .logo-image {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+
+    .contact-btn,
+    .pricing-btn {
+        font-size: 0.875rem;
+        padding: 0.4rem;
+    }
+
+    .signin-btn {
+        min-width: auto;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .arrow-container {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+    .nav-content {
+        padding: 0 0.75rem;
+    }
+
+    .logo-group {
+        gap: 0.5rem;
+    }
+
+    .nav-right {
+        gap: 0.5rem;
+    }
+
+    .contact-btn,
+    .pricing-btn {
+        padding: 0.3rem;
+    }
+
+    .signin-btn {
+        padding: 0.4rem 0.75rem;
+    }
+}
+
+/* For iPhone SE and other very small devices */
+@media screen and (max-width: 375px) {
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .logo-image {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .contact-btn,
+    .pricing-btn {
+        font-size: 0.8rem;
+    }
+
+    .signin-btn {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.6rem;
+    }
+}
+
+/* For landscape mode */
+@media screen and (max-height: 500px) {
+    .nav {
+        padding: 0.5rem 0;
+    }
+    
+    .nav.scrolled {
+        padding: 0.5rem 0;
+    }
+}

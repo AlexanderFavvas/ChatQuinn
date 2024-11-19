@@ -284,3 +284,282 @@ button:not(.coming-soon):hover .arrow-container {
 *::-webkit-scrollbar {
     display: none;
 }
+/* Base Styles */
+.main-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 150px 2rem 4rem;
+    min-height: 100vh;
+}
+
+.pricing-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pricing-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pricing-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.pricing-subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    margin-bottom: 4rem;
+    font-weight: 400;
+}
+
+.pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pricing-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 2.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(142, 122, 211, 0.5);
+}
+
+.card-header {
+    margin-bottom: 2rem;
+}
+
+.card-header h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.tier-description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.price span {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-size: 1.5rem !important;
+}
+
+.card-features {
+    flex-grow: 1;
+    margin-bottom: 2rem;
+}
+
+.card-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card-features li {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1rem;
+    padding-left: 1.75rem;
+    position: relative;
+}
+
+.card-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: rgb(142, 122, 211);
+    font-weight: bold;
+}
+
+.get-started-btn, .contact-sales-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.get-started-btn {
+    background: rgb(142, 122, 211);
+    color: #fff;
+    border: 3px solid transparent;
+}
+
+.get-started-btn:hover {
+    background: rgb(125, 108, 186);
+}
+
+.contact-sales-btn {
+    background: transparent;
+    color: #fff;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-sales-btn:hover {
+    border-color: rgb(142, 122, 211);
+}
+
+.coming-soon {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.coming-soon:hover {
+    background: rgb(142, 122, 211);
+    transform: none;
+}
+
+/* Arrow animations */
+.arrow-container {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.arrow-head {
+    fill: currentColor;
+}
+
+.arrow-stem {
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    transform-origin: 11px 50%;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.get-started-btn:hover .arrow-stem,
+.contact-sales-btn:hover .arrow-stem {
+    transform: scaleX(1);
+}
+
+.get-started-btn:hover .arrow-container,
+.contact-sales-btn:hover .arrow-container {
+    transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .pricing-cards {
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .pricing-card {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .pricing-title {
+        font-size: 3rem;
+    }
+
+    .pricing-subtitle {
+        font-size: 1.25rem;
+        margin-bottom: 3rem;
+    }
+
+    .pricing-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .pricing-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 120px 1rem 3rem;
+    }
+
+    .pricing-cards {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .pricing-card {
+        width: 100%;
+    }
+
+    .pricing-card:last-child {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-title {
+        font-size: 2.5rem;
+    }
+
+    .pricing-subtitle {
+        font-size: 1.125rem;
+        margin-bottom: 2rem;
+    }
+
+    .pricing-card {
+        padding: 1.5rem;
+    }
+
+    .card-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .price {
+        font-size: 2rem;
+    }
+
+    .get-started-btn, .contact-sales-btn {
+        padding: 0.875rem;
+    }
+}
