@@ -33,66 +33,64 @@ html {
 }
 
 .tos-content {
-    padding: 120px 2rem 4rem;
+    padding: 100px 2rem 4rem;
     position: relative;
     z-index: 1;
     max-width: 900px;
     margin: 0 auto;
-}
-
-.tos-container {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 3px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 3rem;
     opacity: 0;
-    transform: translateY(25px);
-    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transform: translateY(20px);
+    animation: fadeInUpEffect 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     animation-delay: 0.1s;
 }
 
+/* Remove .tos-container styles as we're not using it anymore */
+
 .tos-title {
     color: #ffffff;
-    font-size: 3rem;
+    font-size: 2.75rem;
     font-weight: 800;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .tos-section {
-    margin-bottom: 2.5rem;
+    margin-bottom: 3.5rem;
 }
 
 .tos-section h2 {
     color: #FFFFFF;
-    font-size: 1.5rem;
+    font-size: 1.625rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .tos-section p {
-    color: #FFFFFF;
-    font-size: 1rem;
-    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.0625rem;
+    line-height: 1.7;
     margin-bottom: 1rem;
     font-weight: 400;
-    opacity: 0.8;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .tos-effective-date {
-    color: #FFFFFF;
-    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.0625rem;
     font-weight: 500;
-    margin-bottom: 2rem;
+    margin-bottom: 3.5rem;
     text-align: center;
-    opacity: 0.8;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes fadeInUpEffect {
     from {
         opacity: 0;
-        transform: translateY(25px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -123,10 +121,6 @@ html {
         padding: 100px 1.5rem 3rem;
     }
 
-    .tos-container {
-        padding: 2.5rem;
-    }
-
     .tos-title {
         font-size: 2.5rem;
         margin-bottom: 30px;
@@ -143,18 +137,13 @@ html {
         padding: 90px 1.25rem 2.5rem;
     }
 
-    .tos-container {
-        padding: 2rem;
-        border-width: 2px;
-    }
-
     .tos-title {
         font-size: 2.25rem;
-        margin-bottom: 25px;
+        margin-bottom: 2rem;
     }
 
     .tos-section {
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
     }
 
     .tos-effective-date {
@@ -166,10 +155,6 @@ html {
 @media screen and (max-width: 576px) {
     .tos-content {
         padding: 80px 1rem 2rem;
-    }
-
-    .tos-container {
-        padding: 1.5rem;
     }
 
     .tos-title {
@@ -190,11 +175,6 @@ html {
 @media screen and (max-width: 375px) {
     .tos-content {
         padding: 70px 0.75rem 1.5rem;
-    }
-
-    .tos-container {
-        padding: 1.25rem;
-        border-width: 1px;
     }
 
     .tos-title {
@@ -220,10 +200,5 @@ html {
 @media screen and (max-height: 600px) {
     .tos-content {
         padding-top: 70px;
-    }
-
-    .tos-container {
-        padding-top: 1.5rem;
-        padding-bottom: 1.5rem;
     }
 }

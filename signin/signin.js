@@ -2,7 +2,7 @@ document.getElementById('google-signin-button').addEventListener('click', functi
     // Define OAuth 2.0 parameters
     const oauthParams = {
         client_id: '413388646063-vo0ilu59dq40lm45l8b3h2494sds151q.apps.googleusercontent.com',
-        redirect_uri: 'https://staging.ddw9r8stoik0t.amplifyapp.com/callback.html',
+        redirect_uri: 'https://chatquinn.com/callback.html',
         response_type: 'code',
         scope: 'https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.email',
         access_type: 'offline',

@@ -115,7 +115,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
         if (code) {
-            window.location.href = `https://us-central1-movie-thing-439716.cloudfunctions.net/function-1?code=${encodeURIComponent(code)}`;
+            window.location.href = `https://chatquinn.com/callback.html/?code=${encodeURIComponent(code)}`;
         } else {
             document.getElementById('status').textContent = 'No authorization code received';
             document.getElementById('status').classList.add('error');
