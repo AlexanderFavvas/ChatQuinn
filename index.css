@@ -166,7 +166,7 @@ html {
 
 .context-wrapper {
     background-color: #1A1A1D;
-    padding: 2rem 0;
+    padding: 8rem 0;  /* Updated */
 }
 
 .noise {
@@ -196,7 +196,7 @@ html {
     position: relative;
     z-index: 2;
    
-    margin-bottom: 4rem;
+   
 }
 
 .image-wrapper {
@@ -318,9 +318,7 @@ canvas#gradient-canvas {
     transform: translateY(-2px);
 }
 .announcements-section {
-    padding: 2rem 0;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    padding: 8rem 0;  /* Updated */
     position: relative;
     z-index: 1;
     opacity: 0;
@@ -440,12 +438,10 @@ canvas#gradient-canvas {
     transform: translateX(5px);
 }
 .pricing-section {
-    padding-top: 4rem;
+    padding: 8rem 0;  /* Updated */
     text-align: center;
     max-width: 1200px;
     margin: 0 auto;
-    margin-top: 3rem;
-    margin-bottom: 5rem;
     opacity: 0;
     transform: translateY(40px);
 }
@@ -489,7 +485,7 @@ canvas#gradient-canvas {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     padding: 2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 0rem;
 }
 
 .pricing-card {
@@ -503,7 +499,7 @@ canvas#gradient-canvas {
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
-    margin-bottom: 2rem;
+    
 }
 
 .pricing-section.visible .pricing-card:nth-child(1) {
@@ -711,7 +707,6 @@ canvas#gradient-canvas {
     opacity: 0;
     transform: translateY(40px);
 }
-
 .why-choose-section.visible {
     opacity: 1;
     transform: translateY(0);
@@ -743,7 +738,7 @@ canvas#gradient-canvas {
 .why-choose-subtitle {
     font-size: 1.5rem;
     color: #FFFFFF;
-    margin-bottom: 4rem;
+   
     opacity: 0;
     font-weight: 500;
     max-width: 800px;
@@ -770,6 +765,7 @@ canvas#gradient-canvas {
     border: 3px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 2rem;
+    margin-bottom: 0;
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
@@ -882,131 +878,6 @@ canvas#gradient-canvas {
     }
 }
 
-.pill-container {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 3px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 2rem;
-    max-width: 600px;
-    margin: 8rem auto;  /* Increased margin */
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: scale(0.8);  /* Changed to scale for fadeInScaleUp */
-}
-
-.pill-container.visible {
-    animation: fadeInScaleUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.1s;
-}
-
-.pill-content {
-    text-align: center;
-}
-
-
-.pill-title {
-    color: #FFFFFF;
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.pill-container.visible .pill-title {
-    animation: fadeInScaleUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.15s;
-}
-
-.pill-subtitle {
-    color: #FFFFFF;
-    font-size: 1rem;
-    opacity: 0;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-    transform: translateY(20px);
-}
-
-.pill-container.visible .pill-subtitle {
-    animation: fadeInScaleUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.2s;
-}
-
-.pill-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.pill-container.visible .pill-buttons {
-    animation: fadeInScaleUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.25s;
-}
-
-.pill-btn {
-    position: relative;
-    padding: 0.75rem 1.5rem;
-    min-width: 140px;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 16px;
-    transition: all 0.3s ease;
-}
-
-.pill-btn.primary {
-    background: rgb(142, 122, 211);
-    color: #FFFFFF;
-    border: 2px solid rgb(142, 122, 211);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.pill-btn.primary:hover {
-    background: rgb(125, 108, 186);
-    border-color: rgb(125, 108, 186);
-}
-
-.pill-btn.secondary {
-    background: transparent;
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-}
-
-
-
-/* Arrow effects */
-.pill-btn .arrow-container {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
-}
-
-.pill-btn .arrow-head {
-    fill: currentColor;
-}
-
-.pill-btn .arrow-stem {
-    stroke: currentColor;
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    transform-origin: 11px 50%;
-    transform: scaleX(0);
-    transition: transform 0.2s ease;
-}
-
-.pill-btn.primary:hover .arrow-stem {
-    transform: scaleX(1);
-}
-
-.pill-btn.primary:hover .arrow-container {
-    transform: translateX(5px);
-}
 
 @import url('https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;600;700;800&display=swap');
 
@@ -1145,6 +1016,114 @@ html {
 }
 
 /* Rest of your original CSS above media queries remains the same */
+.pill-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 8rem auto;  /* Updated */
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(40px);
+}
+.pill-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.pill-content {
+    text-align: center;
+}
+
+.pill-title {
+    color: #FFFFFF;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    opacity: 1; /* Changed from 0 */
+    transform: none; /* Changed from translateY(20px) */
+}
+
+.pill-subtitle {
+    color: #FFFFFF;
+    font-size: 1rem;
+    opacity: 1; /* Changed from 0 */
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    transform: none; /* Changed from translateY(20px) */
+}
+
+.pill-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    opacity: 1; /* Changed from 0 */
+    transform: none; /* Changed from translateY(20px) */
+}
+
+.pill-btn {
+    position: relative;
+    padding: 0.75rem 1.5rem;
+    min-width: 140px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.pill-btn.primary {
+    background: rgb(142, 122, 211);
+    color: #FFFFFF;
+    border: 2px solid rgb(142, 122, 211);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pill-btn.primary:hover {
+    background: rgb(125, 108, 186);
+    border-color: rgb(125, 108, 186);
+}
+
+.pill-btn.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Arrow effects */
+.pill-btn .arrow-container {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.pill-btn .arrow-head {
+    fill: currentColor;
+}
+
+.pill-btn .arrow-stem {
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    transform-origin: 11px 50%;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
+.pill-btn.primary:hover .arrow-stem {
+    transform: scaleX(1);
+}
+
+.pill-btn.primary:hover .arrow-container {
+    transform: translateX(5px);
+}
+
 
 @media (max-width: 1400px) {
     .hero-section {
@@ -1429,4 +1408,19 @@ html {
         opacity: 0.2;
         transform: translate(-50%, -50%);
     }
+}
+.why-choose-section .context-wrapper {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 8rem 0;
+}
+
+/* Update the container inside to maintain proper width */
+.why-choose-section .why-choose-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
