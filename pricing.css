@@ -127,6 +127,11 @@ body {
     transition-delay: 0.5s;
 }
 
+.pricing-card:nth-child(1):hover,
+.pricing-card:nth-child(3):hover {
+    border-color: rgb(255, 255, 255);
+}
+
 .card-header {
     text-align: left;
     margin-bottom: 2.5rem;

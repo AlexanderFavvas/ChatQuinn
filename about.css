@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;600;700;800&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -7,7 +8,7 @@
 
 body {
     min-height: 100vh;
-    background-color:  #0b0b0e;
+    background-color: #0b0b0e;
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
@@ -24,56 +25,44 @@ body {
     border: none;
     pointer-events: none;
     z-index: -1;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
 }
 
 .about-content {
-    padding-top: 10rem;
-    padding-bottom: 50px;
+    position: relative;
+    z-index: 1;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 150px 2rem 4rem;
 }
 
-/* Title */
 .title {
-    color: rgb(142, 122, 211);
-    font-size: 4rem;
-    text-align: center;
-    margin-bottom: 7rem;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 4rem;
     opacity: 0;
-    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    animation-delay: 0.2s;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation-delay: 0.1s;
+    text-align: center;
 }
 
-/* First Row */
 .about-row {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 4rem;
     margin-bottom: 6rem;
-}
-
-.about-row .image-container,
-.about-row .text-container {
     opacity: 0;
-    animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-/* First row animations */
-.about-row:first-child .image-container {
-    animation-delay: 1s;
+.about-row:nth-child(2) {
+    animation-delay: 0.2s;
 }
 
-.about-row:first-child .text-container {
-    animation-delay: 1.2s;
-}
-
-/* Second row animations */
-.about-row:nth-child(2) .image-container {
-    animation-delay: 0.4s;
-}
-
-.about-row:nth-child(2) .text-container {
-    animation-delay: 0.6s;
+.about-row:nth-child(3) {
+    animation-delay: 0.3s;
 }
 
 .about-row.reverse {
@@ -82,13 +71,19 @@ body {
 
 .image-container {
     flex: 1;
-    min-height: 300px;
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
     border: 3px solid rgba(255, 255, 255, 0.1);
     padding: 2rem;
+    transition: all 0.3s ease;
+    min-height: 400px;
     overflow: hidden;
-    position: relative;
+}
+
+.image-container:hover {
+    border-color: rgb(255, 255, 255,);
+    transform: translateY(-2.5px);
 }
 
 .image-container img {
@@ -99,32 +94,30 @@ body {
     transition: transform 0.3s ease;
 }
 
-.image-container img:hover {
-    transform: scale(1.05);
-}
-
 .text-container {
     flex: 1;
-    color: #FFFFFF;
+    padding: 2rem;
 }
 
 .text-container h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    font-weight: 800;
     color: rgb(142, 122, 211);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
 }
 
 .text-container p {
     color: #FFFFFF;
-    font-size: 1.1rem;
+    font-size: 1.125rem;
     line-height: 1.6;
+    opacity: 0.9;
 }
 
-/* Animation */
-@keyframes fadeIn {
+@keyframes fadeInUpEffect {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(25px);
     }
     to {
         opacity: 1;
@@ -132,10 +125,68 @@ body {
     }
 }
 
-
-
-/* Reverse row styling */
-.about-row.reverse-row {
-    flex-direction: row-reverse;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
+/* Media Queries */
+@media screen and (max-width: 1024px) {
+    .about-content {
+        padding: 100px 1.5rem 3rem;
+    }
+
+    .about-row {
+        gap: 2rem;
+    }
+
+    .text-container h2 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .about-row {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .about-row.reverse {
+        flex-direction: column;
+    }
+
+    .image-container {
+        min-height: 300px;
+    }
+
+    .text-container {
+        padding: 1rem 0;
+    }
+
+    .title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-content {
+        padding-top: 80px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .text-container h2 {
+        font-size: 1.75rem;
+    }
+
+    .text-container p {
+        font-size: 1rem;
+    }
+}
