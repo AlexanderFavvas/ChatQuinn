@@ -1,4 +1,3 @@
-<!-- quinn-pricing.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,12 +13,13 @@
     <iframe src="background.html" class="background-frame" title="background"></iframe>
     <div id="navbar-placeholder"></div>
     <main class="main-content">
+        <!-- Pricing Section -->
         <div class="pricing-section">
             <h1 class="pricing-title">Pricing</h1>
             <h2 class="pricing-subtitle">Explore Quinn's plans</h2>
             
             <div class="pricing-cards">
-                <!-- Free Plan -->
+                <!-- Basic Plan -->
                 <div class="pricing-card">
                     <div class="card-header">
                         <h3>Basic</h3>
@@ -37,8 +37,8 @@
                             <li>Send emails in chat</li>
                         </ul>
                     </div>
-                    <button class="get-started-btn" onclick="window.location.href='beta/beta.html'">
-                        <span>Get started</span>
+                    <button class="get-started-btn coming-soon">
+                        <span>Coming soon</span>
                         <svg class="arrow-container" viewBox="0 0 16 16" aria-hidden="true">
                             <path class="arrow-head" d="M7.28033 3.21967C6.98744 2.92678 6.51256 2.92678 6.21967 3.21967C5.92678 3.51256 5.92678 3.98744 6.21967 4.28033L7.28033 3.21967ZM11 8L11.5303 8.53033C11.8232 8.23744 11.8232 7.76256 11.5303 7.46967L11 8ZM6.21967 11.7197C5.92678 12.0126 5.92678 12.4874 6.21967 12.7803C6.51256 13.0732 6.98744 13.0732 7.28033 12.7803L6.21967 11.7197ZM6.21967 4.28033L10.4697 8.53033L11.5303 7.46967L7.28033 3.21967L6.21967 4.28033ZM10.4697 7.46967L6.21967 11.7197L7.28033 12.7803L11.5303 8.53033L10.4697 7.46967Z"/>
                             <path class="arrow-stem" d="M1.75 8H11"/>
@@ -46,7 +46,7 @@
                     </button>
                 </div>
 
-     
+                <!-- Pro Plan -->
                 <div class="pricing-card">
                     <div class="card-header">
                         <h3>Pro</h3>
@@ -59,22 +59,20 @@
                     </div>
                     <div class="card-features">
                         <ul>
-                            <li>Everything in Free</li>
+                            <li>Everything in Basic</li>
                             <li>Important email notifications</li>
                             <li>Reply to received emails</li>
                             <li>Smarter, more capable AI</li>
-                            
                         </ul>
                     </div>
-                    <button class="get-started-btn coming-soon">Coming soon
+                    <button class="get-started-btn coming-soon">
+                        Coming soon
                         <svg class="arrow-container" viewBox="0 0 16 16" aria-hidden="true">
                             <path class="arrow-head" d="M7.28033 3.21967C6.98744 2.92678 6.51256 2.92678 6.21967 3.21967C5.92678 3.51256 5.92678 3.98744 6.21967 4.28033L7.28033 3.21967ZM11 8L11.5303 8.53033C11.8232 8.23744 11.8232 7.76256 11.5303 7.46967L11 8ZM6.21967 11.7197C5.92678 12.0126 5.92678 12.4874 6.21967 12.7803C6.51256 13.0732 6.98744 13.0732 7.28033 12.7803L6.21967 11.7197ZM6.21967 4.28033L10.4697 8.53033L11.5303 7.46967L7.28033 3.21967L6.21967 4.28033ZM10.4697 7.46967L6.21967 11.7197L7.28033 12.7803L11.5303 8.53033L10.4697 7.46967Z"/>
                             <path class="arrow-stem" d="M1.75 8H11"/>
                         </svg>
                     </button>
                 </div>
-
-                
 
                 <!-- Enterprise Plan -->
                 <div class="pricing-card">
@@ -103,12 +101,179 @@
                 </div>
             </div>
         </div>
+
+        <!-- Plan Chooser Section -->
+        <div class="plan-chooser">
+            <div class="chooser-header">
+                <h2>Which Plan Is Right For You?</h2>
+                <p>Find the perfect plan based on your needs</p>
+            </div>
+            
+            <div class="use-cases">
+                <!-- Basic Plan -->
+                <div class="use-case-card">
+                    <div class="use-case-header">
+                        <h3>Choose Basic If You're...</h3>
+                        <span class="plan-badge">Basic</span>
+                    </div>
+                    <div class="ideal-for">
+                        <div class="user-type">
+                            <span class="check">✓</span>
+                            <div>
+                                <h4>Individual User</h4>
+                                <p>Perfect for personal task management and basic automation needs</p>
+                            </div>
+                        </div>
+                        <div class="user-type">
+                            <span class="check">✓</span>
+                            <div>
+                                <h4>Getting Started</h4>
+                                <p>Great way to explore AI assistance with core features</p>
+                            </div>
+                        </div>
+                        <div class="user-type">
+                            <span class="check">✓</span>
+                            <div>
+                                <h4>Budget Conscious</h4>
+                                <p>Access essential features at an affordable price point</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="use-case-card highlighted">
+                    <div class="use-case-header">
+                        <h3>Choose Pro If You Need...</h3>
+                        <span class="plan-badge">Pro</span>
+                    </div>
+                    <div class="ideal-for">
+                        <div class="user-type">
+                            <span class="check">✓</span>
+                            <div>
+                                <h4>Power Features</h4>
+                                <p>Advanced AI capabilities and enhanced automation options</p>
+                            </div>
+                        </div>
+                        <div class="user-type">
+                            <span class="check">✓</span>
+                            <div>
+                                <h4>Multiple Calendars</h4>
+                                <p>Manage multiple calendars and email accounts efficiently</p>
+                            </div>
+                        </div>
+                        <div class="user-type">
+                            <span class="check">✓</span>
+                            <div>
+                                <h4>Priority Support</h4>
+                                <p>Faster response times and priority issue resolution</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="use-case-card">
+                    <div class="use-case-header">
+                        <h3>Choose Enterprise If You Want...</h3>
+                        <span class="plan-badge">Enterprise</span>
+                    </div>
+                    <div class="ideal-for">
+                        <div class="user-type">
+                            <span class="check">✓</span>
+                            <div>
+                                <h4>Custom Solutions</h4>
+                                <p>Tailored AI training and custom integration options</p>
+                            </div>
+                        </div>
+                        <div class="user-type">
+                            <span class="check">✓</span>
+                            <div>
+                                <h4>Team Management</h4>
+                                <p>Advanced team features and administrative controls</p>
+                            </div>
+                        </div>
+                        <div class="user-type">
+                            <span class="check">✓</span>
+                            <div>
+                                <h4>Enterprise Security</h4>
+                                <p>Enhanced security features and dedicated support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature Comparison Section -->
+<section class="feature-comparison">
+    <div class="comparison-header">
+        <h2>Compare Features</h2>
+        <p>See what's included in each plan</p>
+    </div>
+    
+    <div class="comparison-wrapper">
+        <div class="comparison-headers">
+            <div class="feature-col">Features</div>
+            <div class="plan-col">Basic</div>
+            <div class="plan-col">Pro</div>
+            <div class="plan-col">Enterprise</div>
+        </div>
+
+        <div class="feature-group">
+            <div class="group-header">Base Features</div>
+            <div class="feature-row">
+                <div class="feature-name">Messages</div>
+                <div class="plan-value" data-plan="Basic">Unlimited</div>
+                <div class="plan-value" data-plan="Pro">Unlimited</div>
+                <div class="plan-value" data-plan="Enterprise">Unlimited</div>
+            </div>
+            <div class="feature-row">
+                <div class="feature-name">Response Time</div>
+                <div class="plan-value" data-plan="Basic">Standard</div>
+                <div class="plan-value" data-plan="Pro">Priority</div>
+                <div class="plan-value" data-plan="Enterprise">Instant</div>
+            </div>
+        </div>
+
+        <div class="feature-group">
+            <div class="group-header">AI & Automation</div>
+            <div class="feature-row">
+                <div class="feature-name">AI Model</div>
+                <div class="plan-value" data-plan="Basic">Standard</div>
+                <div class="plan-value" data-plan="Pro">Advanced</div>
+                <div class="plan-value" data-plan="Enterprise">Custom</div>
+            </div>
+            <div class="feature-row">
+                <div class="feature-name">Smart Scheduling</div>
+                <div class="plan-value" data-plan="Basic">Basic</div>
+                <div class="plan-value" data-plan="Pro">Advanced</div>
+                <div class="plan-value" data-plan="Enterprise">Enterprise</div>
+            </div>
+        </div>
+
+        <div class="feature-group">
+            <div class="group-header">Support</div>
+            <div class="feature-row">
+                <div class="feature-name">Support Level</div>
+                <div class="plan-value" data-plan="Basic">Community</div>
+                <div class="plan-value" data-plan="Pro">Priority</div>
+                <div class="plan-value" data-plan="Enterprise">24/7 Dedicated</div>
+            </div>
+            <div class="feature-row">
+                <div class="feature-name">SLA</div>
+                <div class="plan-value" data-plan="Basic">—</div>
+                <div class="plan-value" data-plan="Pro">24h</div>
+                <div class="plan-value" data-plan="Enterprise">4h</div>
+            </div>
+        </div>
+    </div>
+</section>
     </main>
+
     <div id="footer-placeholder"></div>
-   
 
     <script>
-        // Create observers at the top level
         const observeElements = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -119,27 +284,13 @@
             threshold: 0.1
         });
 
-        function initializeNavbar() {
-            const nav = document.querySelector('.nav');
-            if (nav) {
-                // Check initial scroll position
-                if (window.scrollY > 50) {
-                    nav.classList.add('scrolled');
-                }
-
-                // Add scroll event listener
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 50) {
-                        nav.classList.add('scrolled');
-                    } else {
-                        nav.classList.remove('scrolled');
-                    }
-                });
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
-            // Load navbar and initialize it
+            // Observe all sections
+            document.querySelectorAll('.pricing-section, .plan-chooser, .feature-comparison').forEach(section => {
+            observeElements.observe(section);
+        });
+
+            // Load navbar
             fetch('navbar.html')
                 .then(response => response.text())
                 .then(data => {
@@ -147,22 +298,35 @@
                     initializeNavbar();
                 });
 
-            // Load footer
-            fetch('footer.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('footer-placeholder').innerHTML = data;
-                    document.querySelectorAll('.footer-link').forEach((link) => {
-                        observeElements.observe(link);
-                    });
-                });
-
-            // Observe pricing section
-            const pricingSection = document.querySelector('.pricing-section');
-            if (pricingSection) {
-                observeElements.observe(pricingSection);
-            }
+// Load footer
+fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+        document.querySelectorAll('.footer-link').forEach((link) => {
+            observeElements.observe(link);
         });
-    </script>
+    });
+});
+
+function initializeNavbar() {
+const nav = document.querySelector('.nav');
+if (nav) {
+    // Check initial scroll position
+    if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+}
+}
+</script>
 </body>
 </html>
