@@ -37,16 +37,19 @@ html, body {
 
 
 .main-content {
+    min-height: unset;
     position: relative;
     z-index: 1;
     width: 100%;
-    overflow: visible; /* Changed from hidden to allow content to flow */
+    overflow: visible;
     background-image: url('grad_bc.png');
-    background-size: contain; /* Changed from 'cover' to 'contain' */
-    background-position: center top; /* Align the image to the top */
+    background-size: contain;
+    background-position: top center;
+    padding-bottom: 0;
+    margin-bottom: 0;
     background-repeat: no-repeat;
-    min-height: 100vh;
 }
+
 
 
 .hero-section {
@@ -55,7 +58,7 @@ html, body {
     align-items: center;
     max-width: 1800px;
     margin: 0 auto;
-    padding: 8rem 2rem 4rem 2rem; /* Reduced bottom padding */
+    padding: 10rem 2rem 4rem 2rem; /* Reduced bottom padding */
     gap: 10rem;
     min-height: unset;/* Changed from height to min-height */
     box-sizing: border-box; /* Ensure padding is included in height calculation */
@@ -70,7 +73,6 @@ html, body {
     justify-content: center;
     padding-left: 4rem;
 }
-
 .hero-title {
     color: #ffffff;
     font-weight: 900;
@@ -81,8 +83,10 @@ html, body {
     opacity: 0;
     animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.1s;
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: start;
     white-space: nowrap;
+    gap: 12px;
 }
 
 .hero-subtitle {
@@ -98,9 +102,7 @@ html, body {
 }
 .hero-title::after {
     content: "BETA";
-    position: absolute;
-    top: 8px;
-    right: -85px;
+    position: relative;
     font-size: 0.875rem;
     font-weight: 600;
     color: rgb(255, 255, 255);
@@ -109,13 +111,14 @@ html, body {
     border-radius: 20px;
     opacity: 0;
     letter-spacing: 0.03rem;
+    margin-top: 12px;
     animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.15s;
 }
 
 .start-btn {
     position: relative;
     padding: 1rem 2rem;
-    min-width: 300px;
+    min-width: 150px;
     background: rgb(142, 122, 211);
     color: #FFFFFF;
     border: 1px solid rgb(142, 122, 211);
@@ -153,13 +156,13 @@ html, body {
 
 .compare-tag {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 12px;
+    right: 12px;
     background-color: rgb(142, 122, 211);
     color: white;
-    padding: 8px 16px;
-    border-radius: 16px;
-    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 12px;
     font-weight: 600;
     opacity: 0;
     transition: none;
@@ -168,6 +171,7 @@ html, body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     z-index: 3;
 }
+
 
 .hero-image {
     width: 100%;
@@ -208,8 +212,8 @@ html, body {
     z-index: 2;
 }
 .context-wrapper {
-    padding: 8rem 0;
-    margin-top: 0;
+    padding: 6rem 0;
+    margin-top: -1;
     position: relative;
     background-color: #1A1A1D;
 }
@@ -665,10 +669,11 @@ html, body {
     border: 3px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 2rem;
-    max-width: 600px;
+    max-width: 1200px;
     margin: 8rem auto;
     transition: all 0.3s ease;
     opacity: 0;
+    box-sizing: border-box;
     transform: translateY(40px);
 }
 
@@ -823,318 +828,413 @@ html, body {
 .start-btn:hover .arrow-stem {
     transform: scaleX(1);
 }
-/* Existing CSS */
-/* Media Query for screens up to 1400px wide */
-@media (max-width: 1400px) {
-    /* Hero Section Adjustments */
+/* Large Screens */
+@media screen and (min-width: 1920px) {
+    .main-content {
+        background-size: contain;
+    }
+
     .hero-section {
-        padding: 7rem 2rem 2rem 2rem; /* Increased top padding, reduced bottom padding */
-        gap: 4rem;
+        max-width: 2000px;
+        margin: 0 auto;
+        padding-top: 12rem;
     }
 
-    /* Hero Title and Subtitle */
-    .hero-title {
-        font-size: 60px;
-    }
-
-    .hero-subtitle {
-        font-size: 1.4rem;
-    }
-
-    /* Hero Content */
-    .hero-content {
-        padding-left: 1.5rem;
-    }
-
-    /* Image Container */
-    .image-container {
-        flex: 3.5;
-        max-width: 80%;
+    .why-choose-section,
+    .pricing-section,
+    .announcements-section {
+        max-width: 1800px;
         margin: 0 auto;
     }
 
-    /* Adjust Images */
-    .hero-image {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-    }
-
-    /* Context Wrapper Adjustments */
-    .context-wrapper {
-        padding-top: 6rem; /* Reduced top padding */
-    }
-
-    /* Why Choose Cards Adjustments */
-    .why-choose-cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        padding: 1rem;
-    }
-
-    .why-choose-card {
-        /* Make cards look like pricing cards */
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
-        border: 3px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        transition: all 0.3s ease;
-        flex-grow: 1;
-    }
-
-    .why-choose-card:hover {
-        transform: translateY(-10px);
-        border-color: rgba(255, 255, 255, 1);
+    .image-container {
+        margin-bottom: 8rem;
     }
 }
 
-/* Media Query for screens up to 1200px wide */
-@media (max-width: 1200px) {
-    /* Hero Section Adjustments */
+/* Desktop and Small Laptops */
+@media screen and (max-width: 1366px) {
     .hero-section {
-        padding: 6rem 1.5rem 2rem 1.5rem; /* Increased top padding, reduced bottom padding */
-        gap: 3rem;
+        gap: 6rem;
+        padding: 10rem 2rem 4rem;
     }
 
-    /* Hero Title and Subtitle */
+    .hero-content {
+        padding-left: 2rem;
+    }
+
     .hero-title {
-        font-size: 52px;
+        font-size: 64px;
+    }
+
+    .image-container {
+        flex: 4;
+        margin-bottom: 8rem;
+    }
+
+    .main-content {
+        background-size: contain;
+    }
+}
+
+/* Tablet/Medium Screens */
+@media screen and (max-width: 1024px) {
+    .main-content {
+        background: none;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        flex-direction: column;
+        padding: 8rem 2rem 0;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .hero-content {
+        flex: none;
+        padding-left: 0;
+        width: 100%;
+        max-width: 600px;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 56px;
     }
 
     .hero-subtitle {
-        font-size: 1.2rem;
-    }
-
-    /* Hero Content */
-    .hero-content {
-        padding-left: 1rem;
-        max-width: 380px;
+        font-size: 1.25rem;
+        max-width: 100%;
     }
 
     /* Image Container */
     .image-container {
-        flex: 1;
-        max-width: 70%;
-        margin: 0 auto;
+        flex: none;
+        width: 100%;
+        max-width: 800px;
+        aspect-ratio: 16/10;
+        margin-bottom: 8rem;
     }
 
-    /* Context Wrapper Adjustments */
+    .image-wrapper.bottom {
+        transform: translate(20px, 20px) scale(0.95);
+    }
+
+    /* Context Wrapper */
     .context-wrapper {
-        padding-top: 5rem; /* Reduced top padding */
+        padding-top: 0;
+        margin-top: 0;
     }
 
-    /* Why Choose Cards Adjustments */
+    /* Why Choose Section */
+    .why-choose-section {
+        padding-top: 6rem;
+    }
+
     .why-choose-cards {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
 
-    .why-choose-card {
-        padding: 1.5rem;
-    }
-}
-
-/* Media Query for screens up to 1024px wide */
-@media (max-width: 1024px) {
-    /* Hero Section Adjustments */
-    .hero-section {
-        flex-direction: column;
-        align-items: center;
-        padding: 5rem 1rem 1.5rem 1rem; /* Increased top padding, reduced bottom padding */
-        gap: 2rem;
+    .why-choose-title {
+        font-size: 2.75rem;
     }
 
-    /* Hero Content */
-    .hero-content {
-        order: 1;
-        align-items: center;
-        text-align: center;
-        padding-left: 0;
+    /* Pricing Section */
+    .pricing-section {
+        padding: 6rem 0;
     }
 
-    /* Image Container */
-    .image-container {
-        order: 2;
-        width: 100%;
-        max-width: 80%;
+    .pricing-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 2rem;
+        max-width: 900px;
         margin: 0 auto;
     }
 
-    /* Hero Title and Subtitle */
-    .hero-title {
-        font-size: 44px;
+    .pricing-title {
+        font-size: 2.75rem;
     }
 
-    .hero-subtitle {
-        font-size: 1.1rem;
+    /* Pill Container */
+    .pill-container {
+        max-width: 900px;
+        margin: 4rem auto;
+        padding: 2rem;
     }
 
-    /* Context Wrapper Adjustments */
-    .context-wrapper {
-        padding-top: 4rem; /* Reduced top padding */
+    /* Announcements Section */
+    .announcements-section {
+        padding: 6rem 0;
     }
 
-    /* Why Choose Cards Adjustments */
-    .why-choose-cards {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .why-choose-card {
-        padding: 1.25rem;
+    .announcements-container {
+        padding: 0 2rem;
     }
 }
 
-/* Media Query for screens up to 768px wide */
-@media (max-width: 768px) {
-    /* Hero Section Adjustments */
+/* Small Tablets */
+@media screen and (max-width: 768px) {
+    /* Hero Section */
     .hero-section {
-        padding: 4rem 1rem 1rem 1rem; /* Increased top padding, reduced bottom padding */
-        gap: 1.5rem;
+        padding: 7rem 1.5rem 0;
+        gap: 3rem;
     }
 
-    /* Hero Title and Subtitle */
     .hero-title {
-        font-size: 36px;
+        font-size: 48px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.125rem;
+    }
+
+    /* Image Container */
+    .image-wrapper.bottom {
+        transform: translate(15px, 15px) scale(0.95);
+    }
+
+    .image-container {
+        margin-bottom: 6rem;
+    }
+
+    /* Why Choose Section */
+    .why-choose-section {
+        padding-top: 5rem;
+    }
+
+    .why-choose-title, 
+    .pricing-title,
+    .announcements-title {
+        font-size: 2.5rem;
+    }
+
+    .why-choose-subtitle,
+    .pricing-subtitle {
+        font-size: 1.25rem;
+    }
+
+    /* Pricing Section */
+    .pricing-cards {
+        max-width: 700px;
+        padding: 1.5rem;
+    }
+
+    .pricing-card {
+        padding: 1.75rem;
+    }
+
+    /* Pill Container */
+    .pill-container {
+        max-width: 700px;
+        margin: 4rem auto;
+        padding: 1.5rem;
+    }
+
+    .pill-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .pill-btn {
+        width: 100%;
+    }
+
+    /* Announcements Section */
+    .announcements-slider {
+        min-height: 400px;
+    }
+
+    .start-btn {
+        min-width: 180px;
+    }
+
+    .compare-tag {
+        font-size: 11px;
+        padding: 5px 10px;
+        top: 10px;
+        right: 10px;
+    }
+}
+
+/* Mobile Devices */
+@media screen and (max-width: 640px) {
+    /* Hero Section */
+    .hero-section {
+        padding: 6rem 1rem 0;
+        gap: 2rem;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-title {
+        font-size: 40px;
     }
 
     .hero-subtitle {
         font-size: 1rem;
-    }
-
-    /* Hero Content */
-    .hero-content {
-        max-width: 100%;
-    }
-
-    /* Start Button */
-    .start-btn {
-        min-width: 200px;
-        padding: 0.8rem 1.2rem;
+        padding: 0 1rem;
     }
 
     /* Image Container */
     .image-container {
-        width: 100%;
-        max-width: 90%;
-        margin: 0 auto;
+        aspect-ratio: 3/2;
+        margin-bottom: 4rem;
     }
 
-    /* Hero Title Badge Adjustment */
-    .hero-title::after {
-        position: static;
-        display: inline-block;
-        margin-left: 0.5rem;
-        margin-top: 0.5rem;
+    .image-wrapper.bottom {
+        transform: translate(10px, 10px) scale(0.95);
     }
 
-    /* Context Wrapper Adjustments */
-    .context-wrapper {
-        padding-top: 3rem; /* Reduced top padding */
+    .compare-tag {
+        font-size: 10px;
+        padding: 4px 8px;
+        top: 8px;
+        right: 8px;
     }
 
-    /* Why Choose Cards Adjustments */
+    /* Why Choose Section */
+    .why-choose-section {
+        padding-top: 4rem;
+    }
+
     .why-choose-cards {
         grid-template-columns: 1fr;
         gap: 1rem;
+        padding: 1rem;
     }
 
     .why-choose-card {
+        padding: 1.5rem;
+    }
+
+    .why-choose-title, 
+    .pricing-title,
+    .announcements-title {
+        font-size: 2rem;
+    }
+
+    /* Pricing Section */
+    .pricing-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
         padding: 1rem;
+        max-width: 400px;
+    }
+
+    .pricing-card {
+        padding: 1.5rem;
+    }
+
+    /* Pill Container */
+    .pill-container {
+        max-width: 400px;
+        margin: 4rem auto;
+        padding: 1.5rem;
+    }
+
+    /* Announcements Section */
+    .announcements-header {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .announcement-card {
+        padding: 1.5rem;
+    }
+
+    .announcements-slider {
+        min-height: 450px;
+    }
+
+    .start-btn {
+        min-width: 160px;
+        width: auto;
     }
 }
 
-/* Media Query for screens up to 480px wide */
-@media (max-width: 480px) {
-    /* Hero Section Adjustments */
+/* Extremely Small Devices */
+@media screen and (max-width: 380px) {
+    /* Hero Section */
     .hero-section {
-        padding: 3rem 0.5rem 0.5rem 0.5rem; /* Increased top padding, reduced bottom padding */
-        gap: 1rem;
+        padding-top: 5rem;
     }
 
-    /* Hero Title and Subtitle */
     .hero-title {
-        font-size: 28px;
+        font-size: 32px;
     }
 
     .hero-subtitle {
-        font-size: 0.875rem;
-    }
-
-    /* Start Button */
-    .start-btn {
-        min-width: 180px;
-        padding: 0.7rem 1rem;
         font-size: 0.875rem;
     }
 
     /* Image Container */
+    .image-wrapper.bottom {
+        transform: translate(8px, 8px) scale(0.95);
+    }
+
     .image-container {
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
+        margin-bottom: 3rem;
     }
 
-    /* Hero Title Badge Adjustment */
-    .hero-title::after {
+    /* Why Choose Section */
+    .why-choose-section {
+        padding-top: 3rem;
+    }
+
+    .why-choose-title, 
+    .pricing-title,
+    .announcements-title {
+        font-size: 1.75rem;
+    }
+
+    /* Cards */
+    .pricing-cards,
+    .pill-container {
+        max-width: 300px;
+    }
+
+    .why-choose-card,
+    .pricing-card,
+    .announcement-card {
+        padding: 1.25rem;
+    }
+
+    /* Announcements */
+    .announcements-slider {
+        min-height: 500px;
+    }
+
+    .announcement-badge {
         font-size: 0.75rem;
-        padding: 0.3rem 0.6rem;
+        padding: 0.4rem 0.8rem;
     }
 
-    /* Context Wrapper Adjustments */
-    .context-wrapper {
-        padding-top: 2rem; /* Reduced top padding */
+    .start-btn {
+        min-width: 140px;
     }
 
-    /* Why Choose Cards Adjustments */
-    .why-choose-card {
-        padding: 0.75rem;
+    .compare-tag {
+        font-size: 9px;
+        padding: 3px 6px;
+        top: 6px;
+        right: 6px;
     }
 }
 
-/* Media Query for screens up to 360px wide */
-@media (max-width: 360px) {
-    /* Hero Section Adjustments */
+/* Height-based Media Queries */
+@media screen and (max-height: 800px) {
     .hero-section {
-        padding: 2.5rem 0.5rem 0.5rem 0.5rem; /* Increased top padding, reduced bottom padding */
-        gap: 0.5rem;
+        padding-top: 5rem;
     }
+}
 
-    /* Hero Title and Subtitle */
-    .hero-title {
-        font-size: 24px;
-    }
-
-    .hero-subtitle {
-        font-size: 0.8rem;
-    }
-
-    /* Start Button */
-    .start-btn {
-        min-width: 160px;
-        padding: 0.6rem 0.8rem;
-        font-size: 0.8rem;
-    }
-
-    /* Hero Title Badge Adjustment */
-    .hero-title::after {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.4rem;
-    }
-
-    /* Context Wrapper Adjustments */
-    .context-wrapper {
-        padding-top: 1.5rem; /* Reduced top padding */
-    }
-
-    /* Why Choose Cards Adjustments */
-    .why-choose-card {
-        padding: 0.5rem;
+@media screen and (max-height: 600px) {
+    .hero-section {
+        padding-top: 4rem;
     }
 }
