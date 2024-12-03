@@ -7,7 +7,7 @@
 }
 
 html, body {
-    background-color: #0b0b0e;
+    background-color: #000000;
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -20,7 +20,7 @@ html, body {
     width: 100%;
     height: 100%;
     z-index: 0;
-    background: #0b0b0e;
+    background: #000000;
 }
 .background-frame {
     position: fixed;
@@ -32,7 +32,7 @@ html, body {
     pointer-events: none;
     z-index: -1;
     opacity: 1; /* Changed from 0 */
-    background: #0b0b0e;
+    background: #000000;
 }
 
 
@@ -42,14 +42,34 @@ html, body {
     z-index: 1;
     width: 100%;
     overflow: visible;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.main-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('grad_bc.png');
     background-size: contain;
     background-position: top center;
-    padding-bottom: 0;
-    margin-bottom: 0;
     background-repeat: no-repeat;
+    opacity: 0;
+    z-index: -1;
+    animation: fadeInGradient 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.4s;
 }
 
+@keyframes fadeInGradient {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
 
 .hero-section {
@@ -58,14 +78,14 @@ html, body {
     align-items: center;
     max-width: 1800px;
     margin: 0 auto;
-    padding: 10rem 2rem 4rem 2rem; /* Reduced bottom padding */
-    gap: 10rem;
-    min-height: unset;/* Changed from height to min-height */
-    box-sizing: border-box; /* Ensure padding is included in height calculation */
+    padding: 10rem 2rem 4rem 2rem;
+    gap: 6rem; /* Reduced from 10rem to 6rem */
+    min-height: unset;
+    box-sizing: border-box;
 }
 
 .hero-content {
-    flex: 0.3; /* Reduced significantly */
+    flex: 0.3;
     max-width: 500px;
     display: flex;
     flex-direction: column;
@@ -180,6 +200,7 @@ html, body {
     border-radius: 12px;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
 }
+
 .image-wrapper {
     position: absolute;
     width: 100%;
@@ -187,22 +208,31 @@ html, body {
     transition: transform 0.5s ease, opacity 0.2s ease;
 }
 
+.image-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease, opacity 0.2s ease;
+}
+
+/* Normal state */
+.image-wrapper.bottom {
+    transform: translate(30px, 30px) scale(0.98);
+    opacity: 0.85; /* Increased from 0.8 */
+    z-index: 1;
+}
+
 .image-wrapper.top {
     transform: translate(0, 0) scale(1);
     opacity: 1;
     z-index: 2;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
-.image-wrapper.bottom {
-    transform: translate(30px, 30px) scale(0.95);
-    opacity: 0.6;
-    z-index: 1;
-}
-
-/* Swapped state - both images should be fully opaque */
+/* Swapped state */
 .image-container.swapped .image-wrapper.top {
-    transform: translate(30px, 30px) scale(0.95);
-    opacity: 0.6;
+    transform: translate(30px, 30px) scale(0.98);
+    opacity: 0.85; /* Same as bottom state */
     z-index: 1;
 }
 
@@ -210,23 +240,18 @@ html, body {
     transform: translate(0, 0) scale(1);
     opacity: 1;
     z-index: 2;
-}
-.context-wrapper {
-    padding: 6rem 0;
-    margin-top: -1;
-    position: relative;
-    background-color: #1A1A1D;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
+
 .why-choose-section {
-    padding: 0; /* Remove default padding */
+    padding: 8.5rem 0;
     text-align: center;
     max-width: 1400px;
     margin: 0 auto;
-    margin-bottom: 0;
-    margin-top: 0;
     opacity: 0;
     transform: translateY(40px);
+    background-color: transparent;
 }
 .why-choose-section.visible {
     opacity: 1;
@@ -828,6 +853,143 @@ html, body {
 .start-btn:hover .arrow-stem {
     transform: scaleX(1);
 }
+.workplace-tools {
+    padding: 8rem 0;
+    max-width: 1400px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(40px);
+    text-align: center;
+}
+
+.workplace-tools.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.workplace-header {
+    margin-bottom: 4rem;  /* Match other sections spacing */
+}
+
+.workplace-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.workplace-subtitle {
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    opacity: 0;
+    font-weight: 500;
+    max-width: 800px;
+    margin: 0 auto;
+    transform: translateY(20px);
+}
+
+.workplace-tools.visible .workplace-title {
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.1s;
+}
+
+.workplace-tools.visible .workplace-subtitle {
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.15s;
+}
+
+.tools-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 0 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.workplace-tools.visible .tools-container {
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.2s;
+}
+
+
+.tool-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+}
+
+.tool-card .tool-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 1.5rem;
+}
+
+.tool-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-bottom: 0.5rem;
+}
+
+.tool-card p {
+    font-size: 1rem;
+    color: #FFFFFF;
+    opacity: 0.8;
+}
+
+.tool-card .detail-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    border-radius: 9px;
+}
+
+.tool-card:hover .detail-content {
+    transform: translateY(0);
+}
+
+.coming-soon-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 1.5rem;
+    color: rgb(142, 122, 211);
+}
+
+/* Update media queries as needed */
+@media screen and (max-width: 1024px) {
+    .tools-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .tools-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .workplace-title {
+        font-size: 2.5rem;
+        padding-left: 1rem;
+    }
+}
+.context-wrapper {
+    padding: 1rem 0;
+    margin-top: -1;
+    position: relative;
+    background-color: #1A1A1D;
+}
 /* Large Screens */
 @media screen and (min-width: 1920px) {
     .main-content {
@@ -870,6 +1032,12 @@ html, body {
     .image-container {
         flex: 4;
         margin-bottom: 8rem;
+    }
+
+    .image-wrapper.bottom,
+    .image-container.swapped .image-wrapper.top {
+        transform: translate(30px, 30px) scale(0.98);
+        opacity: 0.85;
     }
 
     .main-content {
@@ -917,8 +1085,10 @@ html, body {
         margin-bottom: 8rem;
     }
 
-    .image-wrapper.bottom {
-        transform: translate(20px, 20px) scale(0.95);
+    .image-wrapper.bottom,
+    .image-container.swapped .image-wrapper.top {
+        transform: translate(20px, 20px) scale(0.98);
+        opacity: 0.85;
     }
 
     /* Context Wrapper */
@@ -992,8 +1162,10 @@ html, body {
     }
 
     /* Image Container */
-    .image-wrapper.bottom {
-        transform: translate(15px, 15px) scale(0.95);
+    .image-wrapper.bottom,
+    .image-container.swapped .image-wrapper.top {
+        transform: translate(15px, 15px) scale(0.98);
+        opacity: 0.85;
     }
 
     .image-container {
@@ -1086,8 +1258,10 @@ html, body {
         margin-bottom: 4rem;
     }
 
-    .image-wrapper.bottom {
-        transform: translate(10px, 10px) scale(0.95);
+    .image-wrapper.bottom,
+    .image-container.swapped .image-wrapper.top {
+        transform: translate(10px, 10px) scale(0.98);
+        opacity: 0.85;
     }
 
     .compare-tag {
@@ -1173,8 +1347,10 @@ html, body {
     }
 
     /* Image Container */
-    .image-wrapper.bottom {
-        transform: translate(8px, 8px) scale(0.95);
+    .image-wrapper.bottom,
+    .image-container.swapped .image-wrapper.top {
+        transform: translate(8px, 8px) scale(0.98);
+        opacity: 0.85;
     }
 
     .image-container {
