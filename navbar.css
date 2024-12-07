@@ -130,7 +130,6 @@ body {
     transform: none;
     background: none;
 }
-
 .signin-btn {
     position: relative;
     padding: 0.75rem 1.5rem;
@@ -221,10 +220,7 @@ body {
         padding: 0.5rem;
     }
 
-    .signin-btn {
-        min-width: 120px;
-        padding: 0.6rem 1rem;
-    }
+  
 }
 
 /* Mobile devices */
@@ -256,16 +252,7 @@ body {
         padding: 0.4rem;
     }
 
-    .signin-btn {
-        min-width: auto;
-        padding: 0.5rem 1rem;
-        font-size: 0.875rem;
-    }
-
-    .arrow-container {
-        width: 16px;
-        height: 16px;
-    }
+    
 }
 
 /* Small mobile devices */
@@ -287,9 +274,7 @@ body {
         padding: 0.3rem;
     }
 
-    .signin-btn {
-        padding: 0.4rem 0.75rem;
-    }
+   
 }
 
 /* For iPhone SE and other very small devices */
@@ -308,10 +293,7 @@ body {
         font-size: 0.8rem;
     }
 
-    .signin-btn {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.6rem;
-    }
+   
 }
 
 /* For landscape mode */
@@ -322,5 +304,57 @@ body {
     
     .nav.scrolled {
         padding: 0.5rem 0;
+    }
+}
+@media screen and (max-width: 768px) {
+    .signin-btn {
+        min-width: 120px;
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+        border-width: 2px;
+    }
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 640px) {
+    .signin-btn {
+        min-width: auto;
+        padding: 0.5rem 0.875rem;
+        font-size: 0.875rem;
+        gap: 0.35rem;
+    }
+
+    .arrow-container {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+    .signin-btn {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.825rem;
+        border-width: 2px;
+        gap: 0.25rem;
+    }
+
+    .arrow-container {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* Very small devices */
+@media screen and (max-width: 375px) {
+    .signin-btn {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.8rem;
+        gap: 0.2rem;
+    }
+
+    .arrow-container {
+        width: 10px;
+        height: 10px;
     }
 }
