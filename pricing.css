@@ -129,7 +129,7 @@ body {
 
 .pricing-card:nth-child(1):hover,
 .pricing-card:nth-child(3):hover {
-    border-color: rgb(255, 255, 255);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .card-header {

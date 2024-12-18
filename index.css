@@ -300,8 +300,7 @@ html, body {
 }
 
 .why-choose-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 3px solid rgba(255, 255, 255, 0.1);
+   
     border-radius: 12px;
     padding: 2rem;
     margin-bottom: 0;
@@ -439,7 +438,7 @@ html, body {
 
 .pricing-card:hover {
     transform: translateY(-10px);
-    border-color: rgba(255, 255, 255, 1);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 .card-header {
     text-align: left;
@@ -514,7 +513,7 @@ html, body {
     min-width: 120px;
     background: rgb(142, 122, 211);
     color: #FFFFFF;
-    border: 2px solid rgb(142, 122, 211);
+    border: 1px solid rgb(142, 122, 211);
     border-radius: 16px;
     transition: all 0.3s ease;
     font-size: 1rem;
@@ -603,7 +602,7 @@ html, body {
 .announcement-nav:hover {
     background: rgba(142, 122, 211, 0.5);
     border-color: rgba(142, 122, 211, 0.7);
-    transform: translateY(-2px);
+    transform: translateY(-0.5px);
 }
 
 .announcements-slider {

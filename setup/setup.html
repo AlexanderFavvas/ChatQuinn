@@ -7,13 +7,37 @@
     <link rel="stylesheet" href="setup.css">
 </head>
 <body>
-    <iframe src="/background.html" class="background-frame" title="background"></iframe>
-    <div class="progress-bar"></div>
-
-    <div class="setup-container">
-        <div class="question-container"></div>
+    <div class="setup-wrapper">
+        <div class="setup-card">
+            <!-- Step indicators -->
+            <div class="progress-steps" id="progressSteps">
+                <!-- Steps will be dynamically inserted here -->
+            </div>
+            
+            <!-- Main content area -->
+            <div class="setup-content">
+                <div class="question-container">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </div>
+            
+            <!-- Navigation buttons -->
+            <div class="navigation">
+                <button class="nav-button back-button" id="backButton" onclick="setupFlow.navigateQuestion('prev')" style="display: none;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    <span>Back</span>
+                </button>
+                <button class="nav-button next-button" id="nextButton" onclick="setupFlow.navigateQuestion('next')">
+                    <span class="button-text">Next</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
     </div>
-
     <script src="setup.js"></script>
 </body>
 </html>
