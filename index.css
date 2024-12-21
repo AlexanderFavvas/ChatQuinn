@@ -74,24 +74,24 @@ html, body {
 
 .hero-section {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;  /* Changed from row to column */
     align-items: center;
     max-width: 1800px;
     margin: 0 auto;
     padding: 10rem 2rem 4rem 2rem;
-    gap: 6rem; /* Reduced from 10rem to 6rem */
-    min-height: unset;
-    box-sizing: border-box;
+    gap: 4rem;  /* Reduced gap since it's now vertical */
 }
 
 .hero-content {
-    flex: 0.3;
-    max-width: 500px;
+    flex: none;  /* Remove flex grow */
+    max-width: 800px;  /* Increased for better full-width appearance */
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-left: 4rem;
+    padding-left: 0;  /* Remove left padding since it's centered */
+    text-align: center;
 }
 .hero-title {
     color: #ffffff;
@@ -161,14 +161,14 @@ html, body {
     background: rgb(125, 108, 186);
     border-color: rgb(125, 108, 186);
 }
-
 .image-container {
-    flex: 4.5; /* Dramatically increased */
-    max-width: 1800px; /* Dramatically increased */
-    position: relative;
+    flex: none;
+    width: 100%;
+    max-width: 1000px;  /* Reduced from 1400px */
     aspect-ratio: 16/10;
-    margin: 0;
+    margin: 0 auto;
     opacity: 0;
+    position: relative;  /* Make sure this is present */
     animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.3s;
 }
 
@@ -184,11 +184,10 @@ html, body {
     font-size: 12px;
     font-weight: 600;
     opacity: 0;
-    transition: none;
-    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.3s;
+    z-index: 10;  /* Ensure it stays on top */
     pointer-events: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    z-index: 3;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.3s;
 }
 
 .hero-image {
@@ -197,13 +196,6 @@ html, body {
     object-fit: cover;
     border-radius: 12px;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
-}
-
-.image-wrapper {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.5s ease, opacity 0.2s ease;
 }
 
 .image-wrapper {
@@ -898,6 +890,13 @@ html, body {
         max-width: 2000px;
         margin: 0 auto;
         padding-top: 5rem;
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .image-container {
+        max-width: 1000px;
+        margin: 2rem auto 4rem;
     }
 
     .why-choose-section,
@@ -905,10 +904,6 @@ html, body {
     .announcements-section {
         max-width: 1800px;
         margin: 0 auto;
-    }
-
-    .image-container {
-        margin-bottom: 8rem;
     }
 
     .workplace-tools {
@@ -937,12 +932,16 @@ html, body {
 
 @media screen and (max-width: 1366px) {
     .hero-section {
-        gap: 6rem;
+        flex-direction: column;
+        gap: 4rem;
         padding: 4.5rem 2rem 4rem;
     }
 
     .hero-content {
-        padding-left: 2rem;
+        padding-left: 0;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
     }
 
     .hero-title {
@@ -950,8 +949,8 @@ html, body {
     }
 
     .image-container {
-        flex: 4;
-        margin-bottom: 8rem;
+        max-width: 900px;
+        margin: 2rem auto 4rem;
     }
 
     .image-wrapper.bottom,
@@ -1002,18 +1001,13 @@ html, body {
     }
 
     .hero-section {
-        flex-direction: column;
         padding: 4rem 2rem 0;
-        gap: 4rem;
-        align-items: center;
+        gap: 3rem;
     }
 
     .hero-content {
-        flex: none;
-        padding-left: 0;
         width: 100%;
         max-width: 600px;
-        text-align: center;
         padding-top: 2rem;
     }
 
@@ -1027,12 +1021,9 @@ html, body {
     }
 
     .image-container {
-        flex: none;
-        width: 100%;
         max-width: 800px;
         aspect-ratio: 16/10;
-        margin-top: 2rem;
-        margin-bottom: 8rem;
+        margin: 2rem auto 4rem;
     }
 
     .image-wrapper.bottom,
@@ -1087,7 +1078,7 @@ html, body {
 @media screen and (max-width: 768px) {
     .hero-section {
         padding: 4.5rem 1.5rem 0;
-        gap: 3rem;
+        gap: 2.5rem;
     }
 
     .hero-title {
@@ -1099,8 +1090,8 @@ html, body {
     }
 
     .image-container {
-        margin-top: 3rem;
-        margin-bottom: 6rem;
+        max-width: 600px;
+        margin: 2rem auto 3rem;
     }
 
     .image-wrapper.bottom,
@@ -1142,7 +1133,8 @@ html, body {
     }
 
     .compare-tag {
-        right: 4px;
+        right: 8px;
+        top: 8px;
         font-size: 11px;
         padding: 5px 10px;
     }
@@ -1192,9 +1184,9 @@ html, body {
     }
 
     .image-container {
+        max-width: 500px;
         aspect-ratio: 3/2;
-        margin-top: 4rem;
-        margin-bottom: 4rem;
+        margin: 2rem auto 3rem;
     }
 
     .image-wrapper.bottom,
@@ -1253,7 +1245,8 @@ html, body {
     }
 
     .compare-tag {
-        right: 3px;
+        right: 6px;
+        top: 6px;
         font-size: 10px;
         padding: 4px 8px;
     }
@@ -1274,17 +1267,18 @@ html, body {
     }
 
     .hero-content {
-        padding-top: 4rem;
+        padding-top: 2rem;
     }
 
     .image-container {
-        margin-top: 5rem;
+        max-width: 400px;
+        margin: 2rem auto 3rem;
     }
 
     .compare-tag {
-        right: 2px;
+        right: 4px;
+        top: 4px;
         font-size: 9px;
-        top: 10px;
     }
 }
 
@@ -1294,7 +1288,7 @@ html, body {
     }
 
     .hero-content {
-        padding-top: 5rem;
+        padding-top: 2rem;
     }
 
     .hero-title {
@@ -1305,14 +1299,15 @@ html, body {
         font-size: 0.875rem;
     }
 
+    .image-container {
+        max-width: 300px;
+        margin: 2rem auto 2rem;
+    }
+
     .image-wrapper.bottom,
     .image-container.swapped .image-wrapper.top {
         transform: translate(8px, 8px) scale(0.98);
         opacity: 0.85;
-    }
-
-    .image-container {
-        margin-bottom: 3rem;
     }
 
     .why-choose-section {

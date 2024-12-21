@@ -90,6 +90,11 @@ h1 {
     animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     animation-delay: 0.3s;
 }
+.custom-button {
+    justify-content: center;
+    align-items: center;
+}
+
 
 .arrow-container {
     width: 16px;
