@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
     <style>
+        /* Your existing styles */
         * {
             margin: 0;
             padding: 0;
@@ -114,11 +115,60 @@
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
+
         if (code) {
-            window.location.href = `https://chatquinn.com/callback.html/?code=${encodeURIComponent(code)}`;
+            // Show loader and status
+            document.querySelector('.loader').style.opacity = '1';
+            document.getElementById('status').style.opacity = '1';
+
+            // Make a GET request to the backend with the code
+            fetch(`https://api.chatquinn.com/hello_http?code=${encodeURIComponent(code)}`, {
+                method: 'GET',
+                credentials: 'include',  // Include cookies in the request
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Request-Type': 'auth'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Authentication failed with status ${response.status}`);
+                }
+                return response.json(); // Parse JSON response
+            })
+            .then(data => {
+                if (data.status === 'success' && data.redirect_url) {
+                    // Redirect to setup.html
+                    window.location.href = data.redirect_url;
+                } else {
+                    throw new Error('Invalid response from server');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('status').textContent = 'Authentication failed. Please try again.';
+                document.getElementById('status').classList.add('error');
+                
+                // Hide loader
+                document.querySelector('.loader').style.opacity = '0';
+
+                // Redirect to home page after displaying the error
+                setTimeout(() => {
+                    window.location.href = 'https://chatquinn.com';
+                }, 3000);
+            });
         } else {
+            // Handle the error case where no code is present
             document.getElementById('status').textContent = 'No authorization code received';
             document.getElementById('status').classList.add('error');
+            
+            // Hide loader
+            document.querySelector('.loader').style.opacity = '0';
+
+            // Redirect to home page after displaying the error
+            setTimeout(() => {
+                window.location.href = 'https://chatquinn.com';
+            }, 3000);
         }
     </script>
 </body>

@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMessage.textContent = '';
         confirmButton.style.display = 'none';
 
-        fetch('https://us-central1-movie-thing-439716.cloudfunctions.net/test_function', {
+        fetch('https://getcode.chatquinn.com', {
             credentials: 'include' // Include cookies in the request
         })
             .then(response => {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         getCodeBtn.disabled = true;
         confirmButton.disabled = true;
         
-        fetch('https://us-central1-movie-thing-439716.cloudfunctions.net/checkForVerification', {
+        fetch('https://verification.chatquinn.com', {
             method: 'POST',
             credentials: 'include' // Include cookies in the request
         })

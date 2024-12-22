@@ -234,7 +234,7 @@ class SetupFlow {
             options.body = JSON.stringify(body);
         }
 
-        const response = await fetch('https://us-central1-movie-thing-439716.cloudfunctions.net/function-1', options);
+        const response = await fetch('https://api.chatquinn.com/hello_http', options);
         
         if (!response.ok) {
             throw new Error('Request failed');
