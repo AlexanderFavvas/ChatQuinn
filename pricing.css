@@ -38,116 +38,119 @@ body {
     min-height: 100vh;
 }
 
-/* Pricing Section */
+.arrow-container {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.arrow-head {
+    fill: currentColor;
+}
+
+.arrow-stem {
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    transform-origin: 11px 50%;
+    transform: scaleX(0);
+    transition: transform 0.2s ease;
+}
+
 .pricing-section {
-    padding-top: 4rem;
+    padding: 8rem 0;
     text-align: center;
     max-width: 1200px;
     margin: 0 auto;
-    margin-top: 2rem;
-    margin-bottom: 4rem;
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .pricing-section.visible {
     opacity: 1;
     transform: translateY(0);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .pricing-title {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 800;
     color: rgb(255, 255, 255);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    transition-delay: 0.1s;
 }
+
 .pricing-section.visible .pricing-title {
-    opacity: 1;
-    transform: translateY(0);
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.1s;
 }
 
 .pricing-subtitle {
     font-size: 1.5rem;
     font-weight: 500;
     color: #FFFFFF;
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    transition-delay: 0.2s;
 }
 
 .pricing-section.visible .pricing-subtitle {
-    opacity: 1;
-    transform: translateY(0);
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.15s;
 }
 
 .pricing-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
     padding: 2rem;
-    margin-bottom: 6rem;
+    margin-bottom: 0;
 }
 
 .pricing-card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    border: 3px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    padding: 2.5rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
 }
 
-.pricing-section.visible .pricing-card {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 .pricing-section.visible .pricing-card:nth-child(1) {
-    transition-delay: 0.3s;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.2s;
 }
 
 .pricing-section.visible .pricing-card:nth-child(2) {
-    transition-delay: 0.4s;
-    background: rgba(142, 122, 211, 0.1);
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.25s;
     border-color: rgb(142, 122, 211);
 }
 
 .pricing-section.visible .pricing-card:nth-child(3) {
-    transition-delay: 0.5s;
+    animation: fadeInUpEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.3s;
 }
 
-.pricing-card:nth-child(1):hover,
-.pricing-card:nth-child(3):hover {
+.pricing-card:hover {
+    transform: translateY(-10px);
     border-color: rgba(255, 255, 255, 0.5);
 }
-
 .card-header {
     text-align: left;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .card-header h3 {
     color: #FFFFFF;
     font-size: 2rem;
-    margin-bottom: 0.75rem;
-    line-height: 1.2;
+    margin-bottom: 0.5rem;
 }
+
 .tier-description {
     color: #FFFFFF;
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    line-height: 1.4;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .price {
@@ -156,7 +159,6 @@ body {
     font-weight: 600;
     position: relative;
     text-align: left;
-    line-height: 1;
 }
 
 .price span {
@@ -177,7 +179,7 @@ body {
 
 .card-features {
     text-align: left;
-    margin: 2.5rem 0;
+    margin: 2rem 0;
     flex-grow: 1;
 }
 
@@ -187,19 +189,72 @@ body {
 
 .card-features li {
     color: #FFFFFF;
-    margin-bottom: 1.25rem;
-    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
     display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    line-height: 1.4;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .card-features li:before {
     content: "✓";
-    color: #FFFFFF;
+    color: rgb(142, 122, 211);
     font-weight: 600;
-    margin-top: 0.1rem;
+}
+.start-btn:hover .arrow-container,
+.get-started-btn:hover .arrow-container,
+.contact-sales-btn:hover .arrow-container {
+    transform: translateX(5px);
+}
+
+.start-btn:hover .arrow-stem,
+.get-started-btn:hover .arrow-stem,
+.contact-sales-btn:hover .arrow-stem {
+    transform: scaleX(1);
+}
+
+.get-started-btn,
+.contact-sales-btn {
+    position: relative;
+    padding: 0.8rem 1.6rem;
+    min-width: 120px;
+    background: rgb(142, 122, 211);
+    color: #FFFFFF;
+    border: 1px solid rgb(142, 122, 211);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.get-started-btn:hover,
+.contact-sales-btn:hover {
+    background: rgb(125, 108, 186);
+    border-color: rgb(125, 108, 186);
+}
+
+.get-started-btn.coming-soon {
+    background: none;
+    color: rgba(228, 228, 231, 0.4);
+    border-color: rgba(228, 228, 231, 0.4);
+    cursor: not-allowed;
+}
+
+.get-started-btn.coming-soon:hover {
+    transform: none;
+    box-shadow: none;
+    background: none;
+    border-color: rgba(228, 228, 231, 0.4);
+}
+
+.get-started-btn.coming-soon:hover .arrow-stem {
+    transform: scaleX(0);
 }
 
 /* Plan Chooser Section */
@@ -255,7 +310,7 @@ body {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 2.5rem;
-    border: 3px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     opacity: 0;
     transform: translateY(20px);
     height: 100%;
@@ -379,7 +434,7 @@ body {
 .comparison-wrapper {
     background: rgba(255, 255, 255, 0.02);
     border-radius: 16px;
-    border: 3px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
 }
 .comparison-headers {
@@ -387,7 +442,7 @@ body {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     background: rgba(255, 255, 255, 0.05);
     padding: 1.5rem;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .feature-col, .plan-col {
@@ -403,7 +458,7 @@ body {
 
 
 .feature-group {
-    border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 
@@ -417,7 +472,7 @@ body {
     font-weight: 600;
     font-size: 1.1rem;
     background: rgba(255, 255, 255, 0.03);
-    border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 .feature-row {
     display: grid;
@@ -601,7 +656,7 @@ body {
     min-width: 120px;
     background: rgb(142, 122, 211);
     color: #FFFFFF;
-    border: 3px solid rgb(142, 122, 211);
+    border: 1px solid rgb(142, 122, 211);
     border-radius: 16px;
     transition: all 0.3s ease;
     font-size: 1rem;
@@ -634,7 +689,7 @@ body {
         font-size: 1.1rem;
         font-weight: 600;
         margin-bottom: 1rem;
-        border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         padding-bottom: 0.5rem;
     }
 
@@ -662,3 +717,31 @@ body {
         margin-bottom: 1rem;
     }
 }
+
+@keyframes fadeInScaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUpEffect {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 1; }
+    to { opacity: 1; }
+}
+
