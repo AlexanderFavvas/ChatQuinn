@@ -129,11 +129,7 @@ class SetupFlow {
             options.body = JSON.stringify(body);
         }
 
-<<<<<<< HEAD
         const response = await fetch('https://api.chatquinn.com/hello_http', options);
-=======
-        const response = await fetch(endpoint, options);
->>>>>>> 643bc25f06a7b1dbeab13dbffda1b1a7e01c9956
         
         if (!response.ok) {
             throw new Error(`Request failed: ${response.statusText}`);
